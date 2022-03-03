@@ -1,61 +1,110 @@
-<!-- <div class="container">
-    <div class="search-form">
-        <form>
-            <input type="text" placeholder="Ingrese un DNI...">
-            <button type="submit">Buscar</button>
-        </form>
-    </div>
-    <div class="info">
-        <form>
-
-        </form>
-    </div>
-</div> -->
-
-<div>
-    <form class="mb-3">
-        <div class="form-group row">
-            <div class="col-sm-2">
-                <input class="form-control" type="text">
-            </div>
-            <div class="col-sm-2">
-                <button class="btn btn-primary" type="submit">Buscar</button>
-            </div>
+<div class="diagnostic-container">
+    <form class="row g-3 mb-3">
+        <div class="col-auto">
+            <input type="text" class="form-control" placeholder="DNI">
+        </div>
+        <div class="col-auto">
+            <button type="submit" class="btn btn-info">Buscar</button>
         </div>
     </form>
+    <div class="row mb-3">
+        <div class="col">
+            <label class="form-label">Paciente:</label>
+            <input type="text" class="form-control form-control-sm" disabled>
+        </div>
+        <div class="col">
+            <label class="form-label">N° Documento:</label>
+            <input type="text" class="form-control form-control-sm" disabled>
+        </div>
+        <div class="col">
+            <label class="form-label">Localidad:</label>
+            <input type="text" class="form-control form-control-sm" disabled>
+        </div>
+        <div class="col">
+            <label class="form-label">Sexo:</label>
+            <input type="text" class="form-control form-control-sm" disabled>
+        </div>
+    </div>
     <form>
-        <div class="row mb-3">
-            <div class="col-md-2">
-                <label class="form-label">Paciente:</label>
-                <input class="form-control form-control-sm" type="text" disabled>
+        <div class="d-flex justify-content-center flex-wrap mb-3">
+            <div class="card mx-3" style="width: 25rem;">
+                <div class="card-header">
+                    Diagnóstico
+                </div>
+                <div class="card-body">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input">
+                        <label class="form-check-label">
+                            Hinchazón en el abdomen
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input">
+                        <label class="form-check-label">
+                            Piel pálida
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input">
+                        <label class="form-check-label">
+                            Insomnio
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input">
+                        <label class="form-check-label">
+                            Visión borrosa
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input">
+                        <label class="form-check-label">
+                            Mareos
+                        </label>
+                    </div>
+                </div>
             </div>
-            <div class="col-md-2">
-                <label class="form-label">DNI:</label>
-                <input class="form-control form-control-sm" type="text" disabled>
-            </div>
-            <div class="col-md-2">
-                <label class="form-label">Localidad:</label>
-                <input class="form-control form-control-sm" type="text" disabled>
-            </div>
-            <div class="col-md-2">
-                <label class="form-label">Sexo:</label>
-                <input class="form-control form-control-sm" type="text" disabled>
+
+            <div class="card mx-3" style="width: 25rem;">
+                <div class="card-header">
+                    Sintomas
+                </div>
+                <div class="card-body">
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input">
+                        <label class="form-check-label">
+                            Fatiga
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input">
+                        <label class="form-check-label">
+                            Pérdida de peso
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input">
+                        <label class="form-check-label">
+                            Nauseas
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input">
+                        <label class="form-check-label">
+                            Fiebre
+                        </label>
+                    </div>
+                    <div class="form-check">
+                        <input type="checkbox" class="form-check-input">
+                        <label class="form-check-label">
+                            Hematomas
+                        </label>
+                    </div>
+                </div>
             </div>
         </div>
-        <button class="btn btn-primary mb-3" type="submit">Analizar</button>
-        <div class="row">
-            <div class="col-md-4">
-                <div class="wrapper">
-                    
-                </div>
-                Diagnóstico
-            </div>
-            <div class="col-md-4">
-                <div class="wrapper">
-    
-                </div>
-                Sintomas
-            </div>
+        <div class="d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary btn-lg">Analizar</button>
         </div>
     </form>
 </div>

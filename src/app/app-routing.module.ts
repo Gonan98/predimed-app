@@ -5,7 +5,7 @@ import { LoginComponent } from './components/login/login.component';
 import { ReferredComponent } from './components/referred/referred.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'login', pathMatch: 'full' },
+  { path: '', redirectTo: 'diagnostico', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'diagnostico', component: DiagnosticComponent },
   { path: 'referidos', component: ReferredComponent }
