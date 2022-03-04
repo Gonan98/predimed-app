@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { User } from '../models/User';
 
@@ -8,19 +9,28 @@ import { User } from '../models/User';
 })
 export class AuthService {
 
-  private URL = 'http://localhost/5000';
+  private URL = 'http://localhost:5000/api/v1/auth';
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private router: Router) { }
 
-  signIn(user: User): Observable<any> {
-    return this.http.post(`${this.URL}/api/v1/auth/login`, user);
+  signIn(username: string, password: string): Observable<any> {
+    return this.http.post(`${this.URL}/login`, { username, password });
   }
 
   getProfile(): Observable<any> {
-    return this.http.get(`${URL}/api/v1/auth/profile`);
+    return this.http.get(`${this.URL}/profile`);
   }
 
   getToken() {
     return localStorage.getItem('token');
+  }
+
+  isLogged() {
+    return !!localStorage.getItem('token');
+  }
+
+  logOut() {
+    localStorage.removeItem('token');
+    this.router.navigate(['/login']);
   }
 }

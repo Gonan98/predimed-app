@@ -1,6 +1,5 @@
-export interface Medic {
+export interface Patient {
     id: number,
     firstName: string,
     lastName: string,
-    contactCenter: string,
 }
