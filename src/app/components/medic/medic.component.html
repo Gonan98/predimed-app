@@ -52,6 +52,7 @@
                     <th scope="col">Apellidos</th>
                     <th scope="col">Centro de Atención</th>
                     <th scope="col">Acción</th>
+                    <th scope="col">Credenciales</th>
                 </tr>
             </thead>
             <tbody>
@@ -62,14 +63,37 @@
                     <td>{{ u.contactCenter }}</td>
                     <td>
                         <button class="btn btn-secondary btn-sm" (click)="handleEdit(u)">
-                            <i class="bi" [ngClass]="{'bi-x': user.id === u.id, 'bi-pencil-fill': !user.id }"></i>
+                            <i class="bi" [ngClass]="{'bi-x': user.id === u.id, 'bi-pencil-fill': user.id !== u.id }"></i>
                         </button>
                         <button class="btn btn-danger btn-sm" (click)="deleteUser(u.id!)">
                             <i class="bi bi-trash-fill"></i>
                         </button>
                     </td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" (click)="onClickModal(u)" data-bs-toggle="modal" data-bs-target="#credentialsModal">
+                            <i class="bi bi-person-lines-fill"></i>
+                        </button>
+                    </td>
                 </tr>
             </tbody>
         </table>
+    </div>
+</div>
+
+<div class="modal fade" id="credentialsModal" tabindex="-1" aria-labelledby="credentialsModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">{{ userModal.firstName }} {{ userModal.lastName }}</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Usuario: {{userModal.username}}</p>
+          <p>Contraseña: {{userModal.password}}</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
     </div>
 </div>

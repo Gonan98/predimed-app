@@ -4,6 +4,7 @@ export class User {
     lastName: string;
     contactCenter: string;
     username: string;
+    password?: string;
     isAdmin?: boolean;
 
     constructor() {

@@ -17,6 +17,10 @@ export class UserService {
     return this.http.post(this.baseURL, user);
   }
 
+  getCredentials(id: number): Observable<any> {
+    return this.http.get(`${this.baseURL}/${id}/credentials`);
+  }
+
   getUsers(): Observable<any> {
     return this.http.get(this.baseURL);
   }

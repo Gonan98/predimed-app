@@ -10,10 +10,12 @@ import { UserService } from 'src/app/services/user.service';
 export class MedicComponent implements OnInit {
 
   user: User;
+  userModal: User;
   users: User[] = [];
 
   constructor(private userService: UserService) {
     this.user = new User();
+    this.userModal = new User();
   }
 
   ngOnInit(): void {
@@ -60,6 +62,14 @@ export class MedicComponent implements OnInit {
         (err) => console.error(err)
       );
     }
+  }
+
+  onClickModal(selectedUser: User) {
+    this.userModal = selectedUser;
+    this.userService.getCredentials(selectedUser.id!).subscribe(
+      data => this.userModal.password = data.password,
+      err => console.error(err)
+    );
   }
 
 }
