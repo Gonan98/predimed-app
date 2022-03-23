@@ -1,28 +1,31 @@
 <div class="diagnostic-container">
-    <form class="row g-3 mb-3">
+    <form (ngSubmit)="onSearch()" class="row g-3 mb-3">
         <div class="col-auto">
-            <input type="text" class="form-control" placeholder="DNI">
+            <input type="text" class="form-control" name="documentNumber" placeholder="DNI" maxlength="8" [(ngModel)]="searchInput">
         </div>
         <div class="col-auto">
             <button type="submit" class="btn btn-info">Buscar</button>
         </div>
     </form>
-    <div class="row mb-3">
-        <div class="col">
+    <div class="row justify-content-center mb-3">
+        <div class="col-md-2">
             <label class="form-label">Paciente:</label>
-            <input type="text" class="form-control form-control-sm" disabled>
+            <input type="text" class="form-control form-control-sm" [value]="fullname" disabled>
         </div>
-        <div class="col">
+        <div class="col-auto">
             <label class="form-label">N° Documento:</label>
-            <input type="text" class="form-control form-control-sm" disabled>
+            <input type="text" class="form-control form-control-sm" [value]="documentNumber" disabled>
         </div>
-        <div class="col">
+        <div class="col-md-3">
             <label class="form-label">Localidad:</label>
-            <input type="text" class="form-control form-control-sm" disabled>
+            <input type="text" class="form-control form-control-sm" [value]="location" disabled>
         </div>
-        <div class="col">
+        <div class="col-auto">
             <label class="form-label">Sexo:</label>
-            <input type="text" class="form-control form-control-sm" disabled>
+            <input type="text" class="form-control form-control-sm" [value]="gender" disabled>
+        </div>
+        <div class="col-auto align-self-end">
+            <button class="btn btn-warning btn-sm" disabled>Antecedentes</button>
         </div>
     </div>
     <form>

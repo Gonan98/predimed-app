@@ -12,6 +12,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ReferredComponent } from './components/referred/referred.component';
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './auth/token-interceptor.service';
+import { AntecedentComponent } from './components/antecedent/antecedent.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { TokenInterceptorService } from './auth/token-interceptor.service';
     LoginComponent,
     DiagnosticComponent,
     NavbarComponent,
-    ReferredComponent
+    ReferredComponent,
+    AntecedentComponent
   ],
   imports: [
     BrowserModule,

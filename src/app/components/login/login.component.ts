@@ -15,6 +15,7 @@ export class LoginComponent implements OnInit {
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+    this.redirectIfAuthenticated();
   }
 
   onSubmit() {
@@ -22,10 +23,16 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (data) => {
           localStorage.setItem('token', data.token);
-          this.router.navigate(['/diagnostico'])
+          this.redirectIfAuthenticated();
         },
         (err) => alert(err.message)
       );
   }
 
+  redirectIfAuthenticated() {
+    this.authService.getProfile().subscribe(
+      data => data.isAdmin ? this.router.navigate(['/dashboard']) : this.router.navigate(['/diagnostico']),
+      err => console.error(err)
+    );
+  }
 }

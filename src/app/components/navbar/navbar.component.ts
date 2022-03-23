@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/services/auth.service';
 export class NavbarComponent implements OnInit {
 
   name = '';
+  isAdmin = false;
 
   constructor(private authService: AuthService, private router: Router) { }
 
@@ -19,7 +20,10 @@ export class NavbarComponent implements OnInit {
 
   getProfile() {
     this.authService.getProfile().subscribe(
-      (user) => this.name = user.firstName,
+      (user) => {
+        this.name = user.firstName
+        this.isAdmin = user.isAdmin
+      },
       (err) => alert(err.message)
     );
   }
