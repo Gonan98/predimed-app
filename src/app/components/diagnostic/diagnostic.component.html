@@ -1,40 +1,49 @@
 <div class="diagnostic-container">
-    <form (ngSubmit)="onSearch()" class="row g-3 mb-3">
-        <div class="col-auto">
-            <input type="text" class="form-control" name="documentNumber" placeholder="DNI" maxlength="8" [(ngModel)]="searchInput">
-        </div>
-        <div class="col-auto">
-            <button type="submit" class="btn btn-info">Buscar</button>
-        </div>
+    <form (ngSubmit)="onSearch()" class="form-search-dni">
+        <h5>DNI:</h5>
+        <input type="text" class="input-dni" name="documentNumber" placeholder="DNI" maxlength="8" [(ngModel)]="searchInput">
+        <button type="submit" class="btn-search-dni">Buscar</button>
     </form>
-    <div class="row justify-content-center mb-3">
-        <div class="col-md-2">
-            <label class="form-label">Paciente:</label>
-            <input type="text" class="form-control form-control-sm" [value]="fullname" disabled>
-        </div>
-        <div class="col-auto">
-            <label class="form-label">N° Documento:</label>
-            <input type="text" class="form-control form-control-sm" [value]="documentNumber" disabled>
-        </div>
-        <div class="col-md-3">
-            <label class="form-label">Localidad:</label>
-            <input type="text" class="form-control form-control-sm" [value]="location" disabled>
-        </div>
-        <div class="col-auto">
-            <label class="form-label">Sexo:</label>
-            <input type="text" class="form-control form-control-sm" [value]="gender" disabled>
-        </div>
-        <div class="col-auto align-self-end">
-            <button class="btn btn-primary btn-sm" disabled>Antecedentes</button>
-        </div>
+    <div class="patient-section">
+        <h4 class="title-section">Sección del paciente</h4>
+        <section class="first-row">
+            <div class="item-row-large">
+                Paciente:
+                <input type="text" class="input-block-large" [value]="fullname" disabled>
+            </div>
+            <div class="item-row-medium">
+                Sexo:
+                <input type="text" class="input-block-medium" [value]="fullname" disabled>
+            </div>
+            <div class="item-row-small">
+                Edad:
+                <input type="text" class="input-block-small" [value]="fullname" disabled>
+            </div>
+            <div class="item-row-large">
+                Dirección:
+                <input type="text" class="input-block-large" [value]="fullname" disabled>
+            </div>
+        </section>
+        <section class="second-row">
+            <div class="item-row-medium">
+                N Historia Clinica:
+                <input type="text" class="input-block-medium" [value]="fullname" disabled>
+            </div>
+            <div class="item-row-medium">
+                Condición del Paciente:
+                <input type="text" class="input-block-medium" [value]="fullname" disabled>
+            </div>
+            <div class="item-row-large">
+                Dpto./Prov./ Distrito:
+                <input type="text" class="input-block-large" [value]="fullname" disabled>
+            </div>
+        </section>
     </div>
-    <form>
-        <div class="d-flex justify-content-center flex-wrap mb-3">
-            <div class="card mx-3" style="width: 25rem;">
-                <div class="card-header">
-                    Diagnóstico
-                </div>
-                <div class="card-body">
+    <form (ngSubmit)="onAnalize()">
+        <div class="diagnostic-symptom">
+            <section class="diagnostic">
+                <h4 class="title-section">Diagnostico</h4>
+                <div class="list-items">
                     <div class="form-check">
                         <input type="checkbox" class="form-check-input">
                         <label class="form-check-label">
@@ -66,13 +75,10 @@
                         </label>
                     </div>
                 </div>
-            </div>
-
-            <div class="card mx-3" style="width: 25rem;">
-                <div class="card-header">
-                    Sintomas
-                </div>
-                <div class="card-body">
+            </section>
+            <section class="symptom">
+                <h4 class="title-section">Sintomas</h4>
+                <div class="list-items">
                     <div class="form-check">
                         <input type="checkbox" class="form-check-input">
                         <label class="form-check-label">
@@ -104,10 +110,10 @@
                         </label>
                     </div>
                 </div>
-            </div>
+            </section>
         </div>
-        <div class="d-flex justify-content-center">
-            <button type="submit" class="btn btn-primary btn-lg">Analizar</button>
-        </div>
+        <footer>
+            <button type="submit" class="btn-analyze">Analizar</button>
+        </footer>
     </form>
 </div>

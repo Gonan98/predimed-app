@@ -1,4 +1,53 @@
+body{
+    margin:0px;
+    height:100vh;
+    background-color: #dee9f3;
+}
+
 .login{
-    width: 20rem;
-    margin: 15rem auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 13%;
+}
+
+.title{
+    justify-content: center;
+    text-align: center;
+    font-size: 30px;
+    margin: 10px;
+    color: #04578B;
+    font-weight: bold;
+}
+
+.card{
+    padding: 30px;
+    width: 30rem;
+    background-color: #fff;
+    border-color: #04578B;
+}
+
+.btns{
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-login{
+  background-color: #A8F5F2; 
+  border: none;
+  color: #04578B;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.forgot-pwd{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #84BAEB;
 }

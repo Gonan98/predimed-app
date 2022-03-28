@@ -1,8 +1,4 @@
-/*.diagnostic-container {
-    margin: 0 8rem;
-}*/
-
-.diagnostic-container{
+.analyze-container{
     box-sizing: border-box;
     display: flex;
     justify-content: center;
@@ -13,37 +9,6 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
-}
-
-.form-search-dni{
-    display: flex;
-    width: 25%;
-    margin: 15px 5%;
-    justify-content:space-evenly;
-    align-items: center;
-}
-
-.input-dni{
-    border: 2px solid #04578B;
-    border-radius: 4px;
-    padding: 10px;
-}
-
-.btn-search-dni{
-  background-color: #A8F5F2;
-  border:none;
-  color: #04578B;
-  padding: 10px 20px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  font-size: 16px;
-  font-weight: bold;
-}
-
-.title-section{
-    font-weight: bold;
-    color: #04578B;
 }
 
 .patient-section{
@@ -59,6 +24,11 @@ body {
     justify-content: space-around;
     height: 230px;
     box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.5)
+}
+
+.title-section{
+    font-weight: bold;
+    color: #04578B;
 }
 
 .first-row{
@@ -105,17 +75,18 @@ body {
     justify-content: space-between;
 }
 
-.diagnostic-symptom{
+
+.analyze-info{
     display: flex;
-    flex: wrap;
-    margin: 40px;
+    flex-direction: row;
     justify-content: space-around;
+    flex: wrap;
+    margin: 10px 7%;
 }
 
-.diagnostic{
+.diagnostic-symptom{
     background-color: #ECF4FC;
-    width: 40%;
-    height: 300px;
+    width: 50%;
     padding: 20px;
     border-color: gray;
     border-width: 2px;
@@ -132,11 +103,32 @@ body {
     padding: 10px 30px;
 }
 
-.symptom{
-    background-color: #ECF4FC;
-    width: 40%;
-    height: 300px;
+.results{
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.percent-circle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 120px;
+    width: 120px;
+    background-color: #04578B;
+    border-radius: 50%;
+    border: solid;
+    border-color: #BDF8F5;
+    font-size: 30px;
+    color: white;
+}
+
+.paragraph-container{
+    margin: 30px;
     padding: 20px;
+    background-color: #ECF4FC;
     border-color: gray;
     border-width: 2px;
     border-radius: 10px;
@@ -144,20 +136,56 @@ body {
     box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.5)
 }
 
-.btn-analyze{
-    background-color: #04578B;
-    border:none;
-    color:  #A8F5F2;
-    padding: 10px 20px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    font-weight: bold;
-}
 
 footer{
     display: flex;
-    justify-content: flex-end;
-    margin: 25px 130px;
+    margin: 3% 7%;
+}
+
+.btn-column1{
+    display: flex;
+    flex: 75%;
+    justify-content: flex-start;
+}
+
+.btn-column2{
+    display: flex;
+    flex: 25%;
+    justify-content: space-evenly;
+}
+
+.btn-back{
+    background-color: #A8F5F2; 
+    border: none;
+    color: #04578B;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.btn-no-ref{
+    background-color: #946675; 
+    border: none;
+    color: white;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.btn-ref{
+    background-color: #04578B; 
+    border: none;
+    color: #A8F5F2;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 20px;
+    font-weight: bold;
 }

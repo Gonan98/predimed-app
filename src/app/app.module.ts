@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MedicComponent } from './components/medic/medic.component';
@@ -14,6 +13,10 @@ import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './auth/token-interceptor.service';
 import { AntecedentComponent } from './components/antecedent/antecedent.component';
 import { InfoMessageComponent } from './components/info-message/info-message.component';
+import { ReferralsComponent } from './components/referrals/referrals.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table'  
+import { MatDialogModule } from '@angular/material/dialog';
 
 @NgModule({
   declarations: [
@@ -24,13 +27,17 @@ import { InfoMessageComponent } from './components/info-message/info-message.com
     NavbarComponent,
     ReferredComponent,
     AntecedentComponent,
-    InfoMessageComponent
+    InfoMessageComponent,
+    ReferralsComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    MatTableModule,
+    MatDialogModule,
+    BrowserAnimationsModule
   ],
   providers: [
     AuthGuard,

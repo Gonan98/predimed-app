@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Patient } from 'src/app/models/Patient';
 import { PatientService } from 'src/app/services/patient.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-diagnostic',
@@ -16,7 +17,7 @@ export class DiagnosticComponent implements OnInit {
   documentNumber = '';
 
   constructor(
-    private patientService: PatientService,
+    private patientService: PatientService, private router: Router
   ) {
 
   }
@@ -37,6 +38,10 @@ export class DiagnosticComponent implements OnInit {
         console.error(err.error.message);
       }
     );
+  }
+
+  onAnalize() {
+    this.router.navigate(['/analizar']);
   }
 
 }

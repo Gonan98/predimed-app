@@ -1,25 +1,29 @@
-<div class="login">
-    <div class="card">
-        <div class="card-body">
-            <form (ngSubmit)="onSubmit()">
-                <div class="input-group mb-3">
-                    <span class="input-group-text">
-                        <i class="bi bi-person-fill"></i>
-                    </span>
-                    <input type="text" class="form-control" placeholder="Usuario" [(ngModel)]="username"
-                        name="username">
-                </div>
-                <div class="input-group mb-3">
-                    <span class="input-group-text">
-                        <i class="bi bi-key-fill"></i>
-                    </span>
-                    <input type="password" class="form-control" placeholder="Contraseña" [(ngModel)]="password"
-                        name="password">
-                </div>
-                <div class="d-grid gap-2">
-                    <button class="btn btn-primary" type="submit">Iniciar Sesion</button>
-                </div>
-            </form>
+<body>
+    <div class="login">
+        <span class="title">Iniciar Sesión</span>
+        <div class="card">
+            <div class="card-body">
+                <form (ngSubmit)="onSubmit()">
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">
+                            <i class="bi bi-person-fill"></i>
+                        </span>
+                        <input type="text" class="form-control" placeholder="Usuario" [(ngModel)]="username"
+                            name="username">
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">
+                            <i class="bi bi-key-fill"></i>
+                        </span>
+                        <input type="password" class="form-control" placeholder="Contraseña" [(ngModel)]="password"
+                            name="password">
+                    </div>
+                    <div class="btns">
+                        <button class="btn-login" type="submit">Iniciar Sesion</button>
+                        <a class="forgot-pwd" href="">¿Te olvidaste tu Contraseña?</a>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
-</div>
+</body>

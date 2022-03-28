@@ -1,0 +1,244 @@
+table {
+    background-color: #d2f8f6;
+    width: 50%;
+}
+
+.referrals-container{
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+.patient-section{
+    border-color: #04578B;
+    border-width: 2px;
+    border-radius: 10px;
+    border-style:solid;
+    background-color: #BDF8F5;
+    margin: 5px 7% 5px 7%;
+    padding: 15px 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 200px;
+    box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.5)
+}
+
+.title-section{
+    font-weight: bold;
+    color: #04578B;
+}
+
+.first-row{
+    display: flex;
+    flex: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.item-row-large{
+    width: 35%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.item-row-small{
+    width: 10%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.item-row-medium{
+    width: 25%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.input-block-large{
+    width: 70%;
+}
+
+.input-block-small{
+    width: 40%;
+}
+
+.input-block-medium{
+    width: 50%;
+}
+
+.second-row{
+    display: flex;
+    flex: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.info-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    flex: wrap;
+    margin: 10px 7%;
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 90%;
+}
+
+label{
+    font-size: 17px;
+}
+
+.column-1{
+    width: 50%;
+    background-color: #ECF4FC;
+    padding: 20px;
+    border-color: gray;
+    border-width: 2px;
+    border-radius: 10px;
+    border-style:solid;
+    box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.5)
+}
+
+.column-2{
+    width: 40%;
+    height: 540px;
+}
+
+.anamnesis-fisico{
+    background-color: #ECF4FC;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 95%;
+    border-color: gray;
+    border-width: 2px;
+    border-radius: 10px;
+    border-style:solid;
+    box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.5)
+}
+
+.diagnostic-help{
+    background-color: #ECF4FC;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    min-height: 95%;
+    border-color: gray;
+    border-width: 2px;
+    border-radius: 10px;
+    border-style:solid;
+    box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.5)
+}
+
+.p-container{
+    padding: 10px;
+    border-color: gray;
+    border-width: 2px;
+    border-radius: 3px;
+    border-style:solid;
+    background-color: white;
+}
+
+.t-container{
+    padding: 10px;
+    border-color: gray;
+    border-width: 2px;
+    border-radius: 3px;
+    border-style:solid;
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.line{
+    display: flex;
+    justify-content: space-around;
+    padding-top: 20px;
+}
+
+table {
+    width: 100%;
+}
+
+.line-start{
+    display: flex;
+    justify-content: flex-start;
+    width: 60%;
+    justify-content: space-between;
+}
+
+footer{
+    display: flex;
+    justify-content:flex-end;
+    padding: 20px 7% 20px 0px;
+}
+
+.speciality{
+    background-color: white;
+    padding: 5px;
+    border-color: gray;
+    border-width: 2px;
+    border-radius: 3px;
+    border-style:solid;
+}
+
+select{
+    width: 250px;
+    text-align: start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.elem{
+    width: 30%;
+    display: flex;
+    justify-content: space-around;
+}
+
+input[type=time]{
+    width: 40%;
+}
+
+input[type=date]{
+    width: 60%;
+}
+
+#pa{
+    width: 130px;
+}
+
+#FC, #FR, #temp{
+    width: 80px;
+}
+
+.btn-send{
+    background-color: #04578B; 
+    border: none;
+    color: #A8F5F2;
+    padding: 15px 30px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+.section-header{
+    display: flex;
+    justify-content: space-between;
+}
