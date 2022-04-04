@@ -17,6 +17,12 @@ import { ReferralsComponent } from './components/referrals/referrals.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table'  
 import { MatDialogModule } from '@angular/material/dialog';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { ReferredDetailsComponent } from './components/referred-details/referred-details.component';
+import { IncidenceAdminComponent } from './components/incidence-admin/incidence-admin.component';
+import { IncidenceDetailsComponent } from './components/incidence-details/incidence-details.component';
+import { IncidenceCreateComponent } from './components/incidence-create/incidence-create.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +34,11 @@ import { MatDialogModule } from '@angular/material/dialog';
     ReferredComponent,
     AntecedentComponent,
     InfoMessageComponent,
-    ReferralsComponent
+    ReferralsComponent,
+    ReferredDetailsComponent,
+    IncidenceAdminComponent,
+    IncidenceDetailsComponent,
+    IncidenceCreateComponent
   ],
   imports: [
     BrowserModule,
@@ -37,6 +47,8 @@ import { MatDialogModule } from '@angular/material/dialog';
     HttpClientModule,
     MatTableModule,
     MatDialogModule,
+    MatFormFieldModule,
+    MatInputModule,
     BrowserAnimationsModule
   ],
   providers: [

@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InfoMessageComponent } from './info-message.component';
+import { IncidenceAdminComponent } from './incidence-admin.component';
 
-describe('InfoMessageComponent', () => {
-  let component: InfoMessageComponent;
-  let fixture: ComponentFixture<InfoMessageComponent>;
+describe('IncidenceComponent', () => {
+  let component: IncidenceAdminComponent;
+  let fixture: ComponentFixture<IncidenceAdminComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InfoMessageComponent ]
+      declarations: [ IncidenceAdminComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InfoMessageComponent);
+    fixture = TestBed.createComponent(IncidenceAdminComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

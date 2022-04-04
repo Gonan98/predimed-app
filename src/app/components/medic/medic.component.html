@@ -25,16 +25,79 @@
                         />
                     </div>
                     <div class="mb-3">
-                        <label for="contactCenter" class="form-label"
-                            >Centro de atención:</label
-                        >
+                        <label for="lastName" class="form-label">DNI:</label>
                         <input
                             type="text"
-                            name="contactCenter"
+                            name="dni"
                             class="form-control"
                             required
-                            [(ngModel)]="user.contactCenter"
+                            [(ngModel)]="user.lastName"
                         />
+                    </div>
+                    <div class="mb-3">
+                        <label for="lastName" class="form-label">Doc. Médico</label>
+                        <input
+                            type="text"
+                            name="dni"
+                            class="form-control"
+                            required
+                            [(ngModel)]="user.lastName"
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label for="gender" class="form-label">Sexo:</label>
+                        <select
+                            id="gender"
+                            class="form-select"
+                            name="gender"
+                        >
+                            <option selected disabled>Seleccionar</option>
+                            <option value="M">Masculino</option>
+                            <option value="F">Femenino</option>
+                            <option value="X">Prefiero no decirlo</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="gender" class="form-label">Profesión</label>
+                        <select
+                            id="gender"
+                            class="form-select"
+                            name="profesion"
+                        >
+                            <option selected disabled>Seleccionar</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="gender" class="form-label">Centro de Atención</label>
+                        <select
+                            id="gender"
+                            class="form-select"
+                            name="profesion"
+                            [(ngModel)] = "user.contactCenter"
+                        >
+                            <option selected disabled>Seleccionar</option>
+                            <option value="Hospital 3">Hospital 3</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="lastName" class="form-label">Estado Laboral</label>
+                        <input
+                            type="text"
+                            name="dni"
+                            class="form-control"
+                            required
+                            [(ngModel)]="user.lastName"
+                        />
+                    </div>
+                    <div class="mb-3">
+                        <label for="gender" class="form-label">Condición Laboral</label>
+                        <select
+                            id="gender"
+                            class="form-select"
+                            name="profesion"
+                        >
+                            <option selected disabled>Seleccionar</option>
+                        </select>
                     </div>
                     <button type="submit" class="btn" [ngClass]="{'btn-info': !user.id, 'btn-warning': user.id}">
                         {{ user.id ? 'Actualizar' : 'Registrar' }}

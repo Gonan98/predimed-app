@@ -14,7 +14,11 @@ export class DiagnosticComponent implements OnInit {
   fullname = '';
   location = '';
   gender = '';
+  age= '';
   documentNumber = '';
+  direction = '';
+  histories = '';
+  dateTime = new Date();
 
   constructor(
     private patientService: PatientService, private router: Router
@@ -31,8 +35,19 @@ export class DiagnosticComponent implements OnInit {
       data => {
         this.fullname = data.firstName + ' ' + data.lastName;
         this.documentNumber = data.documentNumber;
-        this.location = data.location.department + '/' + data.location.province + '/' + data.location.district;
+        this.location = data.location.department + ' / ' + data.location.province + ' / ' + data.location.district;
         this.gender = data.gender === 'M' ? 'Masculino' : 'Femenino';
+        console.log(data);
+        let birthday = new Date(data.birthdate);
+        var years = this.dateTime.getFullYear() - birthday.getFullYear();
+        this.age = years.toString();
+        this.direction = data.location.address;
+        if(data.histories.length == 0){
+          this.histories = 'No tiene historias'
+        }
+        else{
+          this.histories = '000-235'
+        }
       },
       err => {
         console.error(err.error.message);

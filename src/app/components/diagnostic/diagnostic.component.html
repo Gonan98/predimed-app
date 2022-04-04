@@ -13,29 +13,31 @@
             </div>
             <div class="item-row-medium">
                 Sexo:
-                <input type="text" class="input-block-medium" [value]="fullname" disabled>
+                <input type="text" class="input-block-medium" [value]="gender" disabled>
             </div>
             <div class="item-row-small">
                 Edad:
-                <input type="text" class="input-block-small" [value]="fullname" disabled>
+                <input type="text" class="input-block-small" [value]="age" disabled>
             </div>
             <div class="item-row-large">
                 Dirección:
-                <input type="text" class="input-block-large" [value]="fullname" disabled>
+                <input type="text" class="input-block-large" [value]="direction" disabled>
             </div>
         </section>
         <section class="second-row">
             <div class="item-row-medium">
                 N Historia Clinica:
-                <input type="text" class="input-block-medium" [value]="fullname" disabled>
+                <input type="text" class="input-block-medium" [value]="histories" disabled>
             </div>
             <div class="item-row-medium">
                 Condición del Paciente:
-                <input type="text" class="input-block-medium" [value]="fullname" disabled>
+                <select class="combo">
+                    <option value="Select">Estable</option>
+                </select>
             </div>
             <div class="item-row-large">
                 Dpto./Prov./ Distrito:
-                <input type="text" class="input-block-large" [value]="fullname" disabled>
+                <input type="text" class="input-block-large" [value]="location" disabled>
             </div>
         </section>
     </div>

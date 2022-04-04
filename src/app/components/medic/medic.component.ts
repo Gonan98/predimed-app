@@ -25,7 +25,7 @@ export class MedicComponent implements OnInit {
   getAllMedics() {
     this.userService.getUsers().subscribe(
       data => this.users = data,
-      err => console.error(err)
+      err => console.error(err),
     );
   }
 

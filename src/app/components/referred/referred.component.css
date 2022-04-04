@@ -1,0 +1,44 @@
+body{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 91.5%;
+}
+
+.elemnts-search{
+  display: flex;
+  justify-content: flex-start;
+  width: 70%;
+}
+
+.left-elements{
+  width: 25%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.title-section{
+  margin: 5px;
+}
+
+.table-content{
+  background-color: bisque;
+  width: 70%;
+}
+
+table {
+  width: 100%;
+  background-color: #ECF4FC;
+}
+
+.mat-form-field {
+  font-size: 14px;
+  width: 100%;
+}
+
+.btn-view{
+  padding: 0;
+  border: none;
+  background: none;
+}

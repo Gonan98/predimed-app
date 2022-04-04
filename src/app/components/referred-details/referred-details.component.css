@@ -184,8 +184,14 @@ table {
 
 footer{
     display: flex;
-    justify-content:flex-end;
-    padding: 20px 7% 20px 0px;
+    justify-content: flex-end;
+    padding-top: 15px;
+}
+
+.last-line{
+    display: flex;
+    justify-content: center;
+    width: 45%;
 }
 
 .speciality{

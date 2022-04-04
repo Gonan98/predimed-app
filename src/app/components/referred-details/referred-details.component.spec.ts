@@ -1,20 +1,20 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { InfoMessageComponent } from './info-message.component';
+import { ReferredDetailsComponent } from './referred-details.component';
 
-describe('InfoMessageComponent', () => {
-  let component: InfoMessageComponent;
-  let fixture: ComponentFixture<InfoMessageComponent>;
+describe('ReferredDetailsComponent', () => {
+  let component: ReferredDetailsComponent;
+  let fixture: ComponentFixture<ReferredDetailsComponent>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ InfoMessageComponent ]
+      declarations: [ ReferredDetailsComponent ]
     })
     .compileComponents();
   });
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(InfoMessageComponent);
+    fixture = TestBed.createComponent(ReferredDetailsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

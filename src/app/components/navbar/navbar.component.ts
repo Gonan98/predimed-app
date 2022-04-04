@@ -12,6 +12,7 @@ export class NavbarComponent implements OnInit {
   name = '';
   isAdmin = false;
 
+
   constructor(private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
@@ -21,8 +22,9 @@ export class NavbarComponent implements OnInit {
   getProfile() {
     this.authService.getProfile().subscribe(
       (user) => {
-        this.name = user.firstName
+        this.name = user.firstName + ' ' +user.lastName
         this.isAdmin = user.isAdmin
+        console.log(user);
       },
       (err) => alert(err.message)
     );
