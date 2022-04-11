@@ -25,23 +25,23 @@
                         />
                     </div>
                     <div class="mb-3">
-                        <label for="lastName" class="form-label">DNI:</label>
+                        <label for="documentNumber" class="form-label">DNI:</label>
                         <input
                             type="text"
-                            name="dni"
+                            name="documentNumber"
                             class="form-control"
                             required
-                            [(ngModel)]="user.lastName"
+                            [(ngModel)]="user.documentNumber"
                         />
                     </div>
                     <div class="mb-3">
-                        <label for="lastName" class="form-label">Doc. Médico</label>
+                        <label for="documentMedic" class="form-label">Doc. Médico</label>
                         <input
                             type="text"
-                            name="dni"
+                            name="documentMedic"
                             class="form-control"
                             required
-                            [(ngModel)]="user.lastName"
+                            [(ngModel)]="user.documentMedic"
                         />
                     </div>
                     <div class="mb-3">
@@ -50,6 +50,7 @@
                             id="gender"
                             class="form-select"
                             name="gender"
+                            [(ngModel)]="user.gender"
                         >
                             <option selected disabled>Seleccionar</option>
                             <option value="M">Masculino</option>
@@ -58,45 +59,48 @@
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="gender" class="form-label">Profesión</label>
+                        <label for="profession" class="form-label">Profesión</label>
                         <select
-                            id="gender"
+                            id="profesion"
                             class="form-select"
                             name="profesion"
+                            [(ngModel)]="user.profession"
                         >
-                            <option selected disabled>Seleccionar</option>
+                            <option value="Doctor">Doctor</option>
+                            <option value="Pediatra">Pediatra</option>
+                            <option value="Cirujano">Cirujano</option>
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="gender" class="form-label">Centro de Atención</label>
+                        <label for="colegio" class="form-label">Colegio</label>
                         <select
-                            id="gender"
+                            id="colegio"
                             class="form-select"
-                            name="profesion"
-                            [(ngModel)] = "user.contactCenter"
+                            name="colegio"
                         >
-                            <option selected disabled>Seleccionar</option>
-                            <option value="Hospital 3">Hospital 3</option>
+                            <option value="Colegio del Perú">Colegio del Perú</option>
                         </select>
                     </div>
                     <div class="mb-3">
-                        <label for="lastName" class="form-label">Estado Laboral</label>
+                        <label for="employeeStatus" class="form-label">Estado Laboral</label>
                         <input
                             type="text"
-                            name="dni"
+                            name="employeeStatus"
                             class="form-control"
                             required
-                            [(ngModel)]="user.lastName"
+                            [(ngModel)]="user.employeeStatus"
                         />
                     </div>
                     <div class="mb-3">
-                        <label for="gender" class="form-label">Condición Laboral</label>
+                        <label for="workingCondition" class="form-label">Condición Laboral</label>
                         <select
                             id="gender"
                             class="form-select"
                             name="profesion"
+                            [(ngModel)]="user.workingCondition"
                         >
-                            <option selected disabled>Seleccionar</option>
+                        <option value="Contrato">Contrato</option>
+                        <option value="Practicas">Practicas</option>
                         </select>
                     </div>
                     <button type="submit" class="btn" [ngClass]="{'btn-info': !user.id, 'btn-warning': user.id}">
@@ -113,9 +117,13 @@
                     <th scope="col">Id</th>
                     <th scope="col">Nombres</th>
                     <th scope="col">Apellidos</th>
-                    <th scope="col">Centro de Atención</th>
+                    <th scope="col">DNI</th>
+                    <th scope="col">Doc. Médico</th>
+                    <th scope="col">Profesión</th>
+                    <th scope="col">Colegio</th>
                     <th scope="col">Acción</th>
                     <th scope="col">Credenciales</th>
+                    <th scope="col">Estado Laboral</th>
                 </tr>
             </thead>
             <tbody>
@@ -123,7 +131,11 @@
                     <td>{{ u.id }}</td>
                     <td>{{ u.firstName }}</td>
                     <td>{{ u.lastName }}</td>
-                    <td>{{ u.contactCenter }}</td>
+                    <td>{{ u.documentNumber }}</td>
+                    <td>{{ u.documentMedic }}</td>
+                    <td>{{ u.profession }}</td>
+                    <td>Colegio del Perú</td>
+                    <td>{{ u.employeeStatus }}</td>
                     <td>
                         <button class="btn btn-secondary btn-sm" (click)="handleEdit(u)">
                             <i class="bi" [ngClass]="{'bi-x': user.id === u.id, 'bi-pencil-fill': user.id !== u.id }"></i>

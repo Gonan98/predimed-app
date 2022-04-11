@@ -52,6 +52,12 @@ export class MedicComponent implements OnInit {
       this.user.firstName = selectedUser.firstName;
       this.user.lastName = selectedUser.lastName;
       this.user.contactCenter = selectedUser.contactCenter;
+      this.user.documentNumber = selectedUser.documentNumber;
+      this.user.documentMedic = selectedUser.documentMedic;
+      this.user.gender = selectedUser.gender;
+      this.user.profession = selectedUser.profession;
+      this.user.employeeStatus = selectedUser.employeeStatus;
+      this.user.workingCondition = selectedUser.workingCondition;
     }
   }
 

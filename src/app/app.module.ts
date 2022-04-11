@@ -23,6 +23,7 @@ import { ReferredDetailsComponent } from './components/referred-details/referred
 import { IncidenceAdminComponent } from './components/incidence-admin/incidence-admin.component';
 import { IncidenceDetailsComponent } from './components/incidence-details/incidence-details.component';
 import { IncidenceCreateComponent } from './components/incidence-create/incidence-create.component';
+import { DialogProcessComponent} from './components/dialog-process/dialog-process.component';
 
 @NgModule({
   declarations: [
@@ -38,7 +39,8 @@ import { IncidenceCreateComponent } from './components/incidence-create/incidenc
     ReferredDetailsComponent,
     IncidenceAdminComponent,
     IncidenceDetailsComponent,
-    IncidenceCreateComponent
+    IncidenceCreateComponent,
+    DialogProcessComponent,
   ],
   imports: [
     BrowserModule,

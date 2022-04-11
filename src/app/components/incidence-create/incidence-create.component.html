@@ -1,1 +1,57 @@
-<p>incidence-create works!</p>
+<body>
+    <div class="container">
+        <h3>Registro de Incidencia</h3>
+        <div class="elements-row">
+            <div class="element-container">
+                <label>Doc Medico</label>
+                <input type="text" [(ngModel)]="docMedic" disabled>
+            </div>
+            <div class="element-container">
+                <label>Centro Salud Id</label>
+                <input type="number" [(ngModel)]="establishmentId">
+            </div>
+            <div class="element-container">
+                <label>Estado</label>
+                <select class="combo" [(ngModel)]="status">
+                    <option value="Select">Buscar elemento</option>
+                    <option value="Nuevo">Nuevo</option>
+                    <option value="PENDIENTE">PENDIENTE</option>
+                </select>
+            </div>
+        </div>
+        <div class="elements-row">
+            <div class="asunto-container">
+                <label>Asunto: </label>
+                <input class="asunto" [(ngModel)]="topic">
+            </div>
+            <div class="telefono-container">
+                <label>Teléfono</label>
+                <input class="telefono" [(ngModel)]="phone">
+            </div>
+        </div>
+        <div class="desc-input-sec">
+            <label>Descripción de Incidencia</label>
+            <textarea  [(ngModel)]="description" id="w3review" name="w3review" rows="4" cols="100"></textarea>
+        </div>
+        <div class="elements-row-center">
+            <div class="element-container">
+                <label>Tipo de Registro</label>
+                <select class="combo"  [(ngModel)]="registerType">
+                    <option value="Select">Buscar Elemento</option>
+                    <option value="Requerimiento">Requerimiento</option>
+                </select>
+            </div>
+            <div class="element-container">
+                <label>Prioridad</label>
+                <select class="combo" [(ngModel)]="priority">
+                    <option value="Select">Buscar Elemento</option>
+                    <option value="Alta">Alta</option>
+                    <option value="Media">Media</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <button type="submit" class="btn" (click)="createIncidence()" class="btn-update">
+        Registrar
+    </button>
+</body>

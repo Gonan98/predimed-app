@@ -1,22 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { Router } from '@angular/router';
+import { Incidence } from 'src/app/models/Incidence';
+import { IncidenceService } from 'src/app/services/incidence.service';
 
-export interface PeriodicElement {
-  idIncidence: string;
-  dniDoctor: string;
-  type: string;
-  state: string;
-}
-
-const ELEMENT_DATA: PeriodicElement[] = [
-  {idIncidence: '01', dniDoctor: '020236', type:'Incidencia', state:'Pendiente'},
-  {idIncidence: '02', dniDoctor: '120236', type:'Requerimiento', state:'Cerrado'},
-  {idIncidence: '03', dniDoctor: '220236', type:'Incidencia', state:'Cerrado'},
-  {idIncidence: '04', dniDoctor: '320236', type:'Requerimiento', state:'Pendiente'},
-  {idIncidence: '05', dniDoctor: '420236', type:'Requerimiento', state:'Abierto'},
-];
-
+let ELEMENT_DATA: Incidence[] = [];
 
 @Component({
   selector: 'app-incidence-admin',
@@ -25,21 +13,34 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class IncidenceAdminComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  constructor(private router: Router, private incidenceService : IncidenceService) { }
 
   ngOnInit(): void {
+    this.getIncidences();
   }
 
-  displayedColumns: string[] = ['idIncidence', 'dniDoctor', 'type', 'state', 'details'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  getIncidences(){
+    this.incidenceService.getIncidences().subscribe(
+      incidencias => {
+        ELEMENT_DATA = incidencias;
+        console.log(ELEMENT_DATA);
+      }
+    )
+  }
 
+
+  displayedColumns: string[] = ['id', 'docMedic', 'type', 'status', 'details'];
+  //dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource = new MatTableDataSource(ELEMENT_DATA);
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  onView(){
+  onView(idIncidence: String){
     this.router.navigate(['/incidenciaDetalle']);
+    console.log(idIncidence);
+    localStorage.setItem("idIncidence", idIncidence.toString());
   }
 
 }

@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: 'detalleReferencia', component: ReferredDetailsComponent, canActivate: [AuthGuard]},
   { path: 'incidenciaAdmin', component: IncidenceAdminComponent, canActivate: [AuthGuard]},
   { path: 'incidenciaDetalle', component: IncidenceDetailsComponent, canActivate: [AuthGuard]},
-  { path: 'incidenciaCrear', component: IncidenceCreateComponent, canActivate: [AuthGuard]}
+  { path: 'incidenciaCrear', component: IncidenceCreateComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

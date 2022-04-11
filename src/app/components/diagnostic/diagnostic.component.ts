@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Patient } from 'src/app/models/Patient';
 import { PatientService } from 'src/app/services/patient.service';
 import { Router } from '@angular/router';
+import { SymptomService } from 'src/app/services/symptoms.service';
+import { Symptom } from 'src/app/models/Symptom';
 
 @Component({
   selector: 'app-diagnostic',
@@ -18,16 +20,37 @@ export class DiagnosticComponent implements OnInit {
   documentNumber = '';
   direction = '';
   histories = '';
+  sintomasArray : Symptom[] = [];
   dateTime = new Date();
 
   constructor(
-    private patientService: PatientService, private router: Router
+    private patientService: PatientService, private router: Router,
+    private symptomService: SymptomService
   ) {
 
   }
 
   ngOnInit(): void {
+    this.getAllSymptoms();
+    this.getAllSymptoms2();
+  }
 
+  getAllSymptoms2(){
+    this.symptomService.getSymptoms2().subscribe(
+      sintomas => {
+        console.log(sintomas);
+        this.sintomasArray = sintomas;
+        console.log("GAAAAAAAAA");
+        console.log(this.sintomasArray);
+      }
+    )
+  }
+
+  getAllSymptoms(){
+    this.symptomService.getSymptoms().subscribe(
+      data => this.sintomasArray = data,
+      err => console.error(err),
+    )
   }
 
   onSearch() {

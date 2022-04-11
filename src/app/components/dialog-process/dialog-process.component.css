@@ -1,0 +1,13 @@
+
+body{
+  width: 100%;
+}
+
+table {
+    width: 500px;
+  }
+  
+  .mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }

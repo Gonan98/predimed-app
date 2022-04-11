@@ -11,6 +11,8 @@ export class UserService {
 
   private baseURL = `${environment.API_URL}/users`;
 
+  private baseNewUrl = `${environment.API_URL}/users?isAdmin=false`;
+
   constructor(private http: HttpClient) { }
 
   createUser(user: User): Observable<any> {
@@ -22,11 +24,11 @@ export class UserService {
   }
 
   getUsers(): Observable<any> {
-    return this.http.get(this.baseURL);
+    return this.http.get(this.baseNewUrl);
   }
 
   updateUser(user: User): Observable<any> {
-    return this.http.put(`${this.baseURL}/${user.id}`, user);
+    return this.http.put(`${this.baseURL}/${user.id}?isAdmin=false`, user);
   }
 
   deleteUser(id: number): Observable<any> {

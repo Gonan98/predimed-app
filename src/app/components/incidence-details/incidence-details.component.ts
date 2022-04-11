@@ -10,6 +10,9 @@ export class IncidenceDetailsComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    let idIncidence = localStorage.getItem("idIncidence");
+    console.log("aaaaaaaaaa");
+    console.log(idIncidence);
   }
 
 }

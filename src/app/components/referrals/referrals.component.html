@@ -61,11 +61,9 @@
                 <div class="line-start">
                     <label>Establecimiento Destino:</label> 
                     <div class="origin-establecimiento">
-                        <select name="select">
-                            <option value="value1">Value 1</option>
-                            <option value="value2" selected>Establecimiento de Salud</option>
-                            <option value="value3">Value 3</option>
-                        </select>
+                        <select [(ngModel)]="selected">
+                            <option *ngFor="let establecimiento of establishmentArrayComponent" [ngValue]="establecimiento">{{establecimiento.name}}</option>
+                          </select>
                     </div>
                 </div>
                 <div class="line-start">
@@ -139,7 +137,7 @@
                 <div class="t-container">
                     <div class="section-header">
                         <h4 class="title-section">Procedimiento</h4>
-                        <button>Añadir</button> 
+                        <button (click)="addProcedimiento()">Añadir</button> 
                     </div>
                     <div class="container-table">
                         <table mat-table [dataSource]="dataSource" class="mat-elevation-z5">

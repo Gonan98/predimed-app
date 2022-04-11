@@ -1,6 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import Swal from 'sweetalert2';
 import {MatDialog} from '@angular/material/dialog';
+import { DialogProcessComponent} from '../dialog-process/dialog-process.component';
+import { EstableishmentService } from 'src/app/services/establishment.service';
+import { Establishment } from 'src/app/models/Estableishment';
 
 export interface ProcesElement {
   code: string;
@@ -35,13 +38,20 @@ export class ReferralsComponent implements OnInit {
   dataSource = ELEMENT_DATA;
   dataSource1 = ELEMENT_DATA1;
 
+  selected = '';
+
   isShown: boolean = false ;
   isShownAnamnesis: boolean = true;
   isShownDiagnostic: boolean = false;
 
-  constructor() { }
+  idElementAdded: string = '';
+
+  establishmentArrayComponent : Establishment[] = [];
+
+  constructor(public dialog: MatDialog, private estableishmentService: EstableishmentService) { }
 
   ngOnInit(): void {
+    this.getEstableishments();
   }
 
   toggleShow() {
@@ -56,6 +66,24 @@ export class ReferralsComponent implements OnInit {
   toggleDiagnostic(){
     this.isShownAnamnesis = false;
     this.isShownDiagnostic = true;
+  }
+
+  getEstableishments(){
+    this.estableishmentService.getData();
+    console.log(this.estableishmentService.establishmentArray);
+    this.establishmentArrayComponent = this.estableishmentService.establishmentArray;
+    console.log("aaaaaa");
+    console.log(this.establishmentArrayComponent);
+  }
+
+  addProcedimiento(){
+    //const dialogRef = this.dialog.open(DialogContentExampleDialog);
+    let dialogRef = this.dialog.open(DialogProcessComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result)
+      this.idElementAdded = result;
+      console.log(this.idElementAdded);
+    }) 
   }
 
   onSend(){

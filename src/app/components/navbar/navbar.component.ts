@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
+import { UserService } from 'src/app/services/user.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-navbar',
@@ -13,7 +15,7 @@ export class NavbarComponent implements OnInit {
   isAdmin = false;
 
 
-  constructor(private authService: AuthService, private router: Router) { }
+  constructor(private authService: AuthService, private router: Router, private userService: UserService, private http: HttpClient) { }
 
   ngOnInit(): void {
     this.getProfile();
@@ -23,7 +25,9 @@ export class NavbarComponent implements OnInit {
     this.authService.getProfile().subscribe(
       (user) => {
         this.name = user.firstName + ' ' +user.lastName
-        this.isAdmin = user.isAdmin
+        this.isAdmin = user.isAdmin,
+        localStorage.setItem("userId", user.id.toString());
+        localStorage.setItem("documentMedic", user.documentMedic.toString());
         console.log(user);
       },
       (err) => alert(err.message)

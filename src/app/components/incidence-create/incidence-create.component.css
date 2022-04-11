@@ -1,0 +1,128 @@
+body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 91%;
+}
+
+h3{
+    color: #04578B;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    min-height: 60%;
+    border-color: gray;
+    border-width: 2px;
+    border-radius: 10px;
+    border-style:solid;
+    background-color: #ECF4FC;
+    box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.5);
+    padding: 15px;
+}
+
+.element-container{
+    width: 24%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.element-container-section-samall{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    padding-top: 10px;
+}
+
+.elements-row{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.elements-row-center{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+
+textarea {
+    padding: 10px;
+}
+
+.telefono-container{
+    width: 23%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.asunto-container{
+    width: 75%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.asunto{
+    width: 90%;
+}
+
+.container-desc-incidence{
+    border-color: gray;
+    border-width: 2px;
+    border-radius: 10px;
+    border-style:solid;
+    padding: 10px;
+    background-color: white;
+}
+
+.container-details-solution{
+    border-color: gray;
+    border-width: 2px;
+    border-radius: 10px;
+    border-style:solid;
+    padding: 10px;
+}
+
+.desc-input-sec{
+    display: flex;
+    flex-direction: column;
+}
+
+.p-solution{
+    border: none;
+    border-color: transparent;
+}
+
+.elements-row-columns{
+    display: flex;
+    justify-content: space-between;
+}
+
+.column-1{
+    flex: 4;
+}
+
+.column-2{
+    flex: 2;
+    margin: 15px;
+    padding: 15px;
+}
+
+.btn-update{
+    margin-top: 40px;
+    background-color: #A8F5F2;
+    border:none;
+    color: #04578B;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+}
+  

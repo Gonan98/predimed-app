@@ -80,38 +80,14 @@
             </section>
             <section class="symptom">
                 <h4 class="title-section">Sintomas</h4>
-                <div class="list-items">
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input">
-                        <label class="form-check-label">
-                            Fatiga
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input">
-                        <label class="form-check-label">
-                            Pérdida de peso
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input">
-                        <label class="form-check-label">
-                            Nauseas
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input">
-                        <label class="form-check-label">
-                            Fiebre
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input">
-                        <label class="form-check-label">
-                            Hematomas
-                        </label>
-                    </div>
-                </div>
+                <tr *ngFor="let symptom of sintomasArray">
+                    <td>
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input">
+                            {{symptom.name}}
+                        </div>
+                    </td>
+                </tr>
             </section>
         </div>
         <footer>
