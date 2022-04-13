@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { Incidence } from '../models/Incidence';
+import { Incidence, IncidencePutModel } from '../models/Incidence';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -20,4 +20,17 @@ export class IncidenceService {
   createIncidence(incidence:Incidence): Observable<any>{
     return this.http.post(this.baseURL, incidence);
   }
+
+  getIncidenceById(id: string): Observable<any>{
+    return this.http.get(`${this.baseURL}/${id}`)
+  }
+
+  putSolution(incidencePutModel: IncidencePutModel): Observable<any>{
+    return this.http.put(`${this.baseURL}/${incidencePutModel.id}`, incidencePutModel)
+  }
+
+  /*updateUser(user: User): Observable<any> {
+    return this.http.put(`${this.baseURL}/${user.id}?isAdmin=false`, user);
+  }*/
+
 }

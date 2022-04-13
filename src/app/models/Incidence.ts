@@ -48,5 +48,31 @@ export class IncidencePostModel {
         this.updatedAt = '';
     }
 }
+
+export class IncidencePutModel {
+    id: string;
+    establishmentId? : number;
+    status: string;
+    topic: string;
+    phone: string;
+    description: string;
+    registerType: string;
+    priority: string;
+    userId?: number;
+    solutionDetail: string;
+    dateSolution: string;
+
+    constructor(){
+        this.id = '';
+        this.status = '';
+        this.topic = '';
+        this.phone = '';
+        this.description = '';
+        this.registerType = '';
+        this.priority = '';
+        this.solutionDetail ='';
+        this.dateSolution = '';
+    }
+}
   
   
