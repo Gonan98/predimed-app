@@ -8,15 +8,14 @@ import { Router } from '@angular/router';
 })
 export class AnalyzeComponent implements OnInit {
 
-  constructor(private router: Router) { 
-    
+  constructor(private router: Router) {
+
   }
 
   ngOnInit(): void {
   }
 
-  onReference(){
-    console.log("aaaaaaaaa");
+  onReference() {
     this.router.navigate(['/referencia']);
   }
 
