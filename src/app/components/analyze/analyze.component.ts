@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AiService } from 'src/app/services/ai.service';
 
 @Component({
   selector: 'app-analyzet',
@@ -8,8 +9,12 @@ import { Router } from '@angular/router';
 })
 export class AnalyzeComponent implements OnInit {
 
-  constructor(private router: Router) {
+  porcentaje: number;
 
+  constructor(private aiService: AiService, private router: Router) {
+    const arr = Object.values(this.aiService.outputs);
+    console.log(arr);
+    this.porcentaje = Math.max(...arr) * 100;
   }
 
   ngOnInit(): void {
@@ -17,6 +22,10 @@ export class AnalyzeComponent implements OnInit {
 
   onReference() {
     this.router.navigate(['/referencia']);
+  }
+
+  goBack() {
+    this.router.navigate(['..']);
   }
 
 }

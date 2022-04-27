@@ -74,7 +74,7 @@
         </div>
         <div class="results">
             <div class="percent-circle">
-                70%
+                {{ porcentaje | number : '1.2-2'}} %
             </div>
             <div class="paragraph-container">
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. </p>
@@ -83,7 +83,7 @@
     </div>
     <footer>
         <section class="btn-column1">
-            <button type="submit" class="btn-back">Regresar</button>
+            <button type="submit" class="btn-back" (click)="goBack()">Regresar</button>
         </section>
         <section class="btn-column2">
             <button type="submit" class="btn-no-ref">No Referir</button>

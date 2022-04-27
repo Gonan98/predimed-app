@@ -24,6 +24,7 @@ import { IncidenceAdminComponent } from './components/incidence-admin/incidence-
 import { IncidenceDetailsComponent } from './components/incidence-details/incidence-details.component';
 import { IncidenceCreateComponent } from './components/incidence-create/incidence-create.component';
 import { DialogProcessComponent} from './components/dialog-process/dialog-process.component';
+import { AnalyzeComponent } from './components/analyze/analyze.component';
 
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ import { DialogProcessComponent} from './components/dialog-process/dialog-proces
     IncidenceDetailsComponent,
     IncidenceCreateComponent,
     DialogProcessComponent,
+    AnalyzeComponent
   ],
   imports: [
     BrowserModule,

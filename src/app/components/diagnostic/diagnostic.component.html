@@ -1,6 +1,5 @@
 <div class="diagnostic-container">
     <form (ngSubmit)="onSearch()" class="form-search-dni">
-        <h5>DNI:</h5>
         <input type="text" class="input-dni" name="documentNumber" placeholder="DNI" maxlength="8" [(ngModel)]="searchInput">
         <button type="submit" class="btn-search-dni">Buscar</button>
     </form>
@@ -44,47 +43,24 @@
     <form (ngSubmit)="onAnalize()">
         <div class="diagnostic-symptom">
             <section class="diagnostic">
-                <h4 class="title-section">Diagnostico</h4>
-                <div class="list-items">
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input">
-                        <label class="form-check-label">
-                            Hinchazón en el abdomen
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input">
-                        <label class="form-check-label">
-                            Piel pálida
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input">
-                        <label class="form-check-label">
-                            Insomnio
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input">
-                        <label class="form-check-label">
-                            Visión borrosa
-                        </label>
-                    </div>
-                    <div class="form-check">
-                        <input type="checkbox" class="form-check-input">
-                        <label class="form-check-label">
-                            Mareos
-                        </label>
-                    </div>
-                </div>
+                <h4 class="title-section">Sitomas Leves</h4>
+                <tr *ngFor="let symptom of sintomasArray; index as i">
+                    <td *ngIf="symptom.type === 'NOURG'">
+                        <div class="form-check">
+                            <input type="checkbox" class="form-check-input" [(ngModel)]="symptomsInput[i]" [name]="symptom.aliasName">
+                            {{ symptom.name }}
+                        </div>
+                    </td>
+                </tr>
             </section>
             <section class="symptom">
-                <h4 class="title-section">Sintomas</h4>
-                <tr *ngFor="let symptom of sintomasArray">
-                    <td>
+                <h4 class="title-section">Sintomas Graves
+                </h4>
+                <tr *ngFor="let symptom of sintomasArray; index as i">
+                    <td *ngIf="symptom.type === 'URG'">
                         <div class="form-check">
-                            <input type="checkbox" class="form-check-input">
-                            {{symptom.name}}
+                            <input type="checkbox" class="form-check-input" [(ngModel)]="symptomsInput[i]" [name]="symptom.aliasName">
+                            {{ symptom.name }}
                         </div>
                     </td>
                 </tr>

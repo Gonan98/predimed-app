@@ -4,6 +4,8 @@ import { PatientService } from 'src/app/services/patient.service';
 import { Router } from '@angular/router';
 import { SymptomService } from 'src/app/services/symptoms.service';
 import { Symptom } from 'src/app/models/Symptom';
+import { AiService } from 'src/app/services/ai.service';
+import { NNInput } from 'src/app/models/NNInput';
 
 @Component({
   selector: 'app-diagnostic',
@@ -21,13 +23,16 @@ export class DiagnosticComponent implements OnInit {
   direction = '';
   histories = '';
   sintomasArray : Symptom[] = [];
+  symptomsInput: number[];
   dateTime = new Date();
 
   constructor(
-    private patientService: PatientService, private router: Router,
-    private symptomService: SymptomService
+    private patientService: PatientService,
+    private router: Router,
+    private symptomService: SymptomService,
+    private aiService: AiService
   ) {
-
+    this.symptomsInput = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
   }
 
   ngOnInit(): void {
@@ -38,10 +43,10 @@ export class DiagnosticComponent implements OnInit {
   getAllSymptoms2(){
     this.symptomService.getSymptoms2().subscribe(
       sintomas => {
-        console.log(sintomas);
+        //console.log(sintomas);
         this.sintomasArray = sintomas;
-        console.log("GAAAAAAAAA");
-        console.log(this.sintomasArray);
+        //console.log("GAAAAAAAAA");
+        //console.log(this.sintomasArray);
       }
     )
   }
@@ -60,7 +65,7 @@ export class DiagnosticComponent implements OnInit {
         this.documentNumber = data.documentNumber;
         this.location = data.location.department + ' / ' + data.location.province + ' / ' + data.location.district;
         this.gender = data.gender === 'M' ? 'Masculino' : 'Femenino';
-        console.log(data);
+        //console.log(data);
         let birthday = new Date(data.birthdate);
         var years = this.dateTime.getFullYear() - birthday.getFullYear();
         this.age = years.toString();
@@ -73,13 +78,20 @@ export class DiagnosticComponent implements OnInit {
         }
       },
       err => {
-        console.error(err.error.message);
+        //console.error(err.error.message);
       }
     );
   }
 
   onAnalize() {
-    this.router.navigate(['/analizar']);
+    this.aiService.doPrediction(this.symptomsInput).subscribe(
+      res => {
+        this.aiService.outputs = res.outputs;
+        console.log(res);
+        this.router.navigate(['/analizar']);
+      },
+      console.error
+    );
   }
 
 }
