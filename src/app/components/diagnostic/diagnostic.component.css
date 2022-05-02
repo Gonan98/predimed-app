@@ -57,7 +57,7 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-    height: 230px;
+    height: 180px;
     box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.5)
 }
 
@@ -66,6 +66,16 @@ body {
     flex: wrap;
     flex-direction: row;
     justify-content: space-between;
+}
+
+.second-row{
+    display: flex;
+    flex: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.item--textbox{
+    width: 150px;
 }
 
 .item-row-large{
@@ -99,13 +109,6 @@ body {
     width: 50%;
 }
 
-.second-row{
-    display: flex;
-    flex: wrap;
-    flex-direction: row;
-    justify-content: space-between;
-}
-
 .diagnostic-symptom{
     display: flex;
     flex: wrap;
@@ -116,7 +119,7 @@ body {
 .diagnostic{
     background-color: #ECF4FC;
     width: 40%;
-    height: 300px;
+    height: 100%;
     padding: 20px;
     border-color: gray;
     border-width: 2px;
@@ -136,7 +139,7 @@ body {
 .symptom{
     background-color: #ECF4FC;
     width: 40%;
-    height: 300px;
+    height: 100%;
     padding: 20px;
     border-color: gray;
     border-width: 2px;
