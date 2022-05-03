@@ -1,73 +1,114 @@
 <div class="diagnostic-container">
-    <form (ngSubmit)="onSearch()" class="form-search-dni">
-        <input type="text" class="input-dni" name="documentNumber" placeholder="DNI" maxlength="8" [(ngModel)]="searchInput">
-        <button type="submit" class="btn-search-dni">Buscar</button>
-    </form>
-    <div class="patient-section">
-        <h4 class="title-section">Sección del paciente</h4>
-        <section class="first-row">
-            <div class="item-row-large">
-                Paciente:
-                <input type="text" class="input-block-large" [value]="fullname" disabled>
+  <form (ngSubmit)="onSearch()" class="form-search-dni">
+    <input
+      type="text"
+      class="input-dni"
+      name="documentNumber"
+      placeholder="DNI"
+      maxlength="8"
+      [(ngModel)]="searchInput"
+    />
+    <button type="submit" class="btn-search-dni">Buscar</button>
+  </form>
+  <div class="patient-section">
+    <h4 class="title-section">Sección del paciente</h4>
+    <section class="first-row">
+      <div class="item-row-large">
+        <div class="item--textbox">Paciente:</div>
+        <input
+          type="text"
+          class="input-block-large"
+          [value]="fullname"
+          disabled
+        />
+      </div>
+      <div class="item-row-medium">
+        Sexo:
+        <input
+          type="text"
+          class="input-block-medium"
+          [value]="gender"
+          disabled
+        />
+      </div>
+      <div class="item-row-small">
+        Edad:
+        <input type="text" class="input-block-small" [value]="age" disabled />
+      </div>
+      <div class="item-row-large">
+        Dirección:
+        <input
+          type="text"
+          class="input-block-large"
+          [value]="direction"
+          disabled
+        />
+      </div>
+    </section>
+    <section class="second-row">
+      <div class="item-row-medium">
+        N Historia Clinica:
+        <input
+          type="text"
+          class="input-block-medium"
+          [value]="histories"
+          disabled
+        />
+      </div>
+      <div class="item-row-medium">
+        Condición del Paciente:
+        <select class="combo">
+          <option value="Select">Estable</option>
+        </select>
+      </div>
+      <div class="item-row-large">
+        Dpto./Prov./ Distrito:
+        <input
+          type="text"
+          class="input-block-large"
+          [value]="location"
+          disabled
+        />
+      </div>
+    </section>
+  </div>
+  <form (ngSubmit)="onAnalize()">
+    <div class="diagnostic-symptom">
+      <section class="diagnostic">
+        <h4 class="title-section">Sitomas Leves</h4>
+        <tr *ngFor="let symptom of sintomasArray; index as i">
+          <td *ngIf="symptom.type === 'NOURG'">
+            <div class="form-check">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                [(ngModel)]="symptomsInput[i]"
+                [name]="symptom.aliasName"
+              />
+              {{ symptom.name }}
             </div>
-            <div class="item-row-medium">
-                Sexo:
-                <input type="text" class="input-block-medium" [value]="gender" disabled>
+          </td>
+        </tr>
+      </section>
+      <section class="symptom">
+        <h4 class="title-section">Sintomas Graves</h4>
+        <tr *ngFor="let symptom of sintomasArray; index as i">
+          <td *ngIf="symptom.type === 'URG'">
+            <div class="form-check">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                [(ngModel)]="symptomsInput[i]"
+                [name]="symptom.aliasName"
+              />
+              {{ symptom.name }}
             </div>
-            <div class="item-row-small">
-                Edad:
-                <input type="text" class="input-block-small" [value]="age" disabled>
-            </div>
-            <div class="item-row-large">
-                Dirección:
-                <input type="text" class="input-block-large" [value]="direction" disabled>
-            </div>
-        </section>
-        <section class="second-row">
-            <div class="item-row-medium">
-                N Historia Clinica:
-                <input type="text" class="input-block-medium" [value]="histories" disabled>
-            </div>
-            <div class="item-row-medium">
-                Condición del Paciente:
-                <select class="combo">
-                    <option value="Select">Estable</option>
-                </select>
-            </div>
-            <div class="item-row-large">
-                Dpto./Prov./ Distrito:
-                <input type="text" class="input-block-large" [value]="location" disabled>
-            </div>
-        </section>
+          </td>
+        </tr>
+      </section>
     </div>
-    <form (ngSubmit)="onAnalize()">
-        <div class="diagnostic-symptom">
-            <section class="diagnostic">
-                <h4 class="title-section">Sitomas Leves</h4>
-                <tr *ngFor="let symptom of sintomasArray; index as i">
-                    <td *ngIf="symptom.type === 'NOURG'">
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" [(ngModel)]="symptomsInput[i]" [name]="symptom.aliasName">
-                            {{ symptom.name }}
-                        </div>
-                    </td>
-                </tr>
-            </section>
-            <section class="symptom">
-                <h4 class="title-section">Sintomas Graves
-                </h4>
-                <tr *ngFor="let symptom of sintomasArray; index as i">
-                    <td *ngIf="symptom.type === 'URG'">
-                        <div class="form-check">
-                            <input type="checkbox" class="form-check-input" [(ngModel)]="symptomsInput[i]" [name]="symptom.aliasName">
-                            {{ symptom.name }}
-                        </div>
-                    </td>
-                </tr>
-            </section>
-        </div>
-        <footer>
-            <button type="submit" class="btn-analyze">Analizar</button>
-        </footer>
-    </form>
+    <footer>
+      <button type="submit" class="btn-analyze">Analizar</button>
+    </footer>
+  </form>
 </div>
