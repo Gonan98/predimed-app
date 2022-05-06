@@ -7,7 +7,7 @@ import { environment } from "src/environments/environment";
     providedIn: 'root'
 })
 export class PatientService {
-    private baseURL = `${environment.MEDHIS_API_URL}/patients`;
+    private baseURL = `${environment.API_URL}/patients`;
 
     constructor(private http: HttpClient) { }
 
