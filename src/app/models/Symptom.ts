@@ -1,12 +1,10 @@
 export class Symptom {
-    id?: number;
-    name: string;
-    type: string;
-    aliasName: string;
+    code?: string;
+    description: string;
+    requiredAttention: boolean;
 
     constructor() {
-        this.name = '';
-        this.type = '';
-        this.aliasName = '';
+        this.description = '';
+        this.requiredAttention = false;
     }
 }

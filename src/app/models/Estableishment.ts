@@ -1,10 +1,12 @@
 export class Establishment {
     code?: number;
     name: string;
-    ubigeo: string;
+    address: string;
+    ubigeoId: string;
     constructor() {
         this.name = '';
-        this.ubigeo = '';
+        this.address = '';
+        this.ubigeoId = '';
     }
-  }
+}
   

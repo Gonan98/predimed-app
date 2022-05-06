@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { Establishment } from 'src/app/models/Estableishment';
 import { User } from 'src/app/models/User';
+import { EstableishmentService } from 'src/app/services/establishment.service';
 import { UserService } from 'src/app/services/user.service';
 
 @Component({
@@ -12,14 +14,23 @@ export class MedicComponent implements OnInit {
   user: User;
   userModal: User;
   users: User[] = [];
+  establishments: Establishment[] = [];
 
-  constructor(private userService: UserService) {
+  constructor(private userService: UserService, private establishmentService: EstableishmentService) {
     this.user = new User();
     this.userModal = new User();
   }
 
   ngOnInit(): void {
     this.getAllMedics();
+    this.getEstablishments();
+  }
+
+  getEstablishments() {
+    this.establishmentService.getEstableishments().subscribe(
+      data => this.establishments = data,
+      err => console.error(err)
+    );
   }
 
   getAllMedics() {
@@ -51,7 +62,6 @@ export class MedicComponent implements OnInit {
       this.user.id = selectedUser.id;
       this.user.firstName = selectedUser.firstName;
       this.user.lastName = selectedUser.lastName;
-      this.user.contactCenter = selectedUser.contactCenter;
       this.user.documentNumber = selectedUser.documentNumber;
       this.user.documentMedic = selectedUser.documentMedic;
       this.user.gender = selectedUser.gender;

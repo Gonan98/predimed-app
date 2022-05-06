@@ -52,7 +52,6 @@
                             name="gender"
                             [(ngModel)]="user.gender"
                         >
-                            <option selected disabled>Seleccionar</option>
                             <option value="M">Masculino</option>
                             <option value="F">Femenino</option>
                             <option value="X">Prefiero no decirlo</option>
@@ -66,12 +65,12 @@
                             name="profesion"
                             [(ngModel)]="user.profession"
                         >
-                            <option value="Doctor">Doctor</option>
-                            <option value="Pediatra">Pediatra</option>
-                            <option value="Cirujano">Cirujano</option>
+                            <option value="DOCTOR">Doctor</option>
+                            <option value="PEDIATRA">Pediatra</option>
+                            <option value="CIRUJANO">Cirujano</option>
                         </select>
                     </div>
-                    <div class="mb-3">
+                    <!-- <div class="mb-3">
                         <label for="colegio" class="form-label">Colegio</label>
                         <select
                             id="colegio"
@@ -80,16 +79,16 @@
                         >
                             <option value="Colegio del Perú">Colegio del Perú</option>
                         </select>
-                    </div>
+                    </div> -->
                     <div class="mb-3">
                         <label for="employeeStatus" class="form-label">Estado Laboral</label>
-                        <input
-                            type="text"
-                            name="employeeStatus"
-                            class="form-control"
-                            required
+                        <select
+                            class="form-select"
+                            name="estado"
                             [(ngModel)]="user.employeeStatus"
-                        />
+                        >
+                            <option value="ACTIVO">Activo</option>
+                        </select>
                     </div>
                     <div class="mb-3">
                         <label for="workingCondition" class="form-label">Condición Laboral</label>
@@ -99,8 +98,20 @@
                             name="profesion"
                             [(ngModel)]="user.workingCondition"
                         >
-                        <option value="Contrato">Contrato</option>
-                        <option value="Practicas">Practicas</option>
+                        <option value="NOMBRADO">Nombrado</option>
+                        <option value="CONTRATADO">Contratado</option>
+                        <option value="SERUM">SERUM</option>
+                        <option value="RESIDENTE">Residente</option>
+                        <option value="INTERNO">Interno</option>
+                        <option value="ALUMNO">Alumno</option>
+                        </select>
+                    </div>
+                    <div class="mb-3">
+                        <label for="establishmentInput" class="form-label">Establecimiento</label>
+                        <select id="establishmentInput" class="form-select" name="establishment">
+                            <option *ngFor="let e of establishments" [value]="e.code">
+                                {{ e.name }}
+                            </option>
                         </select>
                     </div>
                     <button type="submit" class="btn" [ngClass]="{'btn-info': !user.id, 'btn-warning': user.id}">
@@ -120,10 +131,9 @@
                     <th scope="col">DNI</th>
                     <th scope="col">Doc. Médico</th>
                     <th scope="col">Profesión</th>
-                    <th scope="col">Colegio</th>
+                    <th scope="col">Estado Laboral</th>
                     <th scope="col">Acción</th>
                     <th scope="col">Credenciales</th>
-                    <th scope="col">Estado Laboral</th>
                 </tr>
             </thead>
             <tbody>
@@ -134,7 +144,6 @@
                     <td>{{ u.documentNumber }}</td>
                     <td>{{ u.documentMedic }}</td>
                     <td>{{ u.profession }}</td>
-                    <td>Colegio del Perú</td>
                     <td>{{ u.employeeStatus }}</td>
                     <td>
                         <button class="btn btn-secondary btn-sm" (click)="handleEdit(u)">

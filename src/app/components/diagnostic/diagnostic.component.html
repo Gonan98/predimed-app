@@ -58,7 +58,9 @@
       <div class="item-row-medium">
         Condición del Paciente:
         <select class="combo">
-          <option value="Select">Estable</option>
+          <option value="ESTABLE">Estable</option>
+          <option value="MAL ESTADO">Mal Estado</option>
+          <option value="GRAVE">Grave</option>
         </select>
       </div>
       <div class="item-row-large">
@@ -75,33 +77,33 @@
   <form (ngSubmit)="onAnalize()">
     <div class="diagnostic-symptom">
       <section class="diagnostic">
-        <h4 class="title-section">Sitomas Leves</h4>
-        <tr *ngFor="let symptom of sintomasArray; index as i">
-          <td *ngIf="symptom.type === 'NOURG'">
+        <h4 class="title-section">Sintomas Leves</h4>
+        <tr *ngFor="let symptom of symptomsArray; index as i">
+          <td *ngIf="!symptom.requiredAttention">
             <div class="form-check">
               <input
                 type="checkbox"
                 class="form-check-input"
                 [(ngModel)]="symptomsInput[i]"
-                [name]="symptom.aliasName"
+                [name]="symptom.code!"
               />
-              {{ symptom.name }}
+              {{ symptom.description }}
             </div>
           </td>
         </tr>
       </section>
       <section class="symptom">
         <h4 class="title-section">Sintomas Graves</h4>
-        <tr *ngFor="let symptom of sintomasArray; index as i">
-          <td *ngIf="symptom.type === 'URG'">
+        <tr *ngFor="let symptom of symptomsArray; index as i">
+          <td *ngIf="symptom.requiredAttention">
             <div class="form-check">
               <input
                 type="checkbox"
                 class="form-check-input"
                 [(ngModel)]="symptomsInput[i]"
-                [name]="symptom.aliasName"
+                [name]="symptom.code!"
               />
-              {{ symptom.name }}
+              {{ symptom.description }}
             </div>
           </td>
         </tr>

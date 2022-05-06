@@ -22,8 +22,9 @@ export class DiagnosticComponent implements OnInit {
   documentNumber = '';
   direction = '';
   histories = '';
-  sintomasArray : Symptom[] = [];
+  symptomsArray : Symptom[] = [];
   symptomsInput: number[];
+  inputs: NNInput[] = [];
   dateTime = new Date();
 
   constructor(
@@ -37,23 +38,27 @@ export class DiagnosticComponent implements OnInit {
 
   ngOnInit(): void {
     this.getAllSymptoms();
-    this.getAllSymptoms2();
+    //this.getAllSymptoms2();
   }
 
-  getAllSymptoms2(){
-    this.symptomService.getSymptoms2().subscribe(
-      sintomas => {
-        //console.log(sintomas);
-        this.sintomasArray = sintomas;
-        //console.log("GAAAAAAAAA");
-        //console.log(this.sintomasArray);
-      }
-    )
-  }
+  // getAllSymptoms2(){
+  //   this.symptomService.getSymptoms2().subscribe(
+  //     sintomas => {
+  //       //console.log(sintomas);
+  //       this.symptomsArray = sintomas;
+  //       //console.log("GAAAAAAAAA");
+  //       //console.log(this.sintomasArray);
+  //     }
+  //   )
+  // }
 
   getAllSymptoms(){
     this.symptomService.getSymptoms().subscribe(
-      data => this.sintomasArray = data,
+      data => {
+        this.symptomsArray = data;
+        console.log(data)
+        this.symptomsArray.forEach(s => this.inputs.push(new NNInput(s.code!, 0)));
+      },
       err => console.error(err),
     )
   }

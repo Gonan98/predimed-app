@@ -6,12 +6,12 @@ export class User {
     documentMedic: string;
     profession: string;
     employeeStatus: string;
-    contactCenter: string;
     username: string;
     password?: string;
     isAdmin?: boolean;
     gender: string;
     workingCondition: string;
+    establishmentId?: number;
 
     constructor() {
         this.firstName = '';
@@ -20,7 +20,6 @@ export class User {
         this.documentMedic = '';
         this.profession = '';
         this.employeeStatus = '';
-        this.contactCenter = '';
         this.username = '';
         this.gender = '';
         this.workingCondition = '';

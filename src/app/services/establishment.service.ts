@@ -8,13 +8,13 @@ import {Establishment} from 'src/app/models/Estableishment'
 })
 export class EstableishmentService {
 
-  private baseURL = `${environment.API_URL}/establishments`;
+  private baseURL = `${environment.API_URL}/establishments?ubigeo_id=150108`;
   establishmentArray : Establishment[] = [];
 
   constructor(private http: HttpClient) { }
 
   getEstableishments() {
-      return this.http.get<Establishment[]>(this.baseURL);
+    return this.http.get<Establishment[]>(this.baseURL);
   }
 
   getData(){

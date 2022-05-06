@@ -28,8 +28,6 @@ export class NavbarComponent implements OnInit {
         this.name = user.firstName + ' ' +user.lastName
         this.isAdmin = user.isAdmin,
         localStorage.setItem("userId", user.id.toString());
-        localStorage.setItem("documentMedic", user.documentMedic.toString());
-        console.log(user);
       },
       (err) => alert(err.message)
     );

@@ -11,11 +11,11 @@ export class AiService {
 
   
   private URL = `${environment.API_URL}/nn/predict`;
-  input: NNInput;
+  input: NNInput[];
   outputs: number[]
 
   constructor(private http: HttpClient) {
-    this.input = new NNInput();
+    this.input = [];
     this.outputs = [];
   }
 
