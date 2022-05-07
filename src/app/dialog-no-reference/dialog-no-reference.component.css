@@ -1,0 +1,40 @@
+*{
+    border: 0;
+}
+.body{
+    width: 50%;
+    height: 50%;
+}
+
+.input-text{
+    border: 1px solid;
+}
+
+.button{
+    width:12vh;
+    height:5vh;
+    border: 0px solid;
+    border-radius: 5px;
+}
+
+.button-close{
+    background-color: #946675; 
+    border: none;
+    color: white;
+}
+.button-confirm{
+    background-color: #04578B; 
+    border: none;
+    color: white;
+}
+.input-text{
+    border: 1px solid;
+    width: 300px;
+    height: 150px;
+    white-space: nowrap;
+}
+
+.area-button{
+    justify-content: space-around;
+}
+

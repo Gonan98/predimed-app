@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { Patient } from 'src/app/models/Patient';
 import { PatientService } from 'src/app/services/patient.service';
 import { Router } from '@angular/router';
 import { SymptomService } from 'src/app/services/symptoms.service';
@@ -13,7 +12,7 @@ import { NNInput } from 'src/app/models/NNInput';
   styleUrls: ['./diagnostic.component.css']
 })
 export class DiagnosticComponent implements OnInit {
-
+  
   searchInput = '';
   fullname = '';
   location = '';

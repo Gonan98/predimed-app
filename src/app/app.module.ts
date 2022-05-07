@@ -25,6 +25,7 @@ import { IncidenceDetailsComponent } from './components/incidence-details/incide
 import { IncidenceCreateComponent } from './components/incidence-create/incidence-create.component';
 import { DialogProcessComponent} from './components/dialog-process/dialog-process.component';
 import { AnalyzeComponent } from './components/analyze/analyze.component';
+import { DialogNoReferenceComponent } from './dialog-no-reference/dialog-no-reference.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +43,8 @@ import { AnalyzeComponent } from './components/analyze/analyze.component';
     IncidenceDetailsComponent,
     IncidenceCreateComponent,
     DialogProcessComponent,
-    AnalyzeComponent
+    AnalyzeComponent,
+    DialogNoReferenceComponent
   ],
   imports: [
     BrowserModule,
@@ -63,6 +65,7 @@ import { AnalyzeComponent } from './components/analyze/analyze.component';
       multi: true
     }
   ],
+  entryComponents: [DialogNoReferenceComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
