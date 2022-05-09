@@ -25,6 +25,7 @@ import { IncidenceDetailsComponent } from './components/incidence-details/incide
 import { IncidenceCreateComponent } from './components/incidence-create/incidence-create.component';
 import { DialogProcessComponent} from './components/dialog-process/dialog-process.component';
 import { AnalyzeComponent } from './components/analyze/analyze.component';
+import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 
 @NgModule({
   declarations: [
@@ -53,7 +54,8 @@ import { AnalyzeComponent } from './components/analyze/analyze.component';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    SweetAlert2Module.forRoot(),
   ],
   providers: [
     AuthGuard,

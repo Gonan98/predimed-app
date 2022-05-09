@@ -37,14 +37,14 @@
   <div class="analyze-info">
     <div class="diagnostic-symptom">
       <h4 class="title-section">Diagnostico</h4>
-      <h5>Posible tipo de Cáncer: Leucemia</h5>
+      <h5>Posible tipo de Cáncer: {{ disease.name }}</h5>
       <h4 class="title-section">Sintomas y Signos</h4>
       <div class="list-items">
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" />
-          <label class="form-check-label"> Hinchazón en el abdomen </label>
+        <div class="form-check" *ngFor="let symptom of activeSymptoms">
+          <input type="checkbox" class="form-check-input" [checked]="symptom.active" readonly/>
+          <label class="form-check-label"> {{ symptom.description }} </label>
         </div>
-        <div class="form-check">
+        <!-- <div class="form-check">
           <input type="checkbox" class="form-check-input" />
           <label class="form-check-label"> Piel pálida </label>
         </div>
@@ -60,16 +60,18 @@
           <input type="checkbox" class="form-check-input" />
           <label class="form-check-label"> Mareos </label>
         </div>
-      </div>
+      </div> -->
     </div>
     <div class="results">
-      <div class="percent-circle">{{ porcentaje | number: "1.2-2" }} %</div>
+      <div class="percent-circle">
+        {{ response.maxOutput.value * 100 | number: "1.2-2" }} %
+      </div>
       <div class="paragraph-container">
         <p>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat.
+          El paciente cuenta con un {{ response.maxOutput.value * 100 | number: "1.2-2" }} % de probabilidad de presentar un presunto
+          caso de {{ disease.name }}, por ello es que se requiere su inmediata
+          transferencia a un centro de salud con mayor jerarquía para su
+          atención oportuna.
         </p>
       </div>
     </div>

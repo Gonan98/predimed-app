@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { Patient } from 'src/app/models/Patient';
+import { PatientDTO } from 'src/app/models/Patient';
 import { PatientService } from 'src/app/services/patient.service';
 import { Router } from '@angular/router';
 import { SymptomService } from 'src/app/services/symptoms.service';
 import { Symptom } from 'src/app/models/Symptom';
-import { AiService } from 'src/app/services/ai.service';
-import { NNInput } from 'src/app/models/NNInput';
+import * as moment from 'moment';
+import { UbigeoService } from 'src/app/services/ubigeo.service';
+import Swal from 'sweetalert2';
+import { DiagnosticService } from 'src/app/services/diagnostic.service';
+import { Neuron } from 'src/app/models/NN';
 
 @Component({
   selector: 'app-diagnostic',
@@ -15,50 +18,29 @@ import { NNInput } from 'src/app/models/NNInput';
 export class DiagnosticComponent implements OnInit {
 
   searchInput = '';
-  fullname = '';
-  location = '';
-  gender = '';
-  age= '';
-  documentNumber = '';
-  direction = '';
-  histories = '';
-  symptomsArray : Symptom[] = [];
-  symptomsInput: number[];
-  inputs: NNInput[] = [];
-  dateTime = new Date();
+  patientDTO : PatientDTO;
+  symptoms: Symptom[]
+  neurons: Neuron[];
 
   constructor(
     private patientService: PatientService,
-    private router: Router,
+    private ubigeoService: UbigeoService,
     private symptomService: SymptomService,
-    private aiService: AiService
+    private router: Router,
+    private diagnosticService: DiagnosticService
   ) {
-    this.symptomsInput = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0];
+    this.patientDTO = new PatientDTO();
+    this.symptoms = [];
+    this.neurons = [];
   }
 
   ngOnInit(): void {
     this.getAllSymptoms();
-    //this.getAllSymptoms2();
   }
-
-  // getAllSymptoms2(){
-  //   this.symptomService.getSymptoms2().subscribe(
-  //     sintomas => {
-  //       //console.log(sintomas);
-  //       this.symptomsArray = sintomas;
-  //       //console.log("GAAAAAAAAA");
-  //       //console.log(this.sintomasArray);
-  //     }
-  //   )
-  // }
 
   getAllSymptoms(){
     this.symptomService.getSymptoms().subscribe(
-      data => {
-        this.symptomsArray = data;
-        console.log(data)
-        this.symptomsArray.forEach(s => this.inputs.push(new NNInput(s.code!, 0)));
-      },
+      data => this.symptoms = data,
       err => console.error(err),
     )
   }
@@ -66,37 +48,54 @@ export class DiagnosticComponent implements OnInit {
   onSearch() {
     this.patientService.getPatientByDocument(this.searchInput).subscribe(
       data => {
-        this.fullname = data.firstName + ' ' + data.lastName;
-        this.documentNumber = data.documentNumber;
-        this.location = data.location.department + ' / ' + data.location.province + ' / ' + data.location.district;
-        this.gender = data.gender === 'M' ? 'Masculino' : 'Femenino';
-        //console.log(data);
-        let birthday = new Date(data.birthdate);
-        var years = this.dateTime.getFullYear() - birthday.getFullYear();
-        this.age = years.toString();
-        this.direction = data.location.address;
-        if(data.histories.length == 0){
-          this.histories = 'No tiene historias'
-        }
-        else{
-          this.histories = '000-235'
-        }
+        this.patientService.basePatient = data;
+        this.patientDTO.fullName = data.firstName + ' ' + data.lastName;
+        this.patientDTO.documentNumber = data.documentNumber;
+        this.patientDTO.gender = data.gender === 'M' ? 'MASCULINO' : 'FEMENINO';
+        this.patientDTO.age = moment(data.birthdate, "YYYY-MM-DD").fromNow().substring(0,2);
+        this.patientDTO.address = data.address;
+        this.getLocation(data.ubigeoId);
       },
-      err => {
-        //console.error(err.error.message);
-      }
+      console.error
+    );
+  }
+
+  isThereAPatient() {
+    return this.patientService.basePatient.id;
+  }
+  
+  getLocation(districtId: string) {    
+    this.ubigeoService.getDistrictById(districtId).subscribe(
+      data => {
+        this.patientDTO.location = data.ubigeoPeruDepartment.name + '/' + data.ubigeoPeruProvince.name + '/' + data.name;
+      },
+      console.error
     );
   }
 
   onAnalize() {
-    this.aiService.doPrediction(this.symptomsInput).subscribe(
-      res => {
-        this.aiService.outputs = res.outputs;
-        console.log(res);
-        this.router.navigate(['/analizar']);
-      },
-      console.error
-    );
+    if (this.patientService.basePatient.id) {
+      this.symptoms.forEach(s => this.neurons.push(new Neuron(s.code, s.active ? 1 : 0)));
+      console.log(this.symptoms);
+      console.log(this.neurons);
+
+      this.diagnosticService.doPrediction(this.neurons).subscribe(
+        res => {
+          this.diagnosticService.response = res;
+          this.symptomService.activeSymptoms = this.symptoms.filter(s => s.active);
+          console.log(res);
+          
+          this.router.navigate(['/analizar']);
+        },
+        console.error
+      );
+    } else {
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: '¡Debe buscar un paciente primero!',
+      })
+    }
   }
 
 }
