@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Disease } from 'src/app/models/Disease';
 import { NeuralNetwork } from 'src/app/models/NN';
-import { Patient } from 'src/app/models/Patient';
+import { Patient, PatientDTO } from 'src/app/models/Patient';
 import { Symptom } from 'src/app/models/Symptom';
 import { DiagnosticService } from 'src/app/services/diagnostic.service';
 import { DiseaseService } from 'src/app/services/disease.service';
@@ -49,7 +49,7 @@ export class AnalyzeComponent implements OnInit {
 
   goBack() {
     this.router.navigate(['..']);
-    this.patientService.basePatient = new Patient();
+    this.patientService.patientDTO = new PatientDTO();
   }
 
 }

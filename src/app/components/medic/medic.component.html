@@ -1,183 +1,213 @@
 <div class="row mx-4">
-    <div class="col-md-4">
-        <div class="card">
-            <div class="card-body">
-                <form (ngSubmit)="onSubmit()">
-                    <input type="hidden" name="id" [(ngModel)]="user.id" />
-                    <div class="mb-3">
-                        <label class="form-label">Nombres:</label>
-                        <input
-                            type="text"
-                            name="firstName"
-                            class="form-control"
-                            required
-                            [(ngModel)]="user.firstName"
-                        />
-                    </div>
-                    <div class="mb-3">
-                        <label for="lastName" class="form-label">Apellidos:</label>
-                        <input
-                            type="text"
-                            name="lastName"
-                            class="form-control"
-                            required
-                            [(ngModel)]="user.lastName"
-                        />
-                    </div>
-                    <div class="mb-3">
-                        <label for="documentNumber" class="form-label">DNI:</label>
-                        <input
-                            type="text"
-                            name="documentNumber"
-                            class="form-control"
-                            required
-                            [(ngModel)]="user.documentNumber"
-                        />
-                    </div>
-                    <div class="mb-3">
-                        <label for="documentMedic" class="form-label">Doc. Médico</label>
-                        <input
-                            type="text"
-                            name="documentMedic"
-                            class="form-control"
-                            required
-                            [(ngModel)]="user.documentMedic"
-                        />
-                    </div>
-                    <div class="mb-3">
-                        <label for="gender" class="form-label">Sexo:</label>
-                        <select
-                            id="gender"
-                            class="form-select"
-                            name="gender"
-                            [(ngModel)]="user.gender"
-                        >
-                            <option value="M">Masculino</option>
-                            <option value="F">Femenino</option>
-                            <option value="X">Prefiero no decirlo</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="profession" class="form-label">Profesión</label>
-                        <select
-                            id="profesion"
-                            class="form-select"
-                            name="profesion"
-                            [(ngModel)]="user.profession"
-                        >
-                            <option value="DOCTOR">Doctor</option>
-                            <option value="PEDIATRA">Pediatra</option>
-                            <option value="CIRUJANO">Cirujano</option>
-                        </select>
-                    </div>
-                    <!-- <div class="mb-3">
-                        <label for="colegio" class="form-label">Colegio</label>
-                        <select
-                            id="colegio"
-                            class="form-select"
-                            name="colegio"
-                        >
-                            <option value="Colegio del Perú">Colegio del Perú</option>
-                        </select>
-                    </div> -->
-                    <div class="mb-3">
-                        <label for="employeeStatus" class="form-label">Estado Laboral</label>
-                        <select
-                            class="form-select"
-                            name="estado"
-                            [(ngModel)]="user.employeeStatus"
-                        >
-                            <option value="ACTIVO">Activo</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="workingCondition" class="form-label">Condición Laboral</label>
-                        <select
-                            id="gender"
-                            class="form-select"
-                            name="profesion"
-                            [(ngModel)]="user.workingCondition"
-                        >
-                        <option value="NOMBRADO">Nombrado</option>
-                        <option value="CONTRATADO">Contratado</option>
-                        <option value="SERUM">SERUM</option>
-                        <option value="RESIDENTE">Residente</option>
-                        <option value="INTERNO">Interno</option>
-                        <option value="ALUMNO">Alumno</option>
-                        </select>
-                    </div>
-                    <div class="mb-3">
-                        <label for="establishmentInput" class="form-label">Establecimiento</label>
-                        <select id="establishmentInput" class="form-select" name="establishment">
-                            <option *ngFor="let e of establishments" [value]="e.code">
-                                {{ e.name }}
-                            </option>
-                        </select>
-                    </div>
-                    <button type="submit" class="btn" [ngClass]="{'btn-info': !user.id, 'btn-warning': user.id}">
-                        {{ user.id ? 'Actualizar' : 'Registrar' }}
-                    </button>
-                </form>
-            </div>
-        </div>
-    </div>
-    <div class="col-md-8">
-        <table class="table table-striped">
-            <thead>
-                <tr>
-                    <th scope="col">Id</th>
-                    <th scope="col">Nombres</th>
-                    <th scope="col">Apellidos</th>
-                    <th scope="col">DNI</th>
-                    <th scope="col">Doc. Médico</th>
-                    <th scope="col">Profesión</th>
-                    <th scope="col">Estado Laboral</th>
-                    <th scope="col">Acción</th>
-                    <th scope="col">Credenciales</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr *ngFor="let u of users">
-                    <td>{{ u.id }}</td>
-                    <td>{{ u.firstName }}</td>
-                    <td>{{ u.lastName }}</td>
-                    <td>{{ u.documentNumber }}</td>
-                    <td>{{ u.documentMedic }}</td>
-                    <td>{{ u.profession }}</td>
-                    <td>{{ u.employeeStatus }}</td>
-                    <td>
-                        <button class="btn btn-secondary btn-sm" (click)="handleEdit(u)">
-                            <i class="bi" [ngClass]="{'bi-x': user.id === u.id, 'bi-pencil-fill': user.id !== u.id }"></i>
-                        </button>
-                        <button class="btn btn-danger btn-sm" (click)="deleteUser(u.id!)">
-                            <i class="bi bi-trash-fill"></i>
-                        </button>
-                    </td>
-                    <td>
-                        <button class="btn btn-primary btn-sm" (click)="onClickModal(u)" data-bs-toggle="modal" data-bs-target="#credentialsModal">
-                            <i class="bi bi-person-lines-fill"></i>
-                        </button>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-    </div>
-</div>
-
-<div class="modal fade" id="credentialsModal" tabindex="-1" aria-labelledby="credentialsModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">{{ userModal.firstName }} {{ userModal.lastName }}</h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <p>Usuario: {{userModal.username}}</p>
-          <p>Contraseña: {{userModal.password}}</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-        </div>
+  <div class="col-md-4">
+    <div class="card">
+      <div class="card-body">
+        <form (ngSubmit)="onSubmit()">
+          <input type="hidden" name="id" [(ngModel)]="user.id" />
+          <div class="mb-3">
+            <label class="form-label">Nombres:</label>
+            <input
+              type="text"
+              name="firstName"
+              class="form-control"
+              required
+              [(ngModel)]="user.firstName"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="lastName" class="form-label">Apellidos:</label>
+            <input
+              type="text"
+              name="lastName"
+              class="form-control"
+              required
+              [(ngModel)]="user.lastName"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="documentNumber" class="form-label">DNI:</label>
+            <input
+              type="text"
+              name="documentNumber"
+              class="form-control"
+              required
+              [(ngModel)]="user.documentNumber"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="documentMedic" class="form-label">Doc. Médico</label>
+            <input
+              type="text"
+              name="documentMedic"
+              class="form-control"
+              required
+              [(ngModel)]="user.documentMedic"
+            />
+          </div>
+          <div class="mb-3">
+            <label for="gender" class="form-label">Sexo:</label>
+            <select
+              id="gender"
+              class="form-select"
+              name="gender"
+              [(ngModel)]="user.gender"
+            >
+              <option value="M">Masculino</option>
+              <option value="F">Femenino</option>
+              <option value="X">Prefiero no decirlo</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="profession" class="form-label">Profesión</label>
+            <select
+              id="profesion"
+              class="form-select"
+              name="profesion"
+              [(ngModel)]="user.profession"
+            >
+              <option value="DOCTOR">Doctor</option>
+              <option value="PEDIATRA">Pediatra</option>
+              <option value="CIRUJANO">Cirujano</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="employeeStatus" class="form-label"
+              >Estado Laboral</label
+            >
+            <select
+              class="form-select"
+              name="estado"
+              [(ngModel)]="user.employeeStatus"
+            >
+              <option value="ACTIVO">Activo</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="workingCondition" class="form-label"
+              >Condición Laboral</label
+            >
+            <select
+              id="gender"
+              class="form-select"
+              name="profesion"
+              [(ngModel)]="user.workingCondition"
+            >
+              <option value="NOMBRADO">Nombrado</option>
+              <option value="CONTRATADO">Contratado</option>
+              <option value="SERUM">SERUM</option>
+              <option value="RESIDENTE">Residente</option>
+              <option value="INTERNO">Interno</option>
+              <option value="ALUMNO">Alumno</option>
+            </select>
+          </div>
+          <div class="mb-3">
+            <label for="establishmentInput" class="form-label"
+              >Establecimiento</label
+            >
+            <select
+              id="establishmentInput"
+              class="form-select"
+              name="establishment"
+            >
+              <option *ngFor="let e of establishments" [value]="e.code">
+                {{ e.name }}
+              </option>
+            </select>
+          </div>
+          <button
+            type="submit"
+            class="btn"
+            [ngClass]="{ 'btn-info': !user.id, 'btn-warning': user.id }"
+          >
+            {{ user.id ? "Actualizar" : "Registrar" }}
+          </button>
+        </form>
       </div>
     </div>
+  </div>
+  <div class="col-md-8">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th scope="col">Id</th>
+          <th scope="col">Nombres</th>
+          <th scope="col">Apellidos</th>
+          <th scope="col">DNI</th>
+          <th scope="col">Doc. Médico</th>
+          <th scope="col">Profesión</th>
+          <th scope="col">Estado Laboral</th>
+          <th scope="col">Acción</th>
+          <th scope="col">Credenciales</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let u of users">
+          <td>{{ u.id }}</td>
+          <td>{{ u.firstName }}</td>
+          <td>{{ u.lastName }}</td>
+          <td>{{ u.documentNumber }}</td>
+          <td>{{ u.documentMedic }}</td>
+          <td>{{ u.profession }}</td>
+          <td>{{ u.employeeStatus }}</td>
+          <td>
+            <button class="btn btn-secondary btn-sm" (click)="handleEdit(u)">
+              <i
+                class="bi"
+                [ngClass]="{
+                  'bi-x': user.id === u.id,
+                  'bi-pencil-fill': user.id !== u.id
+                }"
+              ></i>
+            </button>
+            <button class="btn btn-danger btn-sm" (click)="deleteUser(u.id!)">
+              <i class="bi bi-trash-fill"></i>
+            </button>
+          </td>
+          <td>
+            <button
+              class="btn btn-primary btn-sm"
+              (click)="onClickModal(u)"
+              data-bs-toggle="modal"
+              data-bs-target="#credentialsModal"
+            >
+              <i class="bi bi-person-lines-fill"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div
+  class="modal fade"
+  id="credentialsModal"
+  tabindex="-1"
+  aria-labelledby="credentialsModalLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">
+          {{ userModal.firstName }} {{ userModal.lastName }}
+        </h5>
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="modal"
+          aria-label="Close"
+        ></button>
+      </div>
+      <div class="modal-body">
+        <p>Usuario: {{ userModal.username }}</p>
+        <p>Contraseña: {{ userModal.password }}</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
+          Cerrar
+        </button>
+      </div>
+    </div>
+  </div>
 </div>

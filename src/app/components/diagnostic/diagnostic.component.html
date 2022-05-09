@@ -10,10 +10,11 @@
     />
     <button type="submit" class="btn-search-dni">Buscar</button>
   </form>
-  <div class="patient-section">
+  <app-patient-info></app-patient-info>
+  <!-- <div class="patient-section">
     <h4 class="title-section">Sección del paciente</h4>
     <section class="first-row">
-      <div class="item-row-large">
+      <label class="item-row-large">
         <div class="item--textbox">Paciente:</div>
         <input
           type="text"
@@ -21,7 +22,7 @@
           [value]="patientDTO.fullName"
           readonly
         />
-      </div>
+      </label>
       <div class="item-row-medium">
         Sexo:
         <input
@@ -73,7 +74,7 @@
         />
       </div>
     </section>
-  </div>
+  </div> -->
   <form (ngSubmit)="onAnalize()">
     <div class="diagnostic-symptom">
       <section class="diagnostic">

@@ -2,18 +2,17 @@ import { HttpClient } from "@angular/common/http";
 import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { environment } from "src/environments/environment";
-import { Patient } from "../models/Patient";
+import { Patient, PatientDTO } from "../models/Patient";
 
 @Injectable({
     providedIn: 'root'
 })
 export class PatientService {
     private baseURL = `${environment.API_URL}/patients`;
-
-    basePatient : Patient;
+    patientDTO: PatientDTO;
     
     constructor(private http: HttpClient) {
-        this.basePatient = new Patient();
+        this.patientDTO = new PatientDTO();
     }
 
     getPatientByDocument(documentNumber: string): Observable<any> {

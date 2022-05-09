@@ -26,6 +26,7 @@ import { IncidenceCreateComponent } from './components/incidence-create/incidenc
 import { DialogProcessComponent} from './components/dialog-process/dialog-process.component';
 import { AnalyzeComponent } from './components/analyze/analyze.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
+import { PatientInfoComponent } from './components/patient-info/patient-info.component';
 
 @NgModule({
   declarations: [
@@ -43,7 +44,8 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
     IncidenceDetailsComponent,
     IncidenceCreateComponent,
     DialogProcessComponent,
-    AnalyzeComponent
+    AnalyzeComponent,
+    PatientInfoComponent
   ],
   imports: [
     BrowserModule,

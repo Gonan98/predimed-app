@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { PatientDTO } from 'src/app/models/Patient';
 import { PatientService } from 'src/app/services/patient.service';
 import { Router } from '@angular/router';
 import { SymptomService } from 'src/app/services/symptoms.service';
@@ -18,7 +17,7 @@ import { Neuron } from 'src/app/models/NN';
 export class DiagnosticComponent implements OnInit {
 
   searchInput = '';
-  patientDTO : PatientDTO;
+  //patientDTO : PatientDTO;
   symptoms: Symptom[]
   neurons: Neuron[];
 
@@ -29,7 +28,7 @@ export class DiagnosticComponent implements OnInit {
     private router: Router,
     private diagnosticService: DiagnosticService
   ) {
-    this.patientDTO = new PatientDTO();
+    //this.patientDTO = new PatientDTO();
     this.symptoms = [];
     this.neurons = [];
   }
@@ -48,12 +47,13 @@ export class DiagnosticComponent implements OnInit {
   onSearch() {
     this.patientService.getPatientByDocument(this.searchInput).subscribe(
       data => {
-        this.patientService.basePatient = data;
-        this.patientDTO.fullName = data.firstName + ' ' + data.lastName;
-        this.patientDTO.documentNumber = data.documentNumber;
-        this.patientDTO.gender = data.gender === 'M' ? 'MASCULINO' : 'FEMENINO';
-        this.patientDTO.age = moment(data.birthdate, "YYYY-MM-DD").fromNow().substring(0,2);
-        this.patientDTO.address = data.address;
+        //this.patientService.basePatient = data;
+        this.patientService.patientDTO.id = data.id;
+        this.patientService.patientDTO.fullName = data.firstName + ' ' + data.lastName;
+        this.patientService.patientDTO.documentNumber = data.documentNumber;
+        this.patientService.patientDTO.gender = data.gender === 'M' ? 'MASCULINO' : 'FEMENINO';
+        this.patientService.patientDTO.age = moment(data.birthdate, "YYYY-MM-DD").fromNow().substring(0,2);
+        this.patientService.patientDTO.address = data.address;
         this.getLocation(data.ubigeoId);
       },
       console.error
@@ -61,23 +61,21 @@ export class DiagnosticComponent implements OnInit {
   }
 
   isThereAPatient() {
-    return this.patientService.basePatient.id;
+    return this.patientService.patientDTO.id;
   }
   
   getLocation(districtId: string) {    
     this.ubigeoService.getDistrictById(districtId).subscribe(
       data => {
-        this.patientDTO.location = data.ubigeoPeruDepartment.name + '/' + data.ubigeoPeruProvince.name + '/' + data.name;
+        this.patientService.patientDTO.location = data.ubigeoPeruDepartment.name + '/' + data.ubigeoPeruProvince.name + '/' + data.name;
       },
       console.error
     );
   }
 
   onAnalize() {
-    if (this.patientService.basePatient.id) {
+    if (this.patientService.patientDTO.id) {
       this.symptoms.forEach(s => this.neurons.push(new Neuron(s.code, s.active ? 1 : 0)));
-      console.log(this.symptoms);
-      console.log(this.neurons);
 
       this.diagnosticService.doPrediction(this.neurons).subscribe(
         res => {

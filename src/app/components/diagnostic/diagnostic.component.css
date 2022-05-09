@@ -61,19 +61,20 @@ body {
     box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.5)
 }
 
-.first-row{
+.first-row {
     display: flex;
     flex: wrap;
     flex-direction: row;
     justify-content: space-between;
 }
 
-.second-row{
+.second-row {
     display: flex;
     flex: wrap;
     flex-direction: row;
     justify-content: space-between;
 }
+
 .item--textbox{
     width: 150px;
 }

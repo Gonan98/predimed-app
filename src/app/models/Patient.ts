@@ -21,6 +21,7 @@ export class Patient {
 }
 
 export class PatientDTO {
+    id: number;
     fullName: string;
     gender: string;
     documentNumber: string;
@@ -29,6 +30,7 @@ export class PatientDTO {
     address: string;
 
     constructor() {
+        this.id = 0;
         this.fullName = '';
         this.gender = '';
         this.documentNumber = '';
