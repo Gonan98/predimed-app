@@ -8,3 +8,6 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: 'Montserrat', sans-serif; }
+.control-error{
+    color:red;
+}
