@@ -12,7 +12,6 @@ import { ReferredComponent } from './components/referred/referred.component';
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './auth/token-interceptor.service';
 import { AntecedentComponent } from './components/antecedent/antecedent.component';
-import { InfoMessageComponent } from './components/info-message/info-message.component';
 import { ReferralsComponent } from './components/referrals/referrals.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table'  
@@ -25,7 +24,7 @@ import { IncidenceDetailsComponent } from './components/incidence-details/incide
 import { IncidenceCreateComponent } from './components/incidence-create/incidence-create.component';
 import { DialogProcessComponent} from './components/dialog-process/dialog-process.component';
 import { AnalyzeComponent } from './components/analyze/analyze.component';
-import { DialogNoReferenceComponent } from './dialog-no-reference/dialog-no-reference.component';
+import { DialogNoReferenceComponent } from './components/dialog-no-reference/dialog-no-reference.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { PatientInfoComponent } from './components/patient-info/patient-info.component';
 import { ErrorTailorModule } from '@ngneat/error-tailor';
@@ -39,7 +38,6 @@ import { ErrorTailorModule } from '@ngneat/error-tailor';
     NavbarComponent,
     ReferredComponent,
     AntecedentComponent,
-    InfoMessageComponent,
     ReferralsComponent,
     ReferredDetailsComponent,
     IncidenceAdminComponent,
@@ -47,7 +45,7 @@ import { ErrorTailorModule } from '@ngneat/error-tailor';
     IncidenceCreateComponent,
     DialogProcessComponent,
     AnalyzeComponent,
-    DialogNoReferenceComponent
+    DialogNoReferenceComponent,
     PatientInfoComponent
   ],
   imports: [
@@ -59,6 +57,7 @@ import { ErrorTailorModule } from '@ngneat/error-tailor';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
+    MatDialogModule,
     BrowserAnimationsModule,
     SweetAlert2Module.forRoot(),
     ReactiveFormsModule,

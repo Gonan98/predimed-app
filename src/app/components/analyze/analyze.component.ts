@@ -1,15 +1,15 @@
-import { Component, ElementRef, OnInit, ViewChild, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { DialogNoReferenceComponent } from 'src/app/dialog-no-reference/dialog-no-reference.component';
 import { Disease } from 'src/app/models/Disease';
 import { NeuralNetwork } from 'src/app/models/NN';
-import { Patient, PatientDTO } from 'src/app/models/Patient';
+import { PatientDTO } from 'src/app/models/Patient';
 import { Symptom } from 'src/app/models/Symptom';
 import { DiagnosticService } from 'src/app/services/diagnostic.service';
 import { DiseaseService } from 'src/app/services/disease.service';
 import { PatientService } from 'src/app/services/patient.service';
 import { SymptomService } from 'src/app/services/symptoms.service';
+import { DialogNoReferenceComponent } from '../dialog-no-reference/dialog-no-reference.component';
 
 @Component({
   selector: 'app-analyzet',
@@ -27,7 +27,8 @@ export class AnalyzeComponent implements OnInit {
     private router: Router,
     private patientService: PatientService,
     private diseaseService: DiseaseService,
-    private symptomService: SymptomService
+    private symptomService: SymptomService,
+    private dialog: MatDialog
   ) {
     this.response = this.diagnosticService.response;
     this.disease = new Disease();
