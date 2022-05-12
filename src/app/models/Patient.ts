@@ -1,21 +1,41 @@
-import { Location } from "./Location";
-
 export class Patient {
-    _id: string;
+    id: number;
     firstName: string;
     lastName: string;
     documentNumber: string;
     birthdate: string;
     gender: string;
-    location: Location;
+    address: string;
+    ubigeoId: string;
 
     constructor() {
-        this._id = '';
+        this.id = 0;
         this.firstName = '';
         this.lastName = '';
         this.documentNumber = '';
         this.birthdate = '';
         this.gender = '';
-        this.location = new Location();
+        this.address = '';
+        this.ubigeoId = '';
+    }
+}
+
+export class PatientDTO {
+    id: number;
+    fullName: string;
+    gender: string;
+    documentNumber: string;
+    location: string;
+    age: string;
+    address: string;
+
+    constructor() {
+        this.id = 0;
+        this.fullName = '';
+        this.gender = '';
+        this.documentNumber = '';
+        this.location = '';
+        this.age = '';
+        this.address = '';
     }
 }

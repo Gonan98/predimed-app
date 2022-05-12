@@ -10,49 +10,50 @@
     />
     <button type="submit" class="btn-search-dni">Buscar</button>
   </form>
-  <div class="patient-section">
+  <app-patient-info></app-patient-info>
+  <!-- <div class="patient-section">
     <h4 class="title-section">Sección del paciente</h4>
     <section class="first-row">
-      <div class="item-row-large">
+      <label class="item-row-large">
         <div class="item--textbox">Paciente:</div>
         <input
           type="text"
           class="input-block-large"
-          [value]="fullname"
-          disabled
+          [value]="patientDTO.fullName"
+          readonly
         />
-      </div>
+      </label>
       <div class="item-row-medium">
         Sexo:
         <input
           type="text"
           class="input-block-medium"
-          [value]="gender"
-          disabled
+          [value]="patientDTO.gender"
+          readonly
         />
       </div>
       <div class="item-row-small">
         Edad:
-        <input type="text" class="input-block-small" [value]="age" disabled />
+        <input type="text" class="input-block-small" [value]="patientDTO.age" readonly />
       </div>
       <div class="item-row-large">
         Dirección:
         <input
           type="text"
           class="input-block-large"
-          [value]="direction"
-          disabled
+          [value]="patientDTO.address"
+          readonly
         />
       </div>
     </section>
     <section class="second-row">
       <div class="item-row-medium">
-        N Historia Clinica:
+        DNI:
         <input
           type="text"
           class="input-block-medium"
-          [value]="histories"
-          disabled
+          [value]="patientDTO.documentNumber"
+          readonly
         />
       </div>
       <div class="item-row-medium">
@@ -64,28 +65,29 @@
         </select>
       </div>
       <div class="item-row-large">
-        Dpto./Prov./ Distrito:
+        Dpto./Prov./Dist:
         <input
           type="text"
           class="input-block-large"
-          [value]="location"
-          disabled
+          [value]="patientDTO.location"
+          readonly
         />
       </div>
     </section>
-  </div>
+  </div> -->
   <form (ngSubmit)="onAnalize()">
     <div class="diagnostic-symptom">
       <section class="diagnostic">
         <h4 class="title-section">Sintomas Leves</h4>
-        <tr *ngFor="let symptom of symptomsArray; index as i">
+        <tr *ngFor="let symptom of symptoms">
           <td *ngIf="!symptom.requiredAttention">
             <div class="form-check">
               <input
                 type="checkbox"
                 class="form-check-input"
-                [(ngModel)]="symptomsInput[i]"
-                [name]="symptom.code!"
+                [(ngModel)]="symptom.active"
+                [name]="symptom.code"
+                [disabled]="!isThereAPatient()"
               />
               {{ symptom.description }}
             </div>
@@ -94,14 +96,15 @@
       </section>
       <section class="symptom">
         <h4 class="title-section">Sintomas Graves</h4>
-        <tr *ngFor="let symptom of symptomsArray; index as i">
+        <tr *ngFor="let symptom of symptoms">
           <td *ngIf="symptom.requiredAttention">
             <div class="form-check">
               <input
                 type="checkbox"
                 class="form-check-input"
-                [(ngModel)]="symptomsInput[i]"
+                [(ngModel)]="symptom.active"
                 [name]="symptom.code!"
+                [disabled]="!isThereAPatient()"
               />
               {{ symptom.description }}
             </div>

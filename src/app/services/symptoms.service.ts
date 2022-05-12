@@ -11,12 +11,14 @@ export class SymptomService {
 
   private baseURL = `${environment.API_URL}/symptoms`;
 
-  constructor(private http: HttpClient) { }
+  activeSymptoms: Symptom[];
+
+  constructor(private http: HttpClient) {
+    this.activeSymptoms = [];
+  }
 
   getSymptoms(): Observable<any> {
     return this.http.get(this.baseURL);
   }
-  getSymptoms2() {
-      return this.http.get<Symptom[]>(this.baseURL);
-  }
+
 }
