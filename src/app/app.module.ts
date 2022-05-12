@@ -25,6 +25,7 @@ import { IncidenceDetailsComponent } from './components/incidence-details/incide
 import { IncidenceCreateComponent } from './components/incidence-create/incidence-create.component';
 import { DialogProcessComponent} from './components/dialog-process/dialog-process.component';
 import { AnalyzeComponent } from './components/analyze/analyze.component';
+import { DialogNoReferenceComponent } from './dialog-no-reference/dialog-no-reference.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { PatientInfoComponent } from './components/patient-info/patient-info.component';
 
@@ -45,6 +46,7 @@ import { PatientInfoComponent } from './components/patient-info/patient-info.com
     IncidenceCreateComponent,
     DialogProcessComponent,
     AnalyzeComponent,
+    DialogNoReferenceComponent
     PatientInfoComponent
   ],
   imports: [
@@ -67,6 +69,7 @@ import { PatientInfoComponent } from './components/patient-info/patient-info.com
       multi: true
     }
   ],
+  entryComponents: [DialogNoReferenceComponent],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

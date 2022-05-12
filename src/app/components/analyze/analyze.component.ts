@@ -1,5 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild, Input } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
+import { DialogNoReferenceComponent } from 'src/app/dialog-no-reference/dialog-no-reference.component';
 import { Disease } from 'src/app/models/Disease';
 import { NeuralNetwork } from 'src/app/models/NN';
 import { Patient, PatientDTO } from 'src/app/models/Patient';
@@ -50,6 +52,10 @@ export class AnalyzeComponent implements OnInit {
   goBack() {
     this.router.navigate(['..']);
     this.patientService.patientDTO = new PatientDTO();
+  }
+
+  onNoReferenceDialog() {
+    this.dialog.open(DialogNoReferenceComponent);
   }
 
 }

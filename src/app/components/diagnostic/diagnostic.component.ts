@@ -15,7 +15,7 @@ import { Neuron } from 'src/app/models/NN';
   styleUrls: ['./diagnostic.component.css']
 })
 export class DiagnosticComponent implements OnInit {
-
+  
   searchInput = '';
   //patientDTO : PatientDTO;
   symptoms: Symptom[]
