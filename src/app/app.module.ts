@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http'
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -28,6 +28,7 @@ import { AnalyzeComponent } from './components/analyze/analyze.component';
 import { DialogNoReferenceComponent } from './dialog-no-reference/dialog-no-reference.component';
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { PatientInfoComponent } from './components/patient-info/patient-info.component';
+import { ErrorTailorModule } from '@ngneat/error-tailor';
 
 @NgModule({
   declarations: [
@@ -60,6 +61,19 @@ import { PatientInfoComponent } from './components/patient-info/patient-info.com
     MatInputModule,
     BrowserAnimationsModule,
     SweetAlert2Module.forRoot(),
+    ReactiveFormsModule,
+    ErrorTailorModule.forRoot(
+        {
+          errors:{
+            useValue: {
+              required: 'El campo es requerido',
+              minLength:({requiredLength,actualLength})=>
+              `Esperando ${requiredLength} pero se obtuvo ${actualLength}`
+            },
+          }
+        }
+        
+    )
   ],
   providers: [
     AuthGuard,
