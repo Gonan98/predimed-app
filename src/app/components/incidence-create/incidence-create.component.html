@@ -1,18 +1,18 @@
 <body>
-    <div class="container">
+    <form [formGroup]="formCreateIncidence" class="container" errorTailor>
         <h3>Registro de Incidencia</h3>
         <div class="elements-row">
             <div class="element-container">
-                <label>Doc Medico</label>
-                <input type="text" [(ngModel)]="docMedic" disabled>
+                <label class="label-content">Doc Medico</label>
+                <input type="text" class="input" [(ngModel)]="docMedic" disabled>
             </div>
             <div class="element-container">
-                <label>Centro Salud Id</label>
-                <input type="number" [(ngModel)]="establishmentId">
+                <label class="label-content">Centro Salud Id</label>
+                <input type="number" class="input" [(ngModel)]="establishmentId" formControlName="saludid">
             </div>
             <div class="element-container">
-                <label>Estado</label>
-                <select class="combo" [(ngModel)]="status">
+                <label class="label-content">Estado</label>
+                <select class="combo" class="input" [(ngModel)]="status">
                     <option value="Select">Buscar elemento</option>
                     <option value="Nuevo">Nuevo</option>
                     <option value="PENDIENTE">PENDIENTE</option>
@@ -20,38 +20,44 @@
             </div>
         </div>
         <div class="elements-row">
-            <div class="asunto-container">
-                <label>Asunto: </label>
-                <input class="asunto" [(ngModel)]="topic">
-            </div>
-            <div class="telefono-container">
-                <label>Teléfono</label>
-                <input class="telefono" [(ngModel)]="phone">
-            </div>
-        </div>
-        <div class="desc-input-sec">
-            <label>Descripción de Incidencia</label>
-            <textarea  [(ngModel)]="description" id="w3review" name="w3review" rows="4" cols="100"></textarea>
-        </div>
-        <div class="elements-row-center">
             <div class="element-container">
-                <label>Tipo de Registro</label>
-                <select class="combo"  [(ngModel)]="registerType">
+                <label class="label-content">Teléfono</label>
+                <input class="telefono" class="input" [(ngModel)]="phone" formControlName="telefono">
+            </div>
+            <div class="element-container">
+                <label class="label-content">Tipo de Registro</label>
+                <select class="combo" class="input" [(ngModel)]="registerType">
                     <option value="Select">Buscar Elemento</option>
                     <option value="Requerimiento">Requerimiento</option>
                 </select>
             </div>
             <div class="element-container">
-                <label>Prioridad</label>
-                <select class="combo" [(ngModel)]="priority">
+                <label class="label-content">Prioridad</label>
+                <select class="combo" class="input" [(ngModel)]="priority">
                     <option value="Select">Buscar Elemento</option>
                     <option value="Alta">Alta</option>
                     <option value="Media">Media</option>
                 </select>
             </div>
         </div>
+        <div class="asunto-container">
+            <label class="label-content-asunto">Asunto: </label>
+            <input class="asunto" [(ngModel)]="topic" formControlName="asunto">
+        </div>
+        <div class="desc-input-sec">
+            <label class="label-content">Descripción de Incidencia</label>
+            <textarea [(ngModel)]="description" id="w3review" name="w3review" rows="4" cols="100" formControlName="descripcion"></textarea>
+        </div>
+
+
+    </form>
+    <div class="botones">
+        <button type="submit" class="btn btn-regresar" (click)="regresar()">
+            Regresar
+        </button>
+        <button type="submit" class="btn btn-registrar" (click)="createIncidence()">
+            Registrar
+        </button>
     </div>
-    <button type="submit" class="btn" (click)="createIncidence()" class="btn-update">
-        Registrar
-    </button>
+
 </body>

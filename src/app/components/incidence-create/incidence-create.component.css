@@ -24,11 +24,12 @@ h3{
     background-color: #ECF4FC;
     box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.5);
     padding: 15px;
+    margin-top: 10vh;
+    height:55vh;
 }
 
 .element-container{
-    width: 24%;
-    display: flex;
+    width: 33%;
     justify-content: space-between;
 }
 
@@ -55,12 +56,6 @@ textarea {
     padding: 10px;
 }
 
-.telefono-container{
-    width: 23%;
-    display: flex;
-    justify-content: space-between;
-}
-
 .asunto-container{
     width: 75%;
     display: flex;
@@ -68,7 +63,7 @@ textarea {
 }
 
 .asunto{
-    width: 90%;
+    width: 84%;
 }
 
 .container-desc-incidence{
@@ -113,16 +108,38 @@ textarea {
     padding: 15px;
 }
 
-.btn-update{
-    margin-top: 40px;
-    background-color: #A8F5F2;
+.btn{
     border:none;
-    color: #04578B;
+    color: #ffffff;
     padding: 10px 20px;
     text-align: center;
     text-decoration: none;
     display: inline-block;
     font-size: 16px;
     font-weight: bold;
+    border-radius: initial;
 }
   
+.botones{
+    width: 50vh;
+    display: flex;
+    justify-content: space-between;
+    margin-top: 5vh;
+}
+.btn-regresar{
+    background-color: #946675; 
+}
+
+.btn-registrar{
+    background-color: #04578B; 
+}
+
+.input{
+    width: 60%;
+}
+.label-content{
+    width:40%;
+}
+.label-content-asunto{
+    width:18%;
+}

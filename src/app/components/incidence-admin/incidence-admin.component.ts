@@ -28,6 +28,12 @@ export class IncidenceAdminComponent implements OnInit {
     )
   }
 
+  createIncidence() {
+    this.router.navigate(['/incidenciaCrear']);
+  }
+  regresar() {
+    this.router.navigate(['/incidenciaAdmin']);
+  }
 
   displayedColumns: string[] = ['id', 'docMedic', 'type', 'status', 'details'];
   //dataSource = new MatTableDataSource(ELEMENT_DATA);
