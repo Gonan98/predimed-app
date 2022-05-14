@@ -101,6 +101,7 @@ label{
     font-size: 17px;
 }
 
+
 .column-1{
     width: 50%;
     background-color: #ECF4FC;
@@ -178,7 +179,6 @@ table {
 .line-start{
     display: flex;
     justify-content: flex-start;
-    width: 60%;
     justify-content: space-between;
 }
 
@@ -243,3 +243,4 @@ input[type=date]{
     display: flex;
     justify-content: space-between;
 }
+

@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Incidence, IncidencePostModel } from 'src/app/models/Incidence';
 import {IncidenceService } from 'src/app/services/incidence.service';
 import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-incidence-create',
@@ -9,6 +11,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./incidence-create.component.css']
 })
 export class IncidenceCreateComponent implements OnInit {
+  public formCreateIncidence!: FormGroup;
   establishmentId?: string;
   topic?: string;
   description?: string;
@@ -19,12 +22,23 @@ export class IncidenceCreateComponent implements OnInit {
   userId?: string;
   docMedic = localStorage.getItem("documentMedic");
 
-  constructor(private incidenceService : IncidenceService, private http: HttpClient) {
+  constructor(private incidenceService : IncidenceService, private http: HttpClient,private router: Router,private formBuilder: FormBuilder) {
   }
 
   ngOnInit(): void {
     console.log(localStorage.getItem("docMedic"));
+    this.formCreateIncidence = this.formBuilder.group({
+      saludid: ['',[Validators.required]],
+      telefono: ['',[Validators.required]],
+      asunto: ['',[Validators.required]],
+      descripcion: ['',[Validators.required]],
+
+    });
     
+  }
+  
+  regresar() {
+    this.router.navigate(['/incidenciaAdmin']);
   }
 
   createIncidence(){
@@ -40,6 +54,7 @@ export class IncidenceCreateComponent implements OnInit {
     }).subscribe(data => {
         console.log(data);
     })
+    this.router.navigate(['/incidenciaAdmin']);
   }
 
   ra(){

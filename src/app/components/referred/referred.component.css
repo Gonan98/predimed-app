@@ -10,6 +10,7 @@ body{
   display: flex;
   justify-content: flex-start;
   width: 70%;
+  margin-top: 10vh;
 }
 
 .left-elements{
@@ -23,7 +24,6 @@ body{
 }
 
 .table-content{
-  background-color: bisque;
   width: 70%;
 }
 
@@ -41,4 +41,9 @@ table {
   padding: 0;
   border: none;
   background: none;
+}
+
+tr.mat-header-row {
+  background-color: #2C3E50;
+  color: white;
 }
