@@ -15,7 +15,7 @@ import { AntecedentComponent } from './components/antecedent/antecedent.componen
 import { ReferralsComponent } from './components/referrals/referrals.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table'  
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogModule} from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReferredDetailsComponent } from './components/referred-details/referred-details.component';
@@ -50,6 +50,7 @@ import { ErrorTailorModule } from '@ngneat/error-tailor';
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
@@ -57,8 +58,6 @@ import { ErrorTailorModule } from '@ngneat/error-tailor';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
-    MatDialogModule,
-    BrowserAnimationsModule,
     SweetAlert2Module.forRoot(),
     ReactiveFormsModule,
     ErrorTailorModule.forRoot(

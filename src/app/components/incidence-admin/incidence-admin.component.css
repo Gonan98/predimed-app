@@ -6,16 +6,12 @@ body{
   height: 91.5%;
 }
 
-.elemnts-search{
-  display: flex;
-  justify-content: flex-start;
-  width: 70%;
-}
-
 .left-elements{
-  width: 25%;
-  display: flex;
-  justify-content: space-between;
+  margin-top: 10vh;
+  margin-bottom: 2vh;
+  width: 20%;
+  display: inline-flex;
+  align-items: baseline;
 }
 
 .title-section{
@@ -35,6 +31,8 @@ table {
 .mat-form-field {
   font-size: 14px;
   width: 100%;
+  border-bottom: 1px solid black;
+  margin-bottom: 2vh;
 }
 
 .btn-view{
@@ -44,9 +42,6 @@ table {
 }
 
 .container-newIndicence{
-  margin-right: auto;
-  margin-left: 30vh;
-  margin-bottom: 5vh;
   margin-top: 5vh;
 }
 

@@ -1,16 +1,11 @@
 
 <body>
-    <div class="container-newIndicence">
-        <button type="submit" class="btn-incidence" (click)="createIncidence()">Crear Nuevo</button>
-    </div>
-    <div class="elemnts-search">
         <section class="left-elements">
-            <mat-form-field appearance="standard">
-                <mat-label>Doc. Médico</mat-label>
-                <input matInput (keyup)="applyFilter($event)" placeholder="Ejm. 76871372" #input>
+            <mat-form-field appearance="standard">  
+                <input matInput (keyup)="applyFilter($event)" placeholder="Buscar" #input>
             </mat-form-field>
+            <i class="bi bi-search"></i>
         </section>
-    </div>
     <div class="table-content">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
 
@@ -53,6 +48,9 @@
             <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
             </tr>
         </table>
+    </div>
+    <div class="container-newIndicence">
+        <button type="submit" class="btn-incidence" (click)="createIncidence()">Crear Nuevo</button>
     </div>
 
 </body>

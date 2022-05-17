@@ -4,6 +4,7 @@ import {MatDialog} from '@angular/material/dialog';
 import { DialogProcessComponent} from '../dialog-process/dialog-process.component';
 import { EstableishmentService } from 'src/app/services/establishment.service';
 import { Establishment } from 'src/app/models/Estableishment';
+import { Router } from '@angular/router';
 
 export interface ProcesElement {
   code: string;
@@ -48,7 +49,7 @@ export class ReferralsComponent implements OnInit {
 
   establishmentArrayComponent : Establishment[] = [];
 
-  constructor(public dialog: MatDialog, private estableishmentService: EstableishmentService) { }
+  constructor(public dialog: MatDialog, private estableishmentService: EstableishmentService, public router: Router) { }
 
   ngOnInit(): void {
     this.getEstableishments();
@@ -94,6 +95,9 @@ export class ReferralsComponent implements OnInit {
       showConfirmButton: false,
       timer: 1500
     })
+  }
+  onBack(){
+    this.router.navigate(['/analizar']);
   }
 
 }
