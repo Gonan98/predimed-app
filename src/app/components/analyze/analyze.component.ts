@@ -28,7 +28,7 @@ export class AnalyzeComponent implements OnInit {
     private patientService: PatientService,
     private diseaseService: DiseaseService,
     private symptomService: SymptomService,
-    private dialog: MatDialog
+    public dialog: MatDialog
   ) {
     this.response = this.diagnosticService.response;
     this.disease = new Disease();

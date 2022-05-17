@@ -227,20 +227,35 @@ input[type=date]{
     width: 80px;
 }
 
-.btn-send{
-    background-color: #04578B; 
-    border: none;
-    color: #A8F5F2;
-    padding: 15px 30px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 15px;
-    font-weight: bold;
-}
-
 .section-header{
     display: flex;
     justify-content: space-between;
 }
+.btn{
+    border:none;
+    color: #ffffff;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    font-weight: bold;
+    border-radius: initial;
+}
 
+.botones{
+    width: 50vh;
+    display: flex;
+    justify-content: space-around;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    align-self: end;
+    margin-right: 8vh;
+}
+.btn-regresar{
+    background-color: #946675; 
+}
+
+.btn-registrar{
+    background-color: #04578B; 
+}

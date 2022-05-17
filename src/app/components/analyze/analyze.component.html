@@ -13,9 +13,18 @@
       </div>
     </div>
     <div class="results">
-      <div class="percent-circle">
-        {{ response.maxOutput.value * 100 | number: "1.2-2" }} %
+      <div class="circle-wrap">
+        <div class="circle">
+          <div class="mask full">
+            <div class="fill"></div>
+          </div>
+          <div class="mask half">
+            <div class="fill"></div>
+          </div>
+          <div class="inside-circle">{{ response.maxOutput.value * 100 | number: "1.2-2" }} %</div>
+        </div>
       </div>
+      
       <div class="paragraph-container">
         <p>
           El paciente cuenta con un {{ response.maxOutput.value * 100 | number: "1.2-2" }} % de probabilidad de presentar un presunto
@@ -25,6 +34,7 @@
         </p>
       </div>
     </div>
+    
   </div>
   <footer>
     <section class="btn-column1">
@@ -33,7 +43,7 @@
       </button>
     </section>
     <section class="btn-column2">
-      <button type="submit" class="btn-no-ref" (click) ="onNoReferenceDialog()">No Referir</button>
+      <button mat-raised-button type="submit" class="btn-no-ref" (click) ="onNoReferenceDialog()">No Referir</button>
       <button type="button" class="btn-ref" (click)="onReference()">
         Referir
       </button>
