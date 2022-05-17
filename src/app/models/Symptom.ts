@@ -1,6 +1,6 @@
 export class Symptom {
     code: string;
-    active: number;
+    active: boolean;
     description: string;
     requiredAttention: boolean;
 
@@ -8,6 +8,6 @@ export class Symptom {
         this.code = '';
         this.description = '';
         this.requiredAttention = false;
-        this.active = 0;
+        this.active = false;
     }
 }

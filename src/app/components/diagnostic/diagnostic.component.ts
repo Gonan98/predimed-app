@@ -39,7 +39,10 @@ export class DiagnosticComponent implements OnInit {
 
   getAllSymptoms(){
     this.symptomService.getSymptoms().subscribe(
-      data => this.symptoms = data,
+      data => {
+        this.symptoms = data;
+        this.symptoms.forEach(s => s.active = false);
+      },
       err => console.error(err),
     )
   }
@@ -74,7 +77,7 @@ export class DiagnosticComponent implements OnInit {
   }
 
   onAnalize() {
-    if (this.patientService.patientDTO.id) {
+    if (this.patientService.patientDTO.id && this.symptoms.map(s => s.active).includes(true)) {
       this.symptoms.forEach(s => this.neurons.push(new Neuron(s.code, s.active ? 1 : 0)));
 
       this.diagnosticService.doPrediction(this.neurons).subscribe(
@@ -91,7 +94,7 @@ export class DiagnosticComponent implements OnInit {
       Swal.fire({
         icon: 'error',
         title: 'Oops...',
-        text: '¡Debe buscar un paciente primero!',
+        text: '¡Debe buscar un paciente y seleccionar al menos 1 sintoma!',
       })
     }
   }
