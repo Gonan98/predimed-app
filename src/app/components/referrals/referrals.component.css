@@ -88,6 +88,7 @@ body {
     justify-content: space-between;
     flex: wrap;
     margin: 10px 7%;
+    margin-top: 10vh;
 }
 
 form{
@@ -206,8 +207,6 @@ select{
 }
 
 .elem{
-    width: 30%;
-    display: flex;
     justify-content: space-around;
 }
 
@@ -219,12 +218,18 @@ input[type=date]{
     width: 60%;
 }
 
-#pa{
-    width: 130px;
+.row-btns{
+    width: 100%;
 }
-
-#FC, #FR, #temp{
-    width: 80px;
+.buttons-anam{
+    border: none;
+    padding: 1vh;
+    border-radius: 1vh;
+}
+.buttons-anam:hover{
+    background-color: #04578B;
+    color: white;
+    border-radius: 1vh;
 }
 
 .section-header{
@@ -258,4 +263,11 @@ input[type=date]{
 
 .btn-registrar{
     background-color: #04578B; 
+}
+.input-lb{
+    width: 15vh;
+}
+
+.lb-txt{
+    width: 10vh;
 }
