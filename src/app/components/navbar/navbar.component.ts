@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { AuthService } from 'src/app/services/auth.service';
 import { UserService } from 'src/app/services/user.service';
 import { HttpClient } from '@angular/common/http';
+import { EstableishmentService } from 'src/app/services/establishment.service';
 
 @Component({
   selector: 'app-navbar',
@@ -12,14 +13,23 @@ import { HttpClient } from '@angular/common/http';
 export class NavbarComponent implements OnInit {
 
   name = '';
+  establishmentName = '';
   isAdmin = false;
 
 
-  constructor(private authService: AuthService, private router: Router, private userService: UserService, private http: HttpClient) {
+  constructor(private authService: AuthService, private establishmentService: EstableishmentService) {
   }
 
   ngOnInit(): void {
     this.getProfile();
+    this.getCurrentEstablishment();
+  }
+
+  getCurrentEstablishment() {
+    this.establishmentService.getCurrentEstablishment().subscribe(
+      data => {this.establishmentName = data.name; console.log(data)},
+      err => console.error(err)
+    );
   }
 
   getProfile() {

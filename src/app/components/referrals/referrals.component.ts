@@ -51,6 +51,8 @@ export class ReferralsComponent implements OnInit {
 
   establishmentArrayComponent : Establishment[] = [];
 
+  sourceEstablishment = '';
+
   constructor(public dialog: MatDialog, private estableishmentService: EstableishmentService, public router: Router,private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
@@ -64,6 +66,11 @@ export class ReferralsComponent implements OnInit {
       altura: ['',[Validators.required]],
 
     });
+
+    this.estableishmentService.getCurrentEstablishment().subscribe(
+      data => this.sourceEstablishment = data.name,
+      err => console.error(err)
+    );
   }
 
   toggleShow() {
