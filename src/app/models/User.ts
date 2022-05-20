@@ -11,7 +11,7 @@ export class User {
     isAdmin?: boolean;
     gender: string;
     workingCondition: string;
-    establishmentId?: number;
+    establishmentCode?: number;
 
     constructor() {
         this.firstName = '';

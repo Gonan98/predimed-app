@@ -27,7 +27,7 @@ export class MedicComponent implements OnInit {
   }
 
   getEstablishments() {
-    this.establishmentService.getEstableishments().subscribe(
+    this.establishmentService.getEstablishments().subscribe(
       data => this.establishments = data,
       err => console.error(err)
     );
@@ -42,6 +42,7 @@ export class MedicComponent implements OnInit {
 
   onSubmit() {
     if (!this.user.id) {
+      console.log(this.user);
       this.userService.createUser(this.user).subscribe(
         () => this.getAllMedics(),
         (err) => console.error(err)
@@ -68,6 +69,7 @@ export class MedicComponent implements OnInit {
       this.user.profession = selectedUser.profession;
       this.user.employeeStatus = selectedUser.employeeStatus;
       this.user.workingCondition = selectedUser.workingCondition;
+      this.user.establishmentCode = selectedUser.establishmentCode;
     }
   }
 

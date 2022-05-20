@@ -108,6 +108,7 @@
               id="establishmentInput"
               class="form-select"
               name="establishment"
+              [(ngModel)]="user.establishmentCode"
             >
               <option *ngFor="let e of establishments" [value]="e.code">
                 {{ e.name }}
