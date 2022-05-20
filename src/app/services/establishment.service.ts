@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import {Establishment} from 'src/app/models/Estableishment'
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -13,8 +14,12 @@ export class EstableishmentService {
 
   constructor(private http: HttpClient) { }
 
-  getEstableishments() {
-    return this.http.get<Establishment[]>(this.baseURL);
+  getEstablishments(): Observable<any> {
+    return this.http.get(`${environment.API_URL}/ubigeo/150108/establishments`);
+  }
+
+  getCurrentEstablishment(): Observable<any> {
+    return this.http.get(`${environment.API_URL}/establishments/source`);
   }
 
   getData(){

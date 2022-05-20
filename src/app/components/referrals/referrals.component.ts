@@ -5,6 +5,7 @@ import { DialogProcessComponent} from '../dialog-process/dialog-process.componen
 import { EstableishmentService } from 'src/app/services/establishment.service';
 import { Establishment } from 'src/app/models/Estableishment';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 export interface ProcesElement {
   code: string;
@@ -33,6 +34,7 @@ const ELEMENT_DATA1: LaboratoryExam[] = [
 
 
 export class ReferralsComponent implements OnInit {
+  public formAnamnesis!: FormGroup;
 
   displayedColumns: string[] = ['code', 'description'];
   displayedColumns1: string[] = ['description'];
@@ -49,10 +51,26 @@ export class ReferralsComponent implements OnInit {
 
   establishmentArrayComponent : Establishment[] = [];
 
-  constructor(public dialog: MatDialog, private estableishmentService: EstableishmentService, public router: Router) { }
+  sourceEstablishment = '';
+
+  constructor(public dialog: MatDialog, private estableishmentService: EstableishmentService, public router: Router,private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.getEstableishments();
+    this.formAnamnesis = this.formBuilder.group({
+      temperatura: ['',[Validators.required]],
+      pa: ['',[Validators.required]],
+      fc: ['',[Validators.required]],
+      fr: ['',[Validators.required]],
+      peso: ['',[Validators.required]],
+      altura: ['',[Validators.required]],
+
+    });
+
+    this.estableishmentService.getCurrentEstablishment().subscribe(
+      data => this.sourceEstablishment = data.name,
+      err => console.error(err)
+    );
   }
 
   toggleShow() {

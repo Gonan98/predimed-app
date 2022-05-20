@@ -15,7 +15,7 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/referidos" routerLinkActive="active">Referidos</a>
         </li>
-        <li *ngIf="isAdmin" class="nav-item">
+        <li class="nav-item">
           <a class="nav-link" routerLink="/incidenciaAdmin" routerLinkActive="active">Incidencias</a>
         </li>
         <!-- <li *ngIf="!isAdmin" class="nav-item">
@@ -26,7 +26,7 @@
         <h5 style="color: white;">¡Bienvenido a Predimed, &nbsp; {{ name }}!</h5>
       </div>
       <div class="nav-item">
-        <h5 style="color: white;"> Centro de Salud: Las Delicias de Villa</h5>
+        <h5 style="color: white;"> Centro de Salud: {{ establishmentName }}</h5>
       </div>
       <ul class="navbar-nav">
         <li class="nav-item">
