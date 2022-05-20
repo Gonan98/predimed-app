@@ -18,10 +18,7 @@
           <label>Establecimiento Destino:</label>
           <div class="origin-establecimiento">
             <select [(ngModel)]="selected">
-              <option
-                *ngFor="let establecimiento of establishmentArrayComponent"
-                [ngValue]="establecimiento"
-              >
+              <option *ngFor="let establecimiento of establishmentArrayComponent" [ngValue]="establecimiento">
                 {{ establecimiento.name }}
               </option>
             </select>
@@ -62,48 +59,53 @@
     </section>
     <section class="column-2">
       <div class="row-btns">
-        <button
-          (click)="toggleShowAnamnesis()"
-          type="checkbox"
-          class="btn-no-ref"
-        >
+        <button (click)="toggleShowAnamnesis()" type="checkbox" class="buttons-anam">
           Anamnesis / Fisico
         </button>
-        <button (click)="toggleDiagnostic()" type="checkbox" class="btn-no-ref">
+        <button (click)="toggleDiagnostic()" type="checkbox" class="buttons-anam">
           Apoyo al Diagnostico
         </button>
       </div>
       <div *ngIf="isShownAnamnesis" class="anamnesis-fisico">
         <h4 class="title-section">Anamnesis</h4>
         Resumen Anamnesis
-        <div class="p-container">
-          <p>
-            Paciente lego con 6 días de fiebre, presenta dolores musculares.
-          </p>
-        </div>
+          <textarea rows="4">Paciente lego con 6 días de fiebre, presenta dolores musculares.</textarea>
         Examen Físico:
-        <div class="line">
-          <div class="elem">
-            <label>Temp</label>
-            <input type="number" id="temp" name="temp" value="36*" />
+        <form [formGroup]="formAnamnesis" errorTailor>
+          <div class="line">
+            <div class="elem">
+              <label class="lb-txt">Temp</label>
+              <input class="input-lb" type="number" name="temp" value="36*" formControlName="temperatura" />
+            </div>
+            <div class="elem">
+              <label class="lb-txt">P/A</label>
+              <input class="input-lb" type="text" name="pa" value=" " formControlName="pa" />
+            </div>
           </div>
-          <div class="elem">
-            <label>P/A</label>
-            <input type="text" id="pa" name="pa" value=" / " />
+          <div class="line">
+            <div class="elem">
+              <label class="lb-txt">FC</label>
+              <input class="input-lb" type="text" name="FC" value="" formControlName="fc" />
+            </div>
+            <div class="elem">
+              <label class="lb-txt">FR</label>
+              <input class="input-lb" type="text" name="FR" value="" formControlName="fr" />
+            </div>
           </div>
-        </div>
-        <div class="line">
-          <div class="elem">
-            <label>FC</label>
-            <input type="text" id="FC" name="FC" value="" />
+          <div class="line">
+            <div class="elem">
+              <label class="lb-txt">Peso</label>
+              <input class="input-lb" type="text" name="weight" value="" formControlName="peso" />
+            </div>
+            <div class="elem">
+              <label class="lb-txt">Altura</label>
+              <input class="input-lb" type="text" name="height" value="" formControlName="altura" />
+            </div>
           </div>
-          <div class="elem">
-            <label>FR</label>
-            <input type="text" id="FR" name="FR" value="" />
-          </div>
-        </div>
+        </form>
         Resumen Examen Físico
-        <div class="p-container">Hinchazón en las piernas</div>
+        
+        <textarea rows="2">Hinchazón de las piernas</textarea>
       </div>
       <div *ngIf="isShownDiagnostic" class="diagnostic-help">
         <div class="t-container">

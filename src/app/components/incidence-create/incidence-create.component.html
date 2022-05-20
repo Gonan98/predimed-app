@@ -1,5 +1,5 @@
 <body>
-    <form [formGroup]="formCreateIncidence" class="container" errorTailor>
+    <form [formGroup]="formCreateIncidence" class="container" (ngSubmit)="createIncidence" errorTailor>
         <h3>Registro de Incidencia</h3>
         <div class="elements-row">
             <div class="element-container">

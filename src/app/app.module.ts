@@ -28,6 +28,7 @@ import { DialogNoReferenceComponent } from './components/dialog-no-reference/dia
 import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { PatientInfoComponent } from './components/patient-info/patient-info.component';
 import { ErrorTailorModule } from '@ngneat/error-tailor';
+import { NgCircleProgressModule } from 'ng-circle-progress';
 
 @NgModule({
   declarations: [
@@ -59,6 +60,7 @@ import { ErrorTailorModule } from '@ngneat/error-tailor';
     MatFormFieldModule,
     MatInputModule,
     SweetAlert2Module.forRoot(),
+    NgCircleProgressModule.forRoot(),
     ReactiveFormsModule,
     ErrorTailorModule.forRoot(
         {

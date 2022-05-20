@@ -4,6 +4,7 @@ import {IncidenceService } from 'src/app/services/incidence.service';
 import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-incidence-create',
@@ -42,6 +43,18 @@ export class IncidenceCreateComponent implements OnInit {
   }
 
   createIncidence(){
+    if(
+      this.description==null || this.description == undefined || this.description == "" &&
+      this.establishmentId==null || this.establishmentId == undefined || this.establishmentId == "" &&
+      this.phone==null || this.phone == undefined || this.phone == "" &&
+      this.topic==null || this.topic == undefined || this.topic == ""
+      ){
+      Swal.fire({
+        icon: 'error',
+        title: 'Oops...',
+        text: '¡Debe completar todos los campos requeridos!',
+      })
+  }else{
     this.http.post<IncidencePostModel>('https://predimed-node.herokuapp.com/api/v1/incidences', {
       establishmentId: this.establishmentId,
       topic : this.topic,
@@ -56,8 +69,14 @@ export class IncidenceCreateComponent implements OnInit {
     })
     this.router.navigate(['/incidenciaAdmin']);
   }
+  
+  }
 
   ra(){
     console.log("raaaa");
   }
+  makeActive(){
+    
+  }
+
 }
