@@ -3,7 +3,7 @@
   <div class="analyze-info">
     <div class="diagnostic-symptom">
       <h4 class="title-section">Diagnostico</h4>
-      <h5>Posible tipo de Cáncer: {{ disease.name }}</h5>
+      <h5>Posible tipo de Cáncer: {{ diagnosticService.disease.name }}</h5>
       <h4 class="title-section">Sintomas y Signos</h4>
       <div class="list-items">
         <div class="form-check" *ngFor="let symptom of activeSymptoms">
@@ -14,7 +14,7 @@
     </div>
     <div class="results">
       <circle-progress
-        [percent]= "response.maxOutput.value * 100"
+        [percent]= "diagnosticService.response.maxOutput.value * 100"
         [radius]="100"
         [outerStrokeWidth]="16"
         [toFixed] = "2"
@@ -30,8 +30,8 @@
       
       <div class="paragraph-container">
         <p>
-          El paciente cuenta con un {{ response.maxOutput.value * 100 | number: "1.2-2" }} % de probabilidad de presentar un presunto
-          caso de {{ disease.name }}, por ello es que se requiere su inmediata
+          El paciente cuenta con un {{ diagnosticService.response.maxOutput.value * 100 | number: "1.2-2" }} % de probabilidad de presentar un presunto
+          caso de {{ diagnosticService.disease.name }}, por ello es que se requiere su inmediata
           transferencia a un centro de salud con mayor jerarquía para su
           atención oportuna.
         </p>

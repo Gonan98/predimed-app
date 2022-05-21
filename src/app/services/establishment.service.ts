@@ -22,6 +22,22 @@ export class EstableishmentService {
     return this.http.get(`${environment.API_URL}/establishments/source`);
   }
 
+  getDestinyEstablishments(): Observable<any> {
+    return this.http.get(`${environment.API_URL}/establishments/destiny`);
+  }
+
+  getEstablishmentServices(code: number): Observable<any> {
+    return this.http.get(`${environment.API_URL}/establishments/${code}/services`);
+  }
+
+  getEstablishmentSpecialties(code: number): Observable<any> {
+    return this.http.get(`${environment.API_URL}/establishments/${code}/specialties`);
+  }
+
+  getEstablishmentDestinyServices(code: number): Observable<any> {
+    return this.http.get(`${environment.API_URL}/establishments/${code}/destiny-services`);
+  }
+  
   getData(){
     this.http.get(this.baseURL)
     .subscribe((response: any) =>{

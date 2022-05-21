@@ -18,20 +18,20 @@ import { DialogNoReferenceComponent } from '../dialog-no-reference/dialog-no-ref
 })
 export class AnalyzeComponent implements OnInit {
 
-  response: NeuralNetwork;
+  // response: NeuralNetwork;
+  // disease: Disease;
   activeSymptoms: Symptom[];
-  disease: Disease;
 
   constructor(
-    private diagnosticService: DiagnosticService,
+    public diagnosticService: DiagnosticService,
     private router: Router,
     private patientService: PatientService,
     private diseaseService: DiseaseService,
     private symptomService: SymptomService,
     public dialog: MatDialog
   ) {
-    this.response = this.diagnosticService.response;
-    this.disease = new Disease();
+    // this.response = this.diagnosticService.response;
+    // this.disease = this.diagnosticService.disease;
     this.activeSymptoms = this.symptomService.activeSymptoms;
   }
 
@@ -40,8 +40,8 @@ export class AnalyzeComponent implements OnInit {
   }
 
   getDisease() {
-    this.diseaseService.getDiseaseById(this.response.maxOutput.name).subscribe(
-      data => this.disease = data,
+    this.diseaseService.getDiseaseById(this.diagnosticService.response.maxOutput.name).subscribe(
+      data => this.diagnosticService.disease = data,
       console.error
     );
   }

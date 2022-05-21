@@ -5,17 +5,19 @@
       <h4 class="title-section">Datos de Referencia</h4>
       <form>
         <div class="line-start">
-          <label>Servicio de Salud Origen:</label>
+          <label>Establecimiento Origen:</label>
           <div class="origin-establecimiento">
-            <input type="text" disabled [value]="sourceEstablishment"/>
+            <select disabled>
+              <option selected [value]="sourceEstablishment.code">{{ sourceEstablishment.name }}</option>
+            </select>
           </div>
         </div>
         <div class="line-start">
           <label>Establecimiento Destino:</label>
           <div class="origin-establecimiento">
-            <select [(ngModel)]="selected">
-              <option *ngFor="let establecimiento of establishmentArrayComponent" [ngValue]="establecimiento">
-                {{ establecimiento.name }}
+            <select name="destinyEstablishment" [(ngModel)]="referred.destinyEstablishmentCode" (change)="onDestinyEstablishmentChange()">
+              <option *ngFor="let destinyEstablishment of destinyEstablishments" [value]="destinyEstablishment.code">
+                {{ destinyEstablishment.name }}
               </option>
             </select>
           </div>
@@ -23,31 +25,31 @@
         <div class="line-start">
           <label>Sevicio de Destino</label>
           <div class="origin-establecimiento">
-            <select name="select">
-              <option value="value1">Value 1</option>
-              <option value="value2" selected>Consulta médica externa</option>
-              <option value="value3">Value 3</option>
+            <select name="destinyService" [(ngModel)]="referred.destinyServiceCode" [disabled]="!referred.destinyEstablishmentCode">
+              <option *ngFor="let destinyService of destinyServices" [value]="destinyService.code">
+                {{ destinyService.destinyServiceName }}
+              </option>
             </select>
           </div>
         </div>
         <div class="line-start">
           <label>Especialidad</label>
           <div class="origin-establecimiento">
-            <select name="select">
-              <option value="value1">Value 1</option>
-              <option value="value2" selected>Cirujia</option>
-              <option value="value3">Value 3</option>
+            <select name="specialty" [(ngModel)]="referred.specialtyCode" [disabled]="!referred.destinyEstablishmentCode">
+              <option *ngFor="let specialty of specialties" [value]="specialty.code">
+                {{ specialty.specialtyName }}
+              </option>
             </select>
           </div>
         </div>
         <div class="row-line-below">
           <label>Motivo de Referencia</label>
           <div class="speciality">
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-              enim ad minim veniam, quis nostrud exercitation ullamco laboris
-              nisi ut aliquip ex ea commodo consequat.
+            <p id="reasonText">
+              El paciente cuenta con un {{ diagnosticService.response.maxOutput.value * 100 | number: "1.2-2" }} % de probabilidad de presentar un presunto
+              caso de {{ diagnosticService.disease.name }}, por ello es que se requiere su inmediata
+              transferencia a un centro de salud con mayor jerarquía para su
+              atención oportuna.
             </p>
           </div>
         </div>

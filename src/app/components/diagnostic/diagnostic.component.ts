@@ -17,7 +17,6 @@ import { Neuron } from 'src/app/models/NN';
 export class DiagnosticComponent implements OnInit {
   
   searchInput = '';
-  //patientDTO : PatientDTO;
   symptoms: Symptom[]
   neurons: Neuron[];
 
@@ -28,7 +27,6 @@ export class DiagnosticComponent implements OnInit {
     private router: Router,
     private diagnosticService: DiagnosticService
   ) {
-    //this.patientDTO = new PatientDTO();
     this.symptoms = [];
     this.neurons = [];
   }
@@ -50,7 +48,6 @@ export class DiagnosticComponent implements OnInit {
   onSearch() {
     this.patientService.getPatientByDocument(this.searchInput).subscribe(
       data => {
-        //this.patientService.basePatient = data;
         this.patientService.patientDTO.id = data.id;
         this.patientService.patientDTO.fullName = data.firstName + ' ' + data.lastName;
         this.patientService.patientDTO.documentNumber = data.documentNumber;
@@ -84,8 +81,6 @@ export class DiagnosticComponent implements OnInit {
         res => {
           this.diagnosticService.response = res;
           this.symptomService.activeSymptoms = this.symptoms.filter(s => s.active);
-          console.log(res);
-          
           this.router.navigate(['/analizar']);
         },
         console.error

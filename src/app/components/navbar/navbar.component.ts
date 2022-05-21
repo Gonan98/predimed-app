@@ -27,7 +27,7 @@ export class NavbarComponent implements OnInit {
 
   getCurrentEstablishment() {
     this.establishmentService.getCurrentEstablishment().subscribe(
-      data => {this.establishmentName = data.name; console.log(data)},
+      data => this.establishmentName = data.name,
       err => console.error(err)
     );
   }
