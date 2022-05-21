@@ -6,6 +6,11 @@ import { EstableishmentService } from 'src/app/services/establishment.service';
 import { Establishment } from 'src/app/models/Estableishment';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Specialty } from 'src/app/models/Specialty';
+import { Service } from 'src/app/models/Service';
+import { DestinyService } from 'src/app/models/DestinyService';
+import { Referred } from 'src/app/models/Referred';
+import { DiagnosticService } from 'src/app/services/diagnostic.service';
 
 export interface ProcesElement {
   code: string;
@@ -49,14 +54,28 @@ export class ReferralsComponent implements OnInit {
 
   idElementAdded: string = '';
 
-  establishmentArrayComponent : Establishment[] = [];
+  sourceEstablishment: Establishment;
 
-  sourceEstablishment = '';
+  specialties: Specialty[] = [];
+  services: Service[] = [];
+  destinyServices: DestinyService[] = [];
 
-  constructor(public dialog: MatDialog, private estableishmentService: EstableishmentService, public router: Router,private formBuilder: FormBuilder) { }
+  destinyEstablishments: Establishment[] = [];
+
+  referred: Referred;
+
+  constructor(
+    public dialog: MatDialog,
+    private estableishmentService: EstableishmentService,
+    public router: Router,
+    private formBuilder: FormBuilder,
+    public diagnosticService: DiagnosticService
+  ) {
+    this.sourceEstablishment = new Establishment();
+    this.referred = new Referred();
+  }
 
   ngOnInit(): void {
-    this.getEstableishments();
     this.formAnamnesis = this.formBuilder.group({
       temperatura: ['',[Validators.required]],
       pa: ['',[Validators.required]],
@@ -68,7 +87,24 @@ export class ReferralsComponent implements OnInit {
     });
 
     this.estableishmentService.getCurrentEstablishment().subscribe(
-      data => this.sourceEstablishment = data.name,
+      data => this.sourceEstablishment = data,
+      err => console.error(err)
+    );
+
+    this.estableishmentService.getDestinyEstablishments().subscribe(
+      data => this.destinyEstablishments = data,
+      err => console.error(err)
+    );
+  }
+
+  onDestinyEstablishmentChange() {
+    this.estableishmentService.getEstablishmentDestinyServices(this.referred.destinyEstablishmentCode).subscribe(
+      data => this.destinyServices = data.destinyServices,
+      err => console.error(err)
+    );
+
+    this.estableishmentService.getEstablishmentSpecialties(this.referred.destinyEstablishmentCode).subscribe(
+      data => this.specialties = data.specialties,
       err => console.error(err)
     );
   }
@@ -85,14 +121,6 @@ export class ReferralsComponent implements OnInit {
   toggleDiagnostic(){
     this.isShownAnamnesis = false;
     this.isShownDiagnostic = true;
-  }
-
-  getEstableishments(){
-    this.estableishmentService.getData();
-    console.log(this.estableishmentService.establishmentArray);
-    this.establishmentArrayComponent = this.estableishmentService.establishmentArray;
-    console.log("aaaaaa");
-    console.log(this.establishmentArrayComponent);
   }
 
   addProcedimiento(){
