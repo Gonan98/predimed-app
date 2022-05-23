@@ -3,7 +3,7 @@
     border-width: 2px;
     border-radius: 10px;
     border-style:solid;
-    background-color: #ECF4FC;
+    background-color: #bdf8f5;
     margin: 30px 7%;
     padding: 1rem;
     display: flex;
@@ -27,6 +27,10 @@
     width: 35%;
     display: flex;
     justify-content: space-around;
+}
+.title-section{
+    font-weight: bold;
+    color: #04578B;
 }
 
 .item-row-small{
