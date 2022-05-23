@@ -86,9 +86,17 @@ body {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    flex: wrap;
-    margin: 10px 7%;
-    margin-top: 10vh;
+    margin: 0 10vh;
+}
+.info-container section{
+    height:80vh;
+}
+.container-buttons{
+    margin-right: 10vh;
+    margin-left: 120vh;
+}
+.main-container{
+    margin-top: 5vh;
 }
 
 form{
@@ -125,7 +133,7 @@ label{
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 95%;
+    height: 100%;
     border-color: gray;
     border-width: 2px;
     border-radius: 10px;
@@ -179,7 +187,6 @@ table {
 
 .line-start{
     display: flex;
-    justify-content: flex-start;
     justify-content: space-between;
 }
 
@@ -199,7 +206,7 @@ footer{
 }
 
 select{
-    width: 350px;
+    width: 300px;
     text-align: start;
     display: flex;
     justify-content: center;
@@ -219,7 +226,7 @@ input[type=date]{
 }
 
 .row-btns{
-    width: 100%;
+    width: 50vh;
 }
 .buttons-anam{
     border: none;

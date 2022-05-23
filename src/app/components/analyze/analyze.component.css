@@ -30,6 +30,27 @@ body {
     font-weight: bold;
     color: #04578B;
 }
+.info-container{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 10vh;
+}
+
+.column-1{
+    width: 50%;
+    background-color: #ECF4FC;
+    padding: 20px;
+    border-color: gray;
+    border-width: 2px;
+    border-radius: 10px;
+    border-style:solid;
+    box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.5)
+}
+
+.info-container section{
+    height:80vh;
+}
 
 .first-row{
     display: flex;
@@ -95,9 +116,10 @@ body {
     border-width: 2px;
     border-radius: 10px;
     border-style:solid;
-    box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.5)
+    box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.5);
+    max-width: 50%;
+    min-width: 50%;
 }
-
 .list-items{
     display: flex;
     flex-direction: column;
@@ -123,7 +145,14 @@ body {
     border-width: 2px;
     border-radius: 10px;
     border-style:solid;
-    box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.5)
+    box-shadow: 0px 3px 7px 0px rgba(0, 0, 0, 0.5);
+}
+.tipo-cancer{
+    font-size: 18px;
+}
+.info-link{
+    cursor:pointer;
+
 }
 
 

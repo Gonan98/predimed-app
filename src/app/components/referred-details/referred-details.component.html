@@ -1,184 +1,203 @@
 <div class="referrals-container">
     <div class="patient-section">
         <h4 class="title-section">Sección del paciente</h4>
-        <section class="first-row">
-            <div class="item-row-large">
-                Paciente:
-                <input type="text" class="input-block-large" value="Pedro Morales Tallerdo" disabled>
+        <section class="row justify-content-start">
+            <div class="col-md-3 mb-3">
+                <label class="form-label">Paciente:</label>
+                <input type="text" class="form-control form-control-sm" value="Pedro Morales Tallerdo" disabled />
             </div>
-            <div class="item-row-medium">
-                Sexo:
-                <input type="text" class="input-block-medium" value="Masculino" disabled>
+            <div class="col-md-3 mb-3">
+                <label class="form-label">Sexo:</label>
+                <input type="text" class="form-control form-control-sm" value="Masculino" disabled />
             </div>
-            <div class="item-row-small">
-                Edad:
-                <input type="text" class="input-block-small" value="11" disabled>
+            <div class="col-md-3 mb-3">
+                <label class="form-label">Edad:</label>
+                <input type="text" class="form-control form-control-sm" value="11" disabled />
             </div>
-            <div class="item-row-large">
-                Dirección:
-                <input type="text" class="input-block-large"  value="Calle Las Delicias De Villa 456" disabled>
+            <div class="col-md-3 mb-3">
+                <label class="form-label">Dirección</label>
+                <input type="text" class="form-control form-control-sm" value="Calle Las Delicias De Villa 456"
+                    disabled />
             </div>
-        </section>
-        <section class="second-row">
-            <div class="item-row-medium">
-                N Historia Clinica:
-                <input type="text" class="input-block-medium" value="00-235" disabled>
+            <div class="col-md-3">
+                <label class="form-label">Numero de documento:</label>
+                <input type="text" class="form-control form-control-sm" value="74583215" disabled />
             </div>
-            <div class="item-row-medium">
-                Condición del Paciente:
-                <input type="text" class="input-block-medium" value="estable" disabled>
+            <div class="col-md-3">
+                <label class="form-label">Dpto./Prov./Dist:</label>
+                <input type="text" class="form-control form-control-sm" value="Lima/Lima/Chorrillos" disabled />
             </div>
-            <div class="item-row-large">
-                Dpto./Prov./ Distrito:
-                <input type="text" class="input-block-large" value="Lima/Lima/Chorrillos" disabled>
+            <div class="col-auto">
+                <label class="form-label">Condición del Paciente:</label>
+                <select class="form-select form-select-sm">
+                    <option value="ESTABLE">Estable</option>
+                    <option value="MAL ESTADO">Mal Estado</option>
+                    <option value="GRAVE">Grave</option>
+                </select>
             </div>
         </section>
     </div>
-    <div class="info-container">
-        <section class="column-1">
-            <h4 class="title-section">Datos de Referencia</h4>
-            <form>
-                <div class="line">
-                    <div class="elem">
-                        <label>Hora:</label>
-                        <input type="time" id="hour" name="hour" value="15:03" disabled>
-                    </div>
-                    <div class="elem">
-                        <label>Fecha:</label>
-                        <input type="date" id="date" name="date" value="05/03/2022" disabled>
-                    </div>
-                </div>
-                <div class="line-start">
-                    <label>Servicio de Salud Origen:</label> 
-                    <div class="origin-establecimiento">
-                        <select name="select">
-                            <option value="value1">Value 1</option>
-                            <option value="value2" selected>Establecimiento de Salud</option>
-                            <option value="value3">Value 3</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="line-start">
-                    <label>Establecimiento Destino:</label> 
-                    <div class="origin-establecimiento">
-                        <select name="select">
-                            <option value="value1">Value 1</option>
-                            <option value="value2" selected>Establecimiento de Salud</option>
-                            <option value="value3">Value 3</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="line-start">
-                    <label>Sevicio de Destino</label> 
-                    <div class="origin-establecimiento">
-                        <select name="select">
-                            <option value="value1">Value 1</option>
-                            <option value="value2" selected>Consulta médica externa</option>
-                            <option value="value3">Value 3</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="line-start">
-                    <label>Especialidad</label> 
-                    <div class="origin-establecimiento">
-                        <select name="select">
-                            <option value="value1">Value 1</option>
-                            <option value="value2" selected>Cirujia</option>
-                            <option value="value3">Value 3</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="row-line-below">
-                    <label>Motivo de Referencia</label> 
-                    <div class="speciality">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                    </div>
-                </div>
-            </form>
-        </section>
-        <section class="column-2">
+    <!-- -->
+    <div class="main-container">
+        <div class="container-buttons">
             <div class="row-btns">
-                <button (click)="toggleShowAnamnesis()" type="checkbox" class="btn-no-ref">Anamnesis / Fisico</button>
-                <button (click)="toggleDiagnostic()" type="checkbox" class="btn-no-ref">Apoyo al Diagnostico</button>
+                <button (click)="toggleShowAnamnesis()" type="checkbox" class="buttons-anam">
+                    Anamnesis / Fisico
+                </button>
+                <button (click)="toggleDiagnostic()" type="checkbox" class="buttons-anam">
+                    Apoyo al Diagnostico
+                </button>
             </div>
-            <div  *ngIf="isShownAnamnesis" class="anamnesis-fisico">
-                <h4 class="title-section">Anamnesis</h4>
-                Resumen Anamnesis
-                <div class="p-container">
-                    <p>
-                        Paciente lego con 6 días de fiebre, presenta dolores musculares.
-                    </p>
-                </div>
-                Examen Físico:
-                <div class="line">
-                    <div class="elem">
-                        <label>Temp</label>
-                        <input type="number" id="temp" name="temp" value="36*">
+        </div>
+        <div class="container-forms">
+            <div class="info-container">
+                <section class="column-1">
+                    <h4 class="title-section">Datos de Referencia</h4>
+                    <form>
+                        <div class="line-start">
+                            <label>Establecimiento Origen:</label>
+                            <div class="origin-establecimiento">
+                                <select name="select">
+                                    <option value="value1">Value 1</option>
+                                    <option value="value2" selected>Establecimiento de Salud</option>
+                                    <option value="value3">Value 3</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="line-start">
+                            <label>Establecimiento Destino:</label>
+                            <div class="origin-establecimiento">
+                                <select name="select">
+                                    <option value="value1">Value 1</option>
+                                    <option value="value2" selected>Establecimiento de Salud</option>
+                                    <option value="value3">Value 3</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="line-start">
+                            <label>Sevicio de Destino</label>
+                            <div class="origin-establecimiento">
+                                <select name="select">
+                                    <option value="value1">Value 1</option>
+                                    <option value="value2" selected>Consulta médica externa</option>
+                                    <option value="value3">Value 3</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="line-start">
+                            <label>Especialidad</label>
+                            <div class="origin-establecimiento">
+                                <select name="select">
+                                    <option value="value1">Value 1</option>
+                                    <option value="value2" selected>Cirujia</option>
+                                    <option value="value3">Value 3</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="row-line-below">
+                            <label>Motivo de Referencia</label>
+                            <div class="speciality">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt
+                                    ut
+                                    labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+                                    ullamco
+                                    laboris nisi ut aliquip ex ea commodo consequat.</p>
+                            </div>
+                        </div>
+                    </form>
+                </section>
+                <section class="column-2">
+                    <div *ngIf="isShownAnamnesis" class="anamnesis-fisico">
+                      <h4 class="title-section">Anamnesis</h4>
+                      Resumen Anamnesis
+                      <textarea rows="4">Paciente lego con 6 días de fiebre, presenta dolores musculares.</textarea>
+                      Examen Físico:
+                      <form>
+                        <div class="line">
+                          <div class="elem">
+                            <label class="lb-txt">Temp</label>
+                            <input class="input-lb" type="number" name="temp" value="36*" formControlName="temperatura" />
+                          </div>
+                          <div class="elem">
+                            <label class="lb-txt">P/A</label>
+                            <input class="input-lb" type="text" name="pa" value=" " formControlName="pa" />
+                          </div>
+                        </div>
+                        <div class="line">
+                          <div class="elem">
+                            <label class="lb-txt">FC</label>
+                            <input class="input-lb" type="text" name="FC" value="" formControlName="fc" />
+                          </div>
+                          <div class="elem">
+                            <label class="lb-txt">FR</label>
+                            <input class="input-lb" type="text" name="FR" value="" formControlName="fr" />
+                          </div>
+                        </div>
+                        <div class="line">
+                          <div class="elem">
+                            <label class="lb-txt">Peso</label>
+                            <input class="input-lb" type="text" name="weight" value="" formControlName="peso" />
+                          </div>
+                          <div class="elem">
+                            <label class="lb-txt">Altura</label>
+                            <input class="input-lb" type="text" name="height" value="" formControlName="altura" />
+                          </div>
+                        </div>
+                      </form>
+                      Resumen Examen Físico
+          
+                      <textarea rows="2">Hinchazón de las piernas</textarea>
                     </div>
-                    <div class="elem">
-                        <label>P/A</label>
-                        <input type="text" id="pa" name="pa" value=" / ">
-                    </div>
-                </div>
-                <div class="line">
-                    <div class="elem">
-                        <label>FC</label>
-                        <input type="text" id="FC" name="FC" value="">
-                    </div>
-                    <div class="elem">
-                        <label>FR</label>
-                        <input type="text" id="FR" name="FR" value="">
-                    </div>
-                </div>
-                Resumen Examen Físico
-                <div class="p-container">
-                    Hinchazón en las piernas
-                </div>
-            </div>
-            <div  *ngIf="isShownDiagnostic" class="diagnostic-help">
-                <div class="t-container">
-                    <div class="section-header">
-                        <h4 class="title-section">Procedimiento</h4>
-                        <button>Añadir</button> 
-                    </div>
-                    <div class="container-table">
-                        <table mat-table [dataSource]="dataSource" class="mat-elevation-z5">
+                    <div *ngIf="isShownDiagnostic" class="diagnostic-help">
+                      <div class="t-container">
+                        <div class="section-header">
+                          <h4 class="title-section">Procedimiento</h4>
+                          <button>Añadir</button>
+                        </div>
+                        <div class="container-table">
+                          <table mat-table [dataSource]="dataSource" class="mat-elevation-z5">
                             <ng-container matColumnDef="code">
-                                <th mat-header-cell *matHeaderCellDef> Code </th>
-                                <td mat-cell *matCellDef="let element"> {{element.code}} </td>
+                              <th mat-header-cell *matHeaderCellDef>Code</th>
+                              <td mat-cell *matCellDef="let element">{{ element.code }}</td>
                             </ng-container>
                             <ng-container matColumnDef="description">
-                            <th mat-header-cell *matHeaderCellDef> Description</th>
-                            <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+                              <th mat-header-cell *matHeaderCellDef>Description</th>
+                              <td mat-cell *matCellDef="let element">
+                                {{ element.description }}
+                              </td>
                             </ng-container>
                             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-                            <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-                        </table>  
+                            <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+                          </table>
+                        </div>
+                      </div>
+                      <br />
+                      <br />
+                      <div class="t-container">
+                        <div class="section-header">
+                          <h4 class="title-section">Examen de Laboratorio</h4>
+                          <button>Añadir</button>
+                        </div>
+                        <table mat-table [dataSource]="dataSource1" class="mat-elevation-z5">
+                          <ng-container matColumnDef="description">
+                            <th mat-header-cell *matHeaderCellDef>Description</th>
+                            <td mat-cell *matCellDef="let element">
+                              {{ element.description }}
+                            </td>
+                          </ng-container>
+                          <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
+                          <tr mat-row *matRowDef="let row; columns: displayedColumns1"></tr>
+                        </table>
+                      </div>
                     </div>
-                </div>
-                <br>
-                <br>
-                <div class="t-container">
-                    <div class="section-header">
-                        <h4 class="title-section">Examen de Laboratorio</h4>
-                        <button>Añadir</button>  
-                    </div>
-                    <table mat-table [dataSource]="dataSource1" class="mat-elevation-z5">
-                        <ng-container matColumnDef="description">
-                          <th mat-header-cell *matHeaderCellDef> Description</th>
-                          <td mat-cell *matCellDef="let element"> {{element.description}} </td>
-                        </ng-container>
-                        <tr mat-header-row *matHeaderRowDef="displayedColumns1"></tr>
-                        <tr mat-row *matRowDef="let row; columns: displayedColumns1;"></tr>
-                      </table>   
-                </div>
+                  </section>
             </div>
-        </section>
-    </div>
-    <footer>
-        <div class="last-line"> 
-            <button type="checkbox" class="btn-send" (click)="onBack()">Volver</button>
         </div>
-    </footer>
+    </div>
+    <div class="botones">
+        <button type="submit" class="btn btn-regresar" (click)="onBack()">
+          Regresar
+        </button>
+      </div>
 </div>
-  

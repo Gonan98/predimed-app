@@ -30,11 +30,12 @@
       
       <div class="paragraph-container">
         <p>
-          El paciente cuenta con un {{ diagnosticService.response.maxOutput.value * 100 | number: "1.2-2" }} % de probabilidad de presentar un presunto
-          caso de {{ diagnosticService.disease.name }}, por ello es que se requiere su inmediata
+          El paciente cuenta con un <strong class="tipo-cancer">{{ diagnosticService.response.maxOutput.value * 100 | number: "1.2-2" }}%</strong> de probabilidad de presentar un presunto
+          caso de <strong class="tipo-cancer">{{ diagnosticService.disease.name }}</strong>, por ello es que se requiere su inmediata
           transferencia a un centro de salud con mayor jerarquía para su
           atención oportuna.
         </p>
+        <p>Para mayor información <a class="info-link" href="http://bvs.minsa.gob.pe/local/MINSA/5044.pdf" target="_blank">click aquí</a></p>
       </div>
     </div>
     
