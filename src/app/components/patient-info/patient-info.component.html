@@ -57,7 +57,7 @@
     </div>
     <div class="col-auto">
       <label class="form-label">Condición del Paciente:</label>
-      <select class="form-select form-select-sm">
+      <select class="form-select form-select-sm" name="condition" [(ngModel)]="referenceService.patientStatusSelected" [disabled]="readMode">
         <option value="ESTABLE">Estable</option>
         <option value="MAL ESTADO">Mal Estado</option>
         <option value="GRAVE">Grave</option>

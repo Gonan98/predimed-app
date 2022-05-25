@@ -1,8 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialog } from '@angular/material/dialog';
 import { Router } from '@angular/router';
-import { Disease } from 'src/app/models/Disease';
-import { NeuralNetwork } from 'src/app/models/NN';
 import { PatientDTO } from 'src/app/models/Patient';
 import { Symptom } from 'src/app/models/Symptom';
 import { DiagnosticService } from 'src/app/services/diagnostic.service';
@@ -18,8 +15,6 @@ import { DialogNoReferenceComponent } from '../dialog-no-reference/dialog-no-ref
 })
 export class AnalyzeComponent implements OnInit {
 
-  // response: NeuralNetwork;
-  // disease: Disease;
   activeSymptoms: Symptom[];
 
   constructor(
@@ -28,10 +23,7 @@ export class AnalyzeComponent implements OnInit {
     private patientService: PatientService,
     private diseaseService: DiseaseService,
     private symptomService: SymptomService,
-    public dialog: MatDialog
   ) {
-    // this.response = this.diagnosticService.response;
-    // this.disease = this.diagnosticService.disease;
     this.activeSymptoms = this.symptomService.activeSymptoms;
   }
 
@@ -56,7 +48,7 @@ export class AnalyzeComponent implements OnInit {
   }
 
   onNoReferenceDialog() {
-    this.dialog.open(DialogNoReferenceComponent);
+    //this.dialog.open(DialogNoReferenceComponent);
   }
 
 }

@@ -11,13 +11,8 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { ReferredComponent } from './components/referred/referred.component';
 import { AuthGuard } from './auth.guard';
 import { TokenInterceptorService } from './auth/token-interceptor.service';
-import { AntecedentComponent } from './components/antecedent/antecedent.component';
 import { ReferralsComponent } from './components/referrals/referrals.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatTableModule } from '@angular/material/table'  
-import { MatDialogModule} from '@angular/material/dialog';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
 import { ReferredDetailsComponent } from './components/referred-details/referred-details.component';
 import { IncidenceAdminComponent } from './components/incidence-admin/incidence-admin.component';
 import { IncidenceDetailsComponent } from './components/incidence-details/incidence-details.component';
@@ -38,7 +33,6 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     DiagnosticComponent,
     NavbarComponent,
     ReferredComponent,
-    AntecedentComponent,
     ReferralsComponent,
     ReferredDetailsComponent,
     IncidenceAdminComponent,
@@ -55,10 +49,6 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     AppRoutingModule,
     FormsModule,
     HttpClientModule,
-    MatTableModule,
-    MatDialogModule,
-    MatFormFieldModule,
-    MatInputModule,
     SweetAlert2Module.forRoot(),
     NgCircleProgressModule.forRoot(),
     ReactiveFormsModule,

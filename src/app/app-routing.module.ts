@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AuthGuard } from './auth.guard';
-import { AntecedentComponent } from './components/antecedent/antecedent.component';
 import { DiagnosticComponent } from './components/diagnostic/diagnostic.component';
 import { AnalyzeComponent } from './components/analyze/analyze.component';
 import { LoginComponent } from './components/login/login.component';
@@ -21,7 +20,6 @@ const routes: Routes = [
   { path: 'referencia', component: ReferralsComponent, canActivate: [AuthGuard]},
   { path: 'referidos', component: ReferredComponent, canActivate: [AuthGuard] },
   { path: 'dashboard', component: MedicComponent, canActivate: [AuthGuard] },
-  { path: 'antecedentes', component: AntecedentComponent, canActivate: [AuthGuard]},
   { path: 'detalleReferencia', component: ReferredDetailsComponent, canActivate: [AuthGuard]},
   { path: 'incidenciaAdmin', component: IncidenceAdminComponent, canActivate: [AuthGuard]},
   { path: 'incidenciaDetalle', component: IncidenceDetailsComponent, canActivate: [AuthGuard]},

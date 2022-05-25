@@ -19,6 +19,14 @@ export class DiagnosticService {
     this.disease = new Disease();
   }
 
+  generateMotive() {
+    return `
+    El paciente cuenta con un ${this.response.maxOutput.value * 100}% de probabilidad de presentar un presunto
+    caso de ${this.disease.name}, por ello es que se requiere su inmediata transferencia a un centro de salud
+    con mayor jerarquía para su atención oportuna.
+    `
+  }
+
   doPrediction(inputs: Neuron[]) : Observable<any> {
     return this.http.post<any>(this.URL, inputs);
   }

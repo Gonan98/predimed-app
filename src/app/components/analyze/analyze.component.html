@@ -1,5 +1,5 @@
 <div class="analyze-container">
-  <app-patient-info></app-patient-info>
+  <app-patient-info [readMode]="true"></app-patient-info>
   <div class="analyze-info">
     <div class="diagnostic-symptom">
       <h4 class="title-section">Diagnostico</h4>
@@ -7,38 +7,30 @@
       <h4 class="title-section">Sintomas y Signos</h4>
       <div class="list-items">
         <div class="form-check" *ngFor="let symptom of activeSymptoms">
-          <input type="checkbox" class="form-check-input" [checked]="symptom.active" disabled/>
+          <input type="checkbox" class="form-check-input" [checked]="symptom.active" disabled />
           <label class="form-check-label"> {{ symptom.description }} </label>
         </div>
       </div>
     </div>
     <div class="results">
-      <circle-progress
-        [percent]= "diagnosticService.response.maxOutput.value * 100"
-        [radius]="100"
-        [outerStrokeWidth]="16"
-        [toFixed] = "2"
-        [outerStrokeColor]="'#227ded'"
-        [innerStrokeColor] = "'#2C3E50'"
-        [animation]="true"
-        [animationDuration]="1500"
-        [showSubtitle]="false"
-        [unitsFontSize]="'40'"
-        [titleFontSize] = "'40'"
-        [titleFontWeight]="'bold'"
-      ></circle-progress>
-      
+      <circle-progress [percent]="diagnosticService.response.maxOutput.value * 100" [radius]="100"
+        [outerStrokeWidth]="16" [toFixed]="2" [outerStrokeColor]="'#227ded'" [innerStrokeColor]="'#2C3E50'"
+        [animation]="true" [animationDuration]="1500" [showSubtitle]="false" [unitsFontSize]="'40'"
+        [titleFontSize]="'40'" [titleFontWeight]="'bold'"></circle-progress>
+
       <div class="paragraph-container">
         <p>
-          El paciente cuenta con un <strong class="tipo-cancer">{{ diagnosticService.response.maxOutput.value * 100 | number: "1.2-2" }}%</strong> de probabilidad de presentar un presunto
-          caso de <strong class="tipo-cancer">{{ diagnosticService.disease.name }}</strong>, por ello es que se requiere su inmediata
+          El paciente cuenta con un <strong class="tipo-cancer">{{ diagnosticService.response.maxOutput.value * 100}}%</strong> de probabilidad de presentar un presunto
+          caso de <strong class="tipo-cancer">{{ diagnosticService.disease.name }}</strong>, por ello es que se requiere
+          su inmediata
           transferencia a un centro de salud con mayor jerarquía para su
           atención oportuna.
         </p>
-        <p>Para mayor información <a class="info-link" href="http://bvs.minsa.gob.pe/local/MINSA/5044.pdf" target="_blank">click aquí</a></p>
+        <p>Para mayor información <a class="info-link" href="http://bvs.minsa.gob.pe/local/MINSA/5044.pdf"
+            target="_blank">click aquí</a></p>
       </div>
     </div>
-    
+
   </div>
   <footer>
     <section class="btn-column1">
@@ -47,7 +39,7 @@
       </button>
     </section>
     <section class="btn-column2">
-      <button mat-raised-button type="submit" class="btn-no-ref" (click) ="onNoReferenceDialog()">No Referir</button>
+      <button mat-raised-button type="submit" class="btn-no-ref" (click)="onNoReferenceDialog()">No Referir</button>
       <button type="button" class="btn-ref" (click)="onReference()">
         Referir
       </button>

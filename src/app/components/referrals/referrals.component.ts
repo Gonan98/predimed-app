@@ -1,6 +1,5 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import Swal from 'sweetalert2';
-import {MatDialog} from '@angular/material/dialog';
 import { DialogProcessComponent} from '../dialog-process/dialog-process.component';
 import { EstableishmentService } from 'src/app/services/establishment.service';
 import { Establishment } from 'src/app/models/Estableishment';
@@ -11,44 +10,17 @@ import { Service } from 'src/app/models/Service';
 import { DestinyService } from 'src/app/models/DestinyService';
 import { Referred } from 'src/app/models/Referred';
 import { DiagnosticService } from 'src/app/services/diagnostic.service';
-
-export interface ProcesElement {
-  code: string;
-  description: string;
-}
-
-export interface LaboratoryExam {
-  description: string;
-}
-
-const ELEMENT_DATA: ProcesElement[] = [
-  {description: 'Cirugía General', code: '001'},
-  {description: 'Cardiología', code: '002'},
-];
-
-const ELEMENT_DATA1: LaboratoryExam[] = [
-  {description: 'Sangre'},
-  {description: 'Orina'},
-];
+import { History } from 'src/app/models/History';
 
 @Component({
   selector: 'app-referrals',
   templateUrl: './referrals.component.html',
   styleUrls: ['./referrals.component.css']
 })
-
-
 export class ReferralsComponent implements OnInit {
   public formAnamnesis!: FormGroup;
 
-  displayedColumns: string[] = ['code', 'description'];
-  displayedColumns1: string[] = ['description'];
-  dataSource = ELEMENT_DATA;
-  dataSource1 = ELEMENT_DATA1;
-
   selected = '';
-
-  isShown: boolean = false ;
   isShownAnamnesis: boolean = true;
   isShownDiagnostic: boolean = false;
 
@@ -63,9 +35,9 @@ export class ReferralsComponent implements OnInit {
   destinyEstablishments: Establishment[] = [];
 
   referred: Referred;
+  history: History;
 
   constructor(
-    public dialog: MatDialog,
     private estableishmentService: EstableishmentService,
     public router: Router,
     private formBuilder: FormBuilder,
@@ -73,6 +45,7 @@ export class ReferralsComponent implements OnInit {
   ) {
     this.sourceEstablishment = new Establishment();
     this.referred = new Referred();
+    this.history = new History();
   }
 
   ngOnInit(): void {
@@ -109,10 +82,6 @@ export class ReferralsComponent implements OnInit {
     );
   }
 
-  toggleShow() {
-    this.isShown = ! this.isShown;
-  }
-
   toggleShowAnamnesis(){
     this.isShownAnamnesis = true
     this.isShownDiagnostic = false;
@@ -125,12 +94,12 @@ export class ReferralsComponent implements OnInit {
 
   addProcedimiento(){
     //const dialogRef = this.dialog.open(DialogContentExampleDialog);
-    let dialogRef = this.dialog.open(DialogProcessComponent);
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result)
-      this.idElementAdded = result;
-      console.log(this.idElementAdded);
-    }) 
+    // let dialogRef = this.dialog.open(DialogProcessComponent);
+    // dialogRef.afterClosed().subscribe(result => {
+    //   console.log(result)
+    //   this.idElementAdded = result;
+    //   console.log(this.idElementAdded);
+    // }) 
   }
 
   onSend(){
