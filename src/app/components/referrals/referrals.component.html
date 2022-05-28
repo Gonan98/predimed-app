@@ -15,7 +15,7 @@
       <div class="info-container">
         <section class="column-1">
           <h4 class="title-section">Datos de Referencia</h4>
-          <form>
+          <div class="datos-referencia">
             <div class="line-start">
               <label>Establecimiento Origen:</label>
               <div class="origin-establecimiento">
@@ -71,7 +71,7 @@
                 </p>
               </div>
             </div>
-          </form>
+          </div>
         </section>
         <section class="column-2">
           <div *ngIf="isShownAnamnesis" class="anamnesis-fisico">
@@ -119,7 +119,7 @@
             <div class="t-container">
               <div class="section-header">
                 <h4 class="title-section">Procedimiento</h4>
-                <button (click)="addProcedimiento()">Añadir</button>
+                <button mat-stroked-button (click)="addProcedimiento()">Añadir</button>
               </div>
               <div class="container-table">
                 <table mat-table [dataSource]="dataSource" class="mat-elevation-z5">
@@ -143,7 +143,7 @@
             <div class="t-container">
               <div class="section-header">
                 <h4 class="title-section">Examen de Laboratorio</h4>
-                <button>Añadir</button>
+                <button mat-stroked-button>Añadir</button>
               </div>
               <table mat-table [dataSource]="dataSource1" class="mat-elevation-z5">
                 <ng-container matColumnDef="description">

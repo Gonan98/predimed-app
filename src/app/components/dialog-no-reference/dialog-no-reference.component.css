@@ -1,5 +1,5 @@
 .body{
-    width: 50%;
+    width: 80%;
     height: 50%;
 }
 
@@ -33,5 +33,7 @@
 
 .area-button{
     justify-content: space-around;
+    display: flex;
+    flex-direction: row;
 }
 

@@ -15,7 +15,7 @@ import { AntecedentComponent } from './components/antecedent/antecedent.componen
 import { ReferralsComponent } from './components/referrals/referrals.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table'  
-import { MatDialogModule} from '@angular/material/dialog';
+import { MatDialogConfig, MatDialogModule} from '@angular/material/dialog';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { ReferredDetailsComponent } from './components/referred-details/referred-details.component';
@@ -29,6 +29,7 @@ import { SweetAlert2Module } from '@sweetalert2/ngx-sweetalert2';
 import { PatientInfoComponent } from './components/patient-info/patient-info.component';
 import { ErrorTailorModule } from '@ngneat/error-tailor';
 import { NgCircleProgressModule } from 'ng-circle-progress';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -47,7 +48,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     DialogProcessComponent,
     AnalyzeComponent,
     DialogNoReferenceComponent,
-    PatientInfoComponent
+    PatientInfoComponent,
   ],
   imports: [
     BrowserModule,
@@ -59,6 +60,7 @@ import { NgCircleProgressModule } from 'ng-circle-progress';
     MatDialogModule,
     MatFormFieldModule,
     MatInputModule,
+    MatButtonModule,
     SweetAlert2Module.forRoot(),
     NgCircleProgressModule.forRoot(),
     ReactiveFormsModule,
