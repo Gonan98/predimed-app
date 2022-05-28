@@ -113,6 +113,13 @@ form{
     height: 90%;
 }
 
+.anamnesis-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 90%;
+}
+
 .datos-referencia {
     display: flex;
     flex-direction: column;
