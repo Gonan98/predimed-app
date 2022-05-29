@@ -30,6 +30,7 @@ import { PatientInfoComponent } from './components/patient-info/patient-info.com
 import { ErrorTailorModule } from '@ngneat/error-tailor';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { MatButtonModule } from '@angular/material/button';
+import { DialogExamComponent } from './components/dialog-exam/dialog-exam.component';
 
 @NgModule({
   declarations: [
@@ -49,6 +50,7 @@ import { MatButtonModule } from '@angular/material/button';
     AnalyzeComponent,
     DialogNoReferenceComponent,
     PatientInfoComponent,
+    DialogExamComponent,
   ],
   imports: [
     BrowserModule,

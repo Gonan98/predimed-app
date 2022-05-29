@@ -143,7 +143,7 @@
             <div class="t-container">
               <div class="section-header">
                 <h4 class="title-section">Examen de Laboratorio</h4>
-                <button mat-stroked-button>Añadir</button>
+                <button mat-stroked-button (click)="addExamen()">Añadir</button>
               </div>
               <table mat-table [dataSource]="dataSource1" class="mat-elevation-z5">
                 <ng-container matColumnDef="description">

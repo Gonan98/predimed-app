@@ -11,6 +11,7 @@ import { Service } from 'src/app/models/Service';
 import { DestinyService } from 'src/app/models/DestinyService';
 import { Referred } from 'src/app/models/Referred';
 import { DiagnosticService } from 'src/app/services/diagnostic.service';
+import { DialogExamComponent } from '../dialog-exam/dialog-exam.component';
 
 export interface ProcesElement {
   code: string;
@@ -150,7 +151,7 @@ export class ReferralsComponent implements OnInit {
   addExamen(){
     //const dialogRef = this.dialog.open(DialogContentExampleDialog);
     
-    let dialogRef = this.dialog.open(DialogProcessComponent, {
+    let dialogRef = this.dialog.open(DialogExamComponent, {
       disableClose: false,
       hasBackdrop: true,
       backdropClass: '',
