@@ -1,6 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import Swal from 'sweetalert2';
-import {MatDialog} from '@angular/material/dialog';
+import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import { DialogProcessComponent} from '../dialog-process/dialog-process.component';
 import { EstableishmentService } from 'src/app/services/establishment.service';
 import { Establishment } from 'src/app/models/Estableishment';
@@ -11,6 +11,7 @@ import { Service } from 'src/app/models/Service';
 import { DestinyService } from 'src/app/models/DestinyService';
 import { Referred } from 'src/app/models/Referred';
 import { DiagnosticService } from 'src/app/services/diagnostic.service';
+import { DialogExamComponent } from '../dialog-exam/dialog-exam.component';
 
 export interface ProcesElement {
   code: string;
@@ -51,6 +52,8 @@ export class ReferralsComponent implements OnInit {
   isShown: boolean = false ;
   isShownAnamnesis: boolean = true;
   isShownDiagnostic: boolean = false;
+  isShownProcedure: boolean = false;
+  isShownExam: boolean = false;
 
   idElementAdded: string = '';
 
@@ -119,13 +122,46 @@ export class ReferralsComponent implements OnInit {
   }
 
   toggleDiagnostic(){
-    this.isShownAnamnesis = false;
+    this.isShownAnamnesis = false
     this.isShownDiagnostic = true;
   }
 
+
   addProcedimiento(){
     //const dialogRef = this.dialog.open(DialogContentExampleDialog);
-    let dialogRef = this.dialog.open(DialogProcessComponent);
+    
+    let dialogRef = this.dialog.open(DialogProcessComponent, {
+      disableClose: false,
+      hasBackdrop: true,
+      backdropClass: '',
+      height: '',
+      position: {
+          top: '50vh',
+          left: '50vw'
+      },
+      panelClass:'makeItMiddle',
+  });
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(result)
+      this.idElementAdded = result;
+      console.log(this.idElementAdded);
+    }) 
+  }
+
+  addExamen(){
+    //const dialogRef = this.dialog.open(DialogContentExampleDialog);
+    
+    let dialogRef = this.dialog.open(DialogExamComponent, {
+      disableClose: false,
+      hasBackdrop: true,
+      backdropClass: '',
+      height: '',
+      position: {
+          top: '50vh',
+          left: '50vw'
+      },
+      panelClass:'makeItMiddle',
+  });
     dialogRef.afterClosed().subscribe(result => {
       console.log(result)
       this.idElementAdded = result;

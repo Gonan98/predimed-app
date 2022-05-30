@@ -11,6 +11,13 @@ table {
     padding-top: 10px;
 }
 
+.container-forms {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin-left: 5vh;
+    margin-right: 5vh;
+}
 
 body {
     font-family: Arial, Helvetica, sans-serif;
@@ -100,6 +107,20 @@ body {
 }
 
 form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 90%;
+}
+
+.anamnesis-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 90%;
+}
+
+.datos-referencia {
     display: flex;
     flex-direction: column;
     justify-content: space-around;

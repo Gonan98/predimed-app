@@ -12,10 +12,10 @@
       </div>
     </div>
     <div class="container-forms">
-      <div class="info-container">
+      <form [formGroup]="formAnamnesis" class="info-container">
         <section class="column-1">
           <h4 class="title-section">Datos de Referencia</h4>
-          <form>
+          <div class="datos-referencia">
             <div class="line-start">
               <label>Establecimiento Origen:</label>
               <div class="origin-establecimiento">
@@ -71,7 +71,7 @@
                 </p>
               </div>
             </div>
-          </form>
+          </div>
         </section>
         <section class="column-2">
           <div *ngIf="isShownAnamnesis" class="anamnesis-fisico">
@@ -79,7 +79,7 @@
             Resumen Anamnesis
             <textarea rows="4">Paciente lego con 6 días de fiebre, presenta dolores musculares.</textarea>
             Examen Físico:
-            <form [formGroup]="formAnamnesis" errorTailor>
+            <div class="anamnesis-form" errorTailor>
               <div class="line">
                 <div class="elem">
                   <label class="lb-txt">Temp</label>
@@ -110,7 +110,7 @@
                   <input class="input-lb" type="text" name="height" value="" formControlName="altura" />
                 </div>
               </div>
-            </form>
+            </div>
             Resumen Examen Físico
 
             <textarea rows="2">Hinchazón de las piernas</textarea>
@@ -119,7 +119,7 @@
             <div class="t-container">
               <div class="section-header">
                 <h4 class="title-section">Procedimiento</h4>
-                <button (click)="addProcedimiento()">Añadir</button>
+                <button mat-stroked-button (click)="addProcedimiento()">Añadir</button>
               </div>
               <div class="container-table">
                 <table mat-table [dataSource]="dataSource" class="mat-elevation-z5">
@@ -143,7 +143,7 @@
             <div class="t-container">
               <div class="section-header">
                 <h4 class="title-section">Examen de Laboratorio</h4>
-                <button>Añadir</button>
+                <button mat-stroked-button (click)="addExamen()">Añadir</button>
               </div>
               <table mat-table [dataSource]="dataSource1" class="mat-elevation-z5">
                 <ng-container matColumnDef="description">
@@ -158,7 +158,7 @@
             </div>
           </div>
         </section>
-      </div>
+      </form>
     </div>
   </div>
   <div class="botones">
