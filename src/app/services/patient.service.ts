@@ -18,4 +18,16 @@ export class PatientService {
     getPatientByDocument(documentNumber: string): Observable<any> {
         return this.http.get(`${this.baseURL}/document/${documentNumber}`);
     }
+
+    savePatient(patient: Patient): Observable<any> {
+        return this.http.post(this.baseURL, patient);
+    }
+    
+    getAllPatients(): Observable<any> {
+        return this.http.get(this.baseURL);
+    }
+    
+    getPatientById(id: string): Observable<any> {
+        return this.http.get(`${this.baseURL}/${id}`);
+    }
 }

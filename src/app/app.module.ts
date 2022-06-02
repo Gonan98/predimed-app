@@ -31,6 +31,9 @@ import { ErrorTailorModule } from '@ngneat/error-tailor';
 import { NgCircleProgressModule } from 'ng-circle-progress';
 import { MatButtonModule } from '@angular/material/button';
 import { DialogExamComponent } from './components/dialog-exam/dialog-exam.component';
+import { AddPatientComponent } from './components/add-patient/add-patient.component';
+import { HistoryComponent } from './components/history/history.component';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -51,6 +54,8 @@ import { DialogExamComponent } from './components/dialog-exam/dialog-exam.compon
     DialogNoReferenceComponent,
     PatientInfoComponent,
     DialogExamComponent,
+    AddPatientComponent,
+    HistoryComponent,
   ],
   imports: [
     BrowserModule,
@@ -63,6 +68,7 @@ import { DialogExamComponent } from './components/dialog-exam/dialog-exam.compon
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    NgbModule,
     SweetAlert2Module.forRoot(),
     NgCircleProgressModule.forRoot(),
     ReactiveFormsModule,

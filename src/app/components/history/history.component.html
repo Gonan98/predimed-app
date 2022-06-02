@@ -1,0 +1,119 @@
+<div class="modal fade" id="historyModal" tabindex="-1" aria-labelledby="historyModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <form class="modal-content" (ngSubmit)="onSubmit()">
+        <div class="modal-header">
+          <h5 class="modal-title" id="historyModalLabel">Agregar Historia</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body row g-3">
+          <div class="col-12">
+            <label for="documentInput" class="form-label"
+              >N° Documento del Paciente:</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              id="documentInput"
+              maxlength="8"
+              name="documentNumber"
+              [(ngModel)]="documentNumber"
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="heightInput" class="form-label">Altura (cm):</label>
+            <input
+              type="number"
+              min="0"
+              class="form-control"
+              id="heightInput"
+              name="height"
+              [(ngModel)]="history.height"
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="weightInput" class="form-label">Peso (kg):</label>
+            <input
+              type="number"
+              min="0"
+              class="form-control"
+              id="weightInput"
+              name="weight"
+              [(ngModel)]="history.weight"
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="temperatureInput" class="form-label"
+              >Temperatura (C°):</label
+            >
+            <input
+              type="number"
+              min="0"
+              max="40"
+              class="form-control"
+              id="temperatureInput"
+              name="temperature"
+              [(ngModel)]="history.temperature"
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="pressureInput" class="form-label">Presión (Pa):</label>
+            <input
+              type="number"
+              min="0"
+              class="form-control"
+              id="pressureInput"
+              name="pressure"
+              [(ngModel)]="history.pressure"
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="heartRateInput" class="form-label">Frec. Cardiaca (l/m):</label>
+            <input
+              type="number"
+              min="0"
+              class="form-control"
+              id="heartRateInput"
+              name="heartRate"
+              [(ngModel)]="history.heartRate"
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="respirationRateInput" class="form-label">Frec. Respiratoria (r/m):</label>
+            <input
+              type="number"
+              min="0"
+              class="form-control"
+              id="respirationRateInput"
+              name="respirationRate"
+              [(ngModel)]="history.respirationRate"
+            />
+          </div>
+          <div class="col-md-12">
+            <label for="anamnesisText" class="form-label">Anamnesis:</label>
+            <textarea
+              class="form-control"
+              id="anamnesisText"
+              cols="30"
+              rows="3"
+              name="anamnesis"
+              [(ngModel)]="history.anamnesis"
+            ></textarea>
+          </div>
+          <div class="col-md-12">
+            <label for="summaryText" class="form-label">Resumen de Examen Físico:</label>
+            <textarea
+              class="form-control"
+              id="summaryText"
+              cols="30"
+              rows="3"
+              name="summary"
+              [(ngModel)]="history.examSummary"
+            ></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button type="submit" class="btn btn-primary">Guardar</button>
+        </div>
+      </form>
+    </div>
+  </div>

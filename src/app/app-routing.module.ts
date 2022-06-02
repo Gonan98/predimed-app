@@ -12,6 +12,7 @@ import {ReferredDetailsComponent} from './components/referred-details/referred-d
 import {IncidenceAdminComponent} from './components/incidence-admin/incidence-admin.component';
 import {IncidenceDetailsComponent} from './components/incidence-details/incidence-details.component';
 import {IncidenceCreateComponent} from './components/incidence-create/incidence-create.component';
+import { AddPatientComponent } from './components/add-patient/add-patient.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'diagnostico', pathMatch: 'full' },
@@ -26,6 +27,7 @@ const routes: Routes = [
   { path: 'incidenciaAdmin', component: IncidenceAdminComponent, canActivate: [AuthGuard]},
   { path: 'incidenciaDetalle', component: IncidenceDetailsComponent, canActivate: [AuthGuard]},
   { path: 'incidenciaCrear', component: IncidenceCreateComponent, canActivate: [AuthGuard]},
+  { path: 'crearPaciente', component: AddPatientComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({

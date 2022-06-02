@@ -1,0 +1,139 @@
+<div class="row contenedor">
+    <div class="col-md-4">
+      <div class="card">
+        <form (ngSubmit)="onSubmit()" class="card-body row g-3">
+          <div class="col-md-6">
+            <label for="firstName" class="form-label">Nombres:</label>
+            <input
+              type="text"
+              id="firstName"
+              name="firstName"
+              class="form-control"
+              [(ngModel)]="patient.firstName"
+            />
+          </div>
+          <div class="col-md-6">
+            <label for="lastName" class="form-label">Apellidos:</label>
+            <input
+              type="text"
+              id="lastName"
+              name="lastName"
+              class="form-control"
+              [(ngModel)]="patient.lastName"
+            />
+          </div>
+          <div class="col-12">
+            <label for="documentNumber" class="form-label">N° Documento:</label>
+            <input
+              type="text"
+              id="documentNumber"
+              name="documentNumber"
+              class="form-control"
+              maxlength="8"
+              [(ngModel)]="patient.documentNumber"
+            />
+          </div>
+          <div class="col-12">
+            <label for="birthdate" class="form-label">F. Nacimiento</label>
+            <input
+              type="date"
+              id="birthdate"
+              name="birthdate"
+              class="form-control"
+              [(ngModel)]="patient.birthdate"
+            />
+          </div>
+          <div class="col-12">
+            <label for="gender" class="form-label">Sexo:</label>
+            <select
+              id="gender"
+              class="form-select"
+              name="gender"
+              [(ngModel)]="patient.gender"
+            >
+              <option value="M">Masculino</option>
+              <option value="F">Femenino</option>
+            </select>
+          </div>
+          <div class="col-md-12">
+            <label for="department" class="form-label">Departamento:</label>
+            <select class="form-select" name="department" [(ngModel)]="departmentId" (change)="onSelectDepartment()">
+              <option *ngFor="let department of departments" [value]="department.id">{{department.name}}</option>
+            </select>
+          </div>
+          <div class="col-md-12">
+            <label for="province" class="form-label">Provincia</label>
+            <select class="form-select" name="province" [(ngModel)]="provinceId" (change)="onSelectPronvice()" [disabled]="!departmentId">
+              <option *ngFor="let province of provinces" [value]="province.id">{{province.name}}</option>
+            </select>
+          </div>
+          <div class="col-md-12">
+            <label for="district" class="form-label">Distrito</label>
+            <select class="form-select" name="district" [(ngModel)]="patient.ubigeoId" [disabled]="!provinceId">
+              <option *ngFor="let district of districts" [value]="district.id">{{district.name}}</option>
+            </select>
+          </div>
+          <div class="col">
+            <label for="address" class="form-label">Dirección:</label>
+            <input
+              type="text"
+              id="address"
+              name="address"
+              class="form-control"
+              [(ngModel)]="patient.address"
+            />
+          </div>
+          <button type="submit" class="btn btn-primary">Registrar</button>
+        </form>
+      </div>
+    </div>
+    <div class="col-md-8">
+      <form class="row g-3" (ngSubmit)="onSearch()">
+        <div class="col-auto">
+          <input
+            type="text"
+            class="form-control"
+            name="document"
+            placeholder="Buscar por DNI..."
+            maxlength="8"
+            [(ngModel)]="document"
+          />
+        </div>
+        <div class="col-auto">
+          <button type="submit" class="btn btn-primary">Buscar</button>
+        </div>
+      </form>
+      <table class="table table-striped mh-100 overflow-auto">
+        <thead>
+          <tr>
+            <th scope="col">Nombres</th>
+            <th scope="col">Apellidos</th>
+            <th scope="col">N° de Documento</th>
+            <th scope="col">Historia</th>
+            <th scope="col">Antecedente</th>
+            <th scope="col">Detalle</th>
+          </tr> 
+        </thead>
+        <tbody>
+          <tr *ngFor="let patient of patientList">
+            <td>{{ patient.firstName }}</td>
+            <td>{{ patient.lastName }}</td>
+            <td>{{ patient.documentNumber }}</td>
+            <td>
+              <button class="btn btn-small btn-primary" data-bs-toggle="modal" data-bs-target="#historyModal"><i class="bi bi-plus-circle"></i></button>
+            </td>
+            <td>
+              <button class="btn btn-small btn-primary"><i class="bi bi-plus-circle"></i></button>
+            </td>
+            <td>
+              <a class="btn btn-small btn-dark" [routerLink]="['/paciente', patient.id]"
+                ><i class="bi bi-file-text"></i>
+              </a>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <app-history></app-history>
