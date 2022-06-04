@@ -299,3 +299,62 @@ input[type=date]{
 .lb-txt{
     width: 10vh;
 }
+
+@media only screen and (max-width: 960px) {
+    .container-forms {
+        flex-direction: column;
+        margin-left: 1vw;
+        margin-right: 1vw;
+    }
+
+    .info-container {
+        flex-direction: column;
+        margin-left: 10px;
+        margin-right: 10px;
+    }
+
+    .column-1 {
+        width: 90%;
+        margin-bottom: 30px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .datos-referencia {
+        width: 90%;      
+    }
+
+    .column-2 {
+        width: 90%;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    select{
+        width: 150px;
+        text-align: start;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .container-buttons{
+        margin-right: auto;
+        margin-left: auto;
+    }
+}
+
+@media only screen and (max-width: 1200px) {
+    
+    select{
+        width: 200px;
+        text-align: start;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .container-buttons{
+        margin-right: 10vw;
+        margin-left: 60vw;
+    }
+}

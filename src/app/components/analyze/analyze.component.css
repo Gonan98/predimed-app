@@ -212,3 +212,57 @@ footer{
 .result-text {
     font-size: 1rem;
 }
+
+@media only screen and (max-width: 600px) {
+    footer {
+        flex-direction: column;
+    }
+
+    .analyze-info {
+        flex-direction: column;
+    }
+    
+    .diagnostic-symptom{
+        max-width: 100%;
+        min-width: 80%;
+        margin-bottom: 50px;
+    }
+
+    .results {
+        width: 100%;
+        display: inline-block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .btn-back{
+        padding: 15px 30px;
+        font-size: 1rem;
+        margin-bottom: 30px;
+        text-align: center;
+        display: inline-block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .btn-no-ref{
+        background-color: #946675; 
+        border: none;
+        color: white;
+        padding: 5px 15px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 1rem;
+        font-weight: bold;
+        margin-bottom: 30px;
+    }
+
+    .btn-ref{
+        margin-bottom: 30px;
+        padding: 15px 30px;
+        display: inline-block;
+        text-align: center;
+        text-decoration: none;
+    }
+}

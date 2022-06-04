@@ -64,8 +64,8 @@ export class ReferralsComponent implements OnInit {
   destinyServices: DestinyService[] = [];
 
   destinyEstablishments: Establishment[] = [];
-
-  referred: Referred;
+  code: number = 0;
+  referred: Referred = new Referred();
 
   constructor(
     public dialog: MatDialog,
@@ -75,7 +75,6 @@ export class ReferralsComponent implements OnInit {
     public diagnosticService: DiagnosticService
   ) {
     this.sourceEstablishment = new Establishment();
-    this.referred = new Referred();
   }
 
   ngOnInit(): void {
@@ -90,7 +89,9 @@ export class ReferralsComponent implements OnInit {
     });
 
     this.estableishmentService.getCurrentEstablishment().subscribe(
-      data => this.sourceEstablishment = data,
+      data => {
+        this.sourceEstablishment = data
+      },
       err => console.error(err)
     );
 
@@ -100,13 +101,16 @@ export class ReferralsComponent implements OnInit {
     );
   }
 
-  onDestinyEstablishmentChange() {
-    this.estableishmentService.getEstablishmentDestinyServices(this.referred.destinyEstablishmentCode).subscribe(
+  onDestinyEstablishmentChange(code: string) {
+    console.log(code)
+    let index = parseInt(code);
+    console.log(index);
+    this.estableishmentService.getEstablishmentDestinyServices(index).subscribe(
       data => this.destinyServices = data.destinyServices,
       err => console.error(err)
     );
 
-    this.estableishmentService.getEstablishmentSpecialties(this.referred.destinyEstablishmentCode).subscribe(
+    this.estableishmentService.getEstablishmentSpecialties(index).subscribe(
       data => this.specialties = data.specialties,
       err => console.error(err)
     );

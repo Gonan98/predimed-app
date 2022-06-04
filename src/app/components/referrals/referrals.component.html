@@ -27,8 +27,8 @@
             <div class="line-start">
               <label>Establecimiento Destino:</label>
               <div class="origin-establecimiento">
-                <select name="destinyEstablishment" [(ngModel)]="referred.destinyEstablishmentCode"
-                  (change)="onDestinyEstablishmentChange()">
+                <select #selectElem name="destinyEstablishment" [(ngModel)]="referred.destinyEstablishmentCode"
+                  (change)="onDestinyEstablishmentChange(selectElem.value)">
                   <option *ngFor="let destinyEstablishment of destinyEstablishments"
                     [value]="destinyEstablishment.code">
                     {{ destinyEstablishment.name }}

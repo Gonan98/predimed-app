@@ -37,7 +37,6 @@ table {
 .mat-form-field {
   font-size: 14px;
   width: 100%;
-  border-bottom: 1px solid black;
   margin-bottom: 2vh;
 }
 
@@ -49,5 +48,8 @@ table {
 
 tr.mat-header-row {
   background-color: #2C3E50;
+  color: white;
+}
+th.mat-header-cell {
   color: white;
 }
