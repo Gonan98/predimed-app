@@ -7,14 +7,6 @@
             </mat-form-field>
         </section>
     </div>
-    <div class="elemnts-search">
-        <section class="left-elements">
-            <mat-form-field appearance="standard">
-                <mat-label>Doc. Médico</mat-label>
-                <input matInput (keyup)="applyFilter($event)" placeholder="Ejm. 76871372" #input>
-            </mat-form-field>
-        </section>
-    </div>
     <div class="table-content">
         <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
     
@@ -34,7 +26,7 @@
             <ng-container matColumnDef="Acciones">
                 <th mat-header-cell *matHeaderCellDef> Acciones </th>
                 <td mat-cell *matCellDef="let element"> 
-                    <button mat-stroked-button mat-dialog-close="{{element.ocde}}" (click)="onView(element.idIncidence)">Agregar</button>
+                    <button mat-stroked-button [mat-dialog-close]="element.description" (click)="onView(element.idIncidence)">Agregar</button>
                 </td>
             </ng-container>
         

@@ -12,8 +12,10 @@ import { DestinyService } from 'src/app/models/DestinyService';
 import { Referred } from 'src/app/models/Referred';
 import { DiagnosticService } from 'src/app/services/diagnostic.service';
 import { DialogExamComponent } from '../dialog-exam/dialog-exam.component';
+import { LabExam } from 'src/app/models/LabExam';
+import { MatTableDataSource } from '@angular/material/table';
 
-export interface ProcesElement {
+export interface ProcessElement {
   code: string;
   description: string;
 }
@@ -22,11 +24,12 @@ export interface LaboratoryExam {
   description: string;
 }
 
-const ELEMENT_DATA: ProcesElement[] = [
-  {description: 'Cirugía General', code: '001'},
-  {description: 'Cardiología', code: '002'},
+const ELEMENT_DATA: ProcessElement[] = [
+  {code: '001', description: 'Cirugía General'},
+  {code: '002', description: 'Cirugía Especial'},
+  {code: '003', description: 'Cardiología'},
+  {code: '004', description: 'Psicología'},
 ];
-
 const ELEMENT_DATA1: LaboratoryExam[] = [
   {description: 'Sangre'},
   {description: 'Orina'},
@@ -44,9 +47,8 @@ export class ReferralsComponent implements OnInit {
 
   displayedColumns: string[] = ['code', 'description'];
   displayedColumns1: string[] = ['description'];
-  dataSource = ELEMENT_DATA;
-  dataSource1 = ELEMENT_DATA1;
-
+  dataSource: ProcessElement[] = [];
+  dataSource1: LaboratoryExam[] = [];
   selected = '';
 
   isShown: boolean = false ;
@@ -131,9 +133,7 @@ export class ReferralsComponent implements OnInit {
   }
 
 
-  addProcedimiento(){
-    //const dialogRef = this.dialog.open(DialogContentExampleDialog);
-    
+  addProcedimiento(){ 
     let dialogRef = this.dialog.open(DialogProcessComponent, {
       disableClose: false,
       hasBackdrop: true,
@@ -146,15 +146,22 @@ export class ReferralsComponent implements OnInit {
       panelClass:'makeItMiddle',
   });
     dialogRef.afterClosed().subscribe(result => {
-      console.log(result)
-      this.idElementAdded = result;
-      console.log(this.idElementAdded);
+      let newElement: ProcessElement = {code: '000', description: 'None'};
+      if (result != '') {
+        let newDatasource = this.dataSource;
+        for(let i = 0; i < ELEMENT_DATA.length; i++) {
+          if (ELEMENT_DATA[i].description == result) {
+            newElement = ELEMENT_DATA[i]
+          }
+        }
+        newDatasource.push(newElement); 
+        this.dataSource = [...newDatasource]
+      };
+      
     }) 
   }
 
   addExamen(){
-    //const dialogRef = this.dialog.open(DialogContentExampleDialog);
-    
     let dialogRef = this.dialog.open(DialogExamComponent, {
       disableClose: false,
       hasBackdrop: true,
@@ -166,11 +173,14 @@ export class ReferralsComponent implements OnInit {
       },
       panelClass:'makeItMiddle',
   });
-    dialogRef.afterClosed().subscribe(result => {
-      console.log(result)
-      this.idElementAdded = result;
-      console.log(this.idElementAdded);
-    }) 
+  dialogRef.afterClosed().subscribe(result => {
+    if (result != ''){
+      let newElement: LaboratoryExam = {description: result};
+      let newDatasource = this.dataSource1;
+      newDatasource.push(newElement); 
+      this.dataSource1 = [...newDatasource]
+    }
+  }) 
   }
 
   onSend(){
