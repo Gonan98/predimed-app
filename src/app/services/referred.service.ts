@@ -17,11 +17,11 @@ export class ReferredService {
   }
 
   getReferences(): Observable<any> {
-    return this.http.get(`${environment.API_URL}/references`);
+    return this.http.get(`${environment.API_URL}/referred`);
   }
 
   getReferenceById(id: number): Observable<any> {
-    return this.http.get(`${environment.API_URL}/references/${id}`);
+    return this.http.get(`${environment.API_URL}/referred/${id}`);
   }
 
 }

@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { Router } from '@angular/router';
+import { Referred } from 'src/app/models/Referred';
+import { ReferredService } from 'src/app/services/referred.service';
 
 export interface PeriodicElement {
   patient: string;
@@ -25,13 +27,20 @@ const ELEMENT_DATA: PeriodicElement[] = [
 })
 export class ReferredComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  referred: Referred[] = [];
+
+  constructor(private router: Router, private referredService: ReferredService) { }
 
   ngOnInit(): void {
+    this.referredService.getReferences().subscribe(data => {
+      console.log(data);
+      this.referred = data;
+    }
+    );
   }
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  dataSource = new MatTableDataSource(this.referred);
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

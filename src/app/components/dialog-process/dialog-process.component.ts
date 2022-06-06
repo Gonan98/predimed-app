@@ -35,7 +35,7 @@ export class DialogProcessComponent implements OnInit {
   }
 
   onView(a: String){
-
+    
   }
 
 }
