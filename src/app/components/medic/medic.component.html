@@ -117,8 +117,8 @@
           </div>
           <button
             type="submit"
-            class="btn"
-            [ngClass]="{ 'btn-info': !user.id, 'btn-warning': user.id }"
+            class="btn btn-registrar"
+            [ngClass]="{ 'btn-primary': !user.id, 'btn-success': user.id }"
           >
             {{ user.id ? "Actualizar" : "Registrar" }}
           </button>
