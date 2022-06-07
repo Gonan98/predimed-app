@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  API_URL: 'https://predimed-node.herokuapp.com/api/v2',
+  API_URL: 'http://20.231.60.64:5001/api/v2',
 };

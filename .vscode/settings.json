@@ -1,3 +1,5 @@
 {
-    "json.maxItemsComputed": 50000
+    "json.maxItemsComputed": 50000,
+    "appService.defaultWebAppToDeploy": "/subscriptions/a99316f6-a3d0-4706-8bbb-87db85304151/microsoft.web/sites/subscriptions/a99316f6-a3d0-4706-8bbb-87db85304151/resourceGroups/predmed_group/providers/Microsoft.Web/sites/predmed",
+    "appService.deploySubpath": "dist\\predimed-app"
 }
