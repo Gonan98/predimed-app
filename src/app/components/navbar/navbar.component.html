@@ -15,6 +15,9 @@
             <a class="dropdown-item" routerLink="/crearPaciente" >Pacientes</a>
           </div>
         </li>
+        <li *ngIf="!isAdmin" class="nav-item">
+          <a class="nav-link" routerLink="/listaPacientes" routerLinkActive="active">Pacientes</a>
+        </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/diagnostico" routerLinkActive="active">Diagnostico</a>
         </li>
@@ -24,9 +27,7 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/incidenciaAdmin" routerLinkActive="active">Incidencias</a>
         </li>
-        <!-- <li *ngIf="!isAdmin" class="nav-item">
-          <a class="nav-link" routerLink="/incidenciaCrear" routerLinkActive="active">Incidencias</a>
-        </li> -->
+        
       </ul>
       <div class="nav-item">
         <h5 style="color: white;">¡Bienvenido a Predimed, &nbsp; {{ name }}!</h5>

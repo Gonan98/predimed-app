@@ -6,11 +6,11 @@ import { PatientService } from 'src/app/services/patient.service';
 import { UbigeoService } from 'src/app/services/ubigeo.service';
 
 @Component({
-  selector: 'app-add-patient',
-  templateUrl: './add-patient.component.html',
-  styleUrls: ['./add-patient.component.css']
+  selector: 'app-patients',
+  templateUrl: './patients.component.html',
+  styleUrls: ['./patients.component.css']
 })
-export class AddPatientComponent implements OnInit {
+export class PatientsComponent implements OnInit {
 
   document = '';
   patient: Patient;

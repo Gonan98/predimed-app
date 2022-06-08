@@ -34,6 +34,8 @@ import { DialogExamComponent } from './components/dialog-exam/dialog-exam.compon
 import { AddPatientComponent } from './components/add-patient/add-patient.component';
 import { HistoryComponent } from './components/history/history.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PatientDetailComponent } from './components/patient-detail/patient-detail.component';
+import { PatientsComponent } from './components/patients/patients.component';
 
 @NgModule({
   declarations: [
@@ -56,6 +58,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     DialogExamComponent,
     AddPatientComponent,
     HistoryComponent,
+    PatientDetailComponent,
+    PatientsComponent,
   ],
   imports: [
     BrowserModule,
