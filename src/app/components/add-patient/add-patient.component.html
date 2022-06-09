@@ -88,52 +88,6 @@
       </div>
     </div>
     <div class="col-md-8">
-      <form class="row g-3" (ngSubmit)="onSearch()">
-        <div class="col-auto">
-          <input
-            type="text"
-            class="form-control"
-            name="document"
-            placeholder="Buscar por DNI..."
-            maxlength="8"
-            [(ngModel)]="document"
-          />
-        </div>
-        <div class="col-auto">
-          <button type="submit" class="btn btn-primary">Buscar</button>
-        </div>
-      </form>
-      <table class="table table-striped mh-100 overflow-auto">
-        <thead>
-          <tr>
-            <th scope="col">Nombres</th>
-            <th scope="col">Apellidos</th>
-            <th scope="col">N° de Documento</th>
-            <th scope="col">Historia</th>
-            <th scope="col">Antecedente</th>
-            <th scope="col">Detalle</th>
-          </tr> 
-        </thead>
-        <tbody>
-          <tr *ngFor="let patient of patientList">
-            <td>{{ patient.firstName }}</td>
-            <td>{{ patient.lastName }}</td>
-            <td>{{ patient.documentNumber }}</td>
-            <td>
-              <button class="btn btn-small btn-primary" data-bs-toggle="modal" data-bs-target="#historyModal"><i class="bi bi-plus-circle"></i></button>
-            </td>
-            <td>
-              <button class="btn btn-small btn-primary"><i class="bi bi-plus-circle"></i></button>
-            </td>
-            <td>
-              <a class="btn btn-small btn-dark" [routerLink]="['/paciente', patient.id]"
-                ><i class="bi bi-file-text"></i>
-              </a>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+      <app-patients></app-patients>
     </div>
   </div>
-  
-  <app-history></app-history>

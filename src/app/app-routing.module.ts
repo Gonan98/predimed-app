@@ -13,6 +13,8 @@ import {IncidenceAdminComponent} from './components/incidence-admin/incidence-ad
 import {IncidenceDetailsComponent} from './components/incidence-details/incidence-details.component';
 import {IncidenceCreateComponent} from './components/incidence-create/incidence-create.component';
 import { AddPatientComponent } from './components/add-patient/add-patient.component';
+import { PatientDetailComponent } from './components/patient-detail/patient-detail.component';
+import { PatientsComponent } from './components/patients/patients.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'diagnostico', pathMatch: 'full' },
@@ -28,6 +30,8 @@ const routes: Routes = [
   { path: 'incidenciaDetalle', component: IncidenceDetailsComponent, canActivate: [AuthGuard]},
   { path: 'incidenciaCrear', component: IncidenceCreateComponent, canActivate: [AuthGuard]},
   { path: 'crearPaciente', component: AddPatientComponent, canActivate: [AuthGuard]},
+  { path: 'detallePaciente', component: PatientDetailComponent, canActivate: [AuthGuard]},
+  { path: 'listaPacientes', component: PatientsComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({
