@@ -10,7 +10,7 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
 
   private URL = `${environment.API_URL}/auth`;
-
+  isAdmin = false;
   constructor(private http: HttpClient, private router: Router) { }
 
   signIn(username: string, password: string): Observable<any> {

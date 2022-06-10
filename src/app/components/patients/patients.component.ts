@@ -104,8 +104,8 @@ export class PatientsComponent implements OnInit {
     );
   }
 
-  goDetail() {
-    this.router.navigate(['/detallePaciente']);
+  goDetail(id: number) {
+    this.router.navigate([`/paciente/${id}`]);
   }
   diagnostico(id: number) {
     this.patientService.getPatientById(id).subscribe(

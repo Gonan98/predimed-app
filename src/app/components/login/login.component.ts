@@ -29,6 +29,7 @@ export class LoginComponent implements OnInit {
       .subscribe(
         (data) => {
           localStorage.setItem('token', data.token);
+          this.authService.isAdmin = data.isAdmin;
           data.isAdmin ? this.router.navigate(['/dashboard']) : this.router.navigate(['/diagnostico'])
         },
         (err) => alert(err.message)

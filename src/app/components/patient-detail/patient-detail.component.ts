@@ -4,6 +4,7 @@ import { Antecedent } from 'src/app/models/Antecedent';
 import { History } from 'src/app/models/History';
 import { Patient } from 'src/app/models/Patient';
 import { AntecedentService } from 'src/app/services/antecedent.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { HistoryService } from 'src/app/services/history.service';
 import { PatientService } from 'src/app/services/patient.service';
 
@@ -23,6 +24,7 @@ export class PatientDetailComponent implements OnInit {
   antecedentType: string;
 
   constructor(
+    private authService: AuthService,
     private patientService: PatientService,
     private historyService: HistoryService,
     private antecedentsService: AntecedentService,
@@ -85,7 +87,12 @@ export class PatientDetailComponent implements OnInit {
   }
 
   goBack(){
-    this.router.navigate(['/crearPaciente']);
+    if (this.authService.isAdmin) {
+      this.router.navigate(['/crearPaciente']);
+
+    } else {
+      this.router.navigate(['/listaPacientes']);
+    }
   }
 
 }

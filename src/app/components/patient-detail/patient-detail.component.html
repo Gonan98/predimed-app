@@ -5,41 +5,23 @@
     <div class="row">
       <div class="col-md-3 mb-3">
         <label class="form-label">PACIENTE:</label>
-        <input
-          type="text"
-          class="form-control form-control-sm"
-          [ngModel]="patient.firstName + ' ' + patient.lastName"
-          disabled
-        />
+        <input type="text" class="form-control form-control-sm" [ngModel]="patient.firstName + ' ' + patient.lastName"
+          disabled />
       </div>
       <div class="col-md-3">
         <label class="form-label">DNI:</label>
-        <input
-          type="text"
-          class="form-control form-control-sm"
-          [ngModel]="patient.documentNumber"
-          disabled
-        />
+        <input type="text" class="form-control form-control-sm" [ngModel]="patient.documentNumber" disabled />
       </div>
       <div class="col-md-3">
         <label class="form-label">FECHA NACIMIENTO:</label>
-        <input
-          type="text"
-          class="form-control form-control-sm"
-          [ngModel]="patient.birthdate | date: 'dd/MM/yyyy'"
-          disabled
-        />
+        <input type="text" class="form-control form-control-sm" [ngModel]="patient.birthdate | date: 'dd/MM/yyyy'"
+          disabled />
       </div>
       <div class="col-md-3">
         <label class="form-label">SEXO:</label>
-        <input
-          type="text"
-          class="form-control form-control-sm"
-          [ngModel]="patient.gender === 'M' ? 'Masculino' : 'Femenino'"
-          disabled
-        />
+        <input type="text" class="form-control form-control-sm" [ngModel]="patient.gender" disabled />
       </div>
-        
+
     </div>
   </div>
 </div>
@@ -71,73 +53,43 @@
             <div class="row">
               <div class="col-md-4">
                 <div class="form-floating">
-                  <input
-                    type="text"
-                    class="form-control form-control-sm"
-                    placeholder="Altura..."
-                    [ngModel]="selectedHistory.height"
-                    readonly
-                  />
+                  <input type="text" class="form-control form-control-sm" placeholder="Altura..."
+                    [ngModel]="selectedHistory.height" readonly />
                   <label>Altura (cm)</label>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-floating">
-                  <input
-                    type="text"
-                    class="form-control form-control-sm"
-                    placeholder="Peso..."
-                    [ngModel]="selectedHistory.weight"
-                    readonly
-                  />
+                  <input type="text" class="form-control form-control-sm" placeholder="Peso..."
+                    [ngModel]="selectedHistory.weight" readonly />
                   <label>Peso (kg)</label>
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="form-floating">
-                  <input
-                    type="text"
-                    class="form-control form-control-sm"
-                    placeholder="Temperatura..."
-                    [ngModel]="selectedHistory.temperature"
-                    readonly
-                  />
+                  <input type="text" class="form-control form-control-sm" placeholder="Temperatura..."
+                    [ngModel]="selectedHistory.temperature" readonly />
                   <label>Temp (C°)</label>
                 </div>
               </div>
               <div class="col-md-4 my-4">
                 <div class="form-floating">
-                  <input
-                    type="text"
-                    class="form-control form-control-sm"
-                    placeholder="Presion..."
-                    [ngModel]="selectedHistory.pressure"
-                    readonly
-                  />
+                  <input type="text" class="form-control form-control-sm" placeholder="Presion..."
+                    [ngModel]="selectedHistory.pressure" readonly />
                   <label>Presión (Pa)</label>
                 </div>
               </div>
               <div class="col-md-4 my-4">
                 <div class="form-floating">
-                  <input
-                    type="text"
-                    class="form-control form-control-sm"
-                    placeholder="Frec. Cardiaca..."
-                    [ngModel]="selectedHistory.pressure"
-                    readonly
-                  />
+                  <input type="text" class="form-control form-control-sm" placeholder="Frec. Cardiaca..."
+                    [ngModel]="selectedHistory.pressure" readonly />
                   <label>Frec. Cardiaca (FC)</label>
                 </div>
               </div>
               <div class="col-md-4 my-4">
                 <div class="form-floating">
-                  <input
-                    type="text"
-                    class="form-control form-control-sm"
-                    placeholder="Frec. Respiratoria..."
-                    [ngModel]="selectedHistory.pressure"
-                    readonly
-                  />
+                  <input type="text" class="form-control form-control-sm" placeholder="Frec. Respiratoria..."
+                    [ngModel]="selectedHistory.pressure" readonly />
                   <label>Frec. Respiratoria (FR)</label>
                 </div>
               </div>

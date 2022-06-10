@@ -30,7 +30,7 @@ const routes: Routes = [
   { path: 'incidenciaDetalle', component: IncidenceDetailsComponent, canActivate: [AuthGuard]},
   { path: 'incidenciaCrear', component: IncidenceCreateComponent, canActivate: [AuthGuard]},
   { path: 'crearPaciente', component: AddPatientComponent, canActivate: [AuthGuard]},
-  { path: 'detallePaciente', component: PatientDetailComponent, canActivate: [AuthGuard]},
+  { path: 'paciente/:id', component: PatientDetailComponent, canActivate: [AuthGuard]},
   { path: 'listaPacientes', component: PatientsComponent, canActivate: [AuthGuard]},
 ];
 
