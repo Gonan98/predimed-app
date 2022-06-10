@@ -7,6 +7,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { AuthService } from 'src/app/services/auth.service';
 
+//small change
+
 @Component({
   selector: 'app-incidence-create',
   templateUrl: './incidence-create.component.html',
