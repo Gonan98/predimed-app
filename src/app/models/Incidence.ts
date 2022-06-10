@@ -26,26 +26,28 @@ export class Incidence {
 
 
 export class IncidencePostModel {
-    id?: number;
-    topic : string; 
+    establishmentId: string;
+    subject : string; 
     description : string; 
     status : string; 
     phone : string;
     priority : string;
-    registerType: string; 
+    incidenceType: string; 
     createdAt : string;
     updatedAt : string; 
     userId? : number;
 
     constructor() {
-        this.topic = '';
+        this.establishmentId = '';
+        this.subject = '';
         this.description = '';
         this.status = '';
         this.phone = '';
         this.priority = '';
-        this.registerType = '';
+        this.incidenceType = '';
         this.createdAt = '';
         this.updatedAt = '';
+        this.userId = 0;
     }
 }
 

@@ -4,7 +4,8 @@
 
 export const environment = {
   production: false,
-  API_URL: 'http://localhost:5001/api/v2'
+  //API_URL: 'http://localhost:5001/api/v2'
+  API_URL: 'https://predimed-node.herokuapp.com/api/v2',
 };
 
 /*
