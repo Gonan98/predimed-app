@@ -1,6 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { IncidencePutModel } from 'src/app/models/Incidence';
+import { AuthService } from 'src/app/services/auth.service';
 import { IncidenceService } from 'src/app/services/incidence.service';
 import { environment } from 'src/environments/environment';
 
@@ -13,8 +14,10 @@ export class IncidenceDetailsComponent implements OnInit {
 
   private baseURL = `${environment.API_URL}/incidences`;
 
-  docMedic = localStorage.getItem("documentMedic");
-  centroSaludId = '';
+  incidence: any;
+  
+  docMedic = '';
+  establishmentId = '';
   status = '';
   topic = '';
   description = '';
@@ -27,32 +30,52 @@ export class IncidenceDetailsComponent implements OnInit {
   solution = '';
   a = localStorage.getItem("idIncidence");
   incidencePutModel : IncidencePutModel;
+  incidencesData: any;
 
-  constructor(private incidenceService: IncidenceService, private http: HttpClient) {
+  constructor(private incidenceService: IncidenceService, private http: HttpClient, private authService: AuthService) {
     this.incidencePutModel = new IncidencePutModel();
   }
 
-  ngOnInit(): void {
+  async ngOnInit() {
     let idIncidence = localStorage.getItem("idIncidence");
     console.log(idIncidence);
-    this.incidenceService.getIncidenceById(idIncidence!).subscribe(
-      data => {
-        this.phone = data.phone;
-        this.status = data.status;
-        this.topic = data.topic;
-        this.centroSaludId = data.establishment_id;
-        this.description = data.description;
-        this.type = data.registerType;
-        this.priority = data.priority;
-        this.userId = data.user_id;
-      }
-    );
+     await this.authService.getProfile().subscribe(async data => {
+      this.docMedic = data['documentMedic']
+      this.establishmentId = data['establishmentCode']
+      console.log(data)
+      
+     });
+     await this.incidenceService.getIncidenceByUserId(this.userId).subscribe(
+     data => {
+       this.incidencesData = data;
+       for(let i = 0; i < this.incidencesData.length; i++) {
+         if (this.incidencesData[i].id == idIncidence){
+          this.incidence = this.incidencesData[i]
+          this.status = this.incidence['status']
+          this.topic = this.incidence['subject']
+          this.phone = this.incidence['phone']
+          this.type = this.incidence['incidenceType']
+          this.priority = this.incidence['priority']
+          this.description = this.incidence['description']
+          this.userId = this.incidence['id']
+
+          let date = new Date(this.incidence["createdAt"])
+          this.inputDate =  (date.getMonth()+1)+"-"+date.getDate()+"-"+date.getFullYear();
+          this.inputHour = date.getHours() + ":" + date.getMinutes().toString()
+          console.log(this.incidence)
+         }else {
+           console.log("not found")
+         }
+       }
+    })    
+    
+    
   }
 
   update(){
     this.http.put(`${this.baseURL}/${this.a}`,
       {
-        "establishmentId": this.centroSaludId,
+        "establishmentId": this.establishmentId,
         "status": this.status,
         "topic": this.topic,
         "phone": this.phone,

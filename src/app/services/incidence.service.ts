@@ -25,6 +25,10 @@ export class IncidenceService {
     return this.http.get(`${this.baseURL}/${id}`)
   }
 
+  getIncidenceByUserId(userId: string): Observable<any>{
+    return this.http.get(`${this.baseURL}/${userId}`)
+  }
+
   putSolution(incidencePutModel: IncidencePutModel): Observable<any>{
     return this.http.put(`${this.baseURL}/${incidencePutModel.id}`, incidencePutModel)
   }

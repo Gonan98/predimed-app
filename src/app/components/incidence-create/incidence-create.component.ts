@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-incidence-create',
@@ -19,21 +20,29 @@ export class IncidenceCreateComponent implements OnInit {
   status?: string;
   phone?: string;
   priority?: string;
-  registerType?: string;
+  incidenceType?: string;
   userId?: string;
-  docMedic = localStorage.getItem("documentMedic");
+  docMedic?: string;
+  medicData: any;
 
-  constructor(private incidenceService : IncidenceService, private http: HttpClient,private router: Router,private formBuilder: FormBuilder) {
+  constructor(private incidenceService : IncidenceService, private http: HttpClient,private router: Router,private formBuilder: FormBuilder, private authService:AuthService) {
   }
 
   ngOnInit(): void {
-    console.log(localStorage.getItem("docMedic"));
+    this.authService.getProfile().subscribe(data => {
+      this.userId = data['id']
+      this.establishmentId = data['establishmentCode']
+      this.medicData = data['documentMedic']
+    })
     this.formCreateIncidence = this.formBuilder.group({
-      saludid: ['',[Validators.required]],
-      telefono: ['',[Validators.required]],
-      asunto: ['',[Validators.required]],
+      userId: [{value: '', disabled: true},[Validators.required,]],
+      establishmentId: [{value: '', disabled: true},[Validators.required]],
+      phone: ['',[Validators.required]],
+      topic: ['',[Validators.required]],
       descripcion: ['',[Validators.required]],
-
+      status: ['',[Validators.required]],
+      priority: ['',[Validators.required]],
+      incidenceType: ['',[Validators.required]],
     });
     
   }
@@ -55,15 +64,15 @@ export class IncidenceCreateComponent implements OnInit {
         text: '¡Debe completar todos los campos requeridos!',
       })
   }else{
-    this.http.post<IncidencePostModel>('https://predimed-node.herokuapp.com/api/v1/incidences', {
+    this.http.post<IncidencePostModel>('https://predimed-node.herokuapp.com/api/v2/incidences', {
       establishmentId: this.establishmentId,
-      topic : this.topic,
+      subject : this.topic,
       description : this.description,
       status : this.status,
       phone : this.phone,
       priority : this.priority,
-      registerType: this.registerType,
-      userId : localStorage.getItem("userId")
+      incidenceType: this.incidenceType,
+      userId : 2,
     }).subscribe(data => {
         console.log(data);
     })
