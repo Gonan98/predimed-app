@@ -18,7 +18,7 @@ export class PatientDetailComponent implements OnInit {
   histories: History[];
   antecedents: Antecedent[];
   selectedHistory: History;
-  patientId: string;
+  patientId: number;
   historyIndex: number;
   antecedentType: string;
 

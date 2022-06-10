@@ -17,7 +17,7 @@ export class HistoryService {
     return this.http.post(this.baseURL, history);
   }
 
-  getHistoriesByPatient(patientId: string): Observable<any> {
+  getHistoriesByPatient(patientId: number): Observable<any> {
     return this.http.get(`${this.baseURL}?patientId=${patientId}`);
   }
 }

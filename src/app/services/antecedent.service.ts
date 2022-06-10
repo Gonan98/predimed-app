@@ -17,7 +17,7 @@ export class AntecedentService {
     return this.http.post(this.baseURL, antecedent);
   }
 
-  getAntecedentsByPatient(patientId: string): Observable<any> {
+  getAntecedentsByPatient(patientId: number): Observable<any> {
     return this.http.get(`${this.baseURL}?patient=${patientId}`);
   }
 }

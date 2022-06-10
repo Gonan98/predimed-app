@@ -1,5 +1,5 @@
 <div class="diagnostic-container">
-  <form (ngSubmit)="onSearch()" class="form-search-dni">
+  <!-- <form (ngSubmit)="onSearch()" class="form-search-dni">
     <input
       type="text"
       class="input-dni"
@@ -9,7 +9,7 @@
       [(ngModel)]="searchInput"
     />
     <button type="submit" class="btn-search-dni">Buscar</button>
-  </form>
+  </form> -->
   <app-patient-info></app-patient-info>
   <form (ngSubmit)="onAnalize()">
     <div class="diagnostic-symptom">
@@ -18,13 +18,8 @@
         <tr *ngFor="let symptom of symptoms">
           <td *ngIf="!symptom.requiredAttention">
             <div class="form-check">
-              <input
-                type="checkbox"
-                class="form-check-input"
-                [(ngModel)]="symptom.active"
-                [name]="symptom.code"
-                [disabled]="!isThereAPatient()"
-              />
+              <input type="checkbox" class="form-check-input" [(ngModel)]="symptom.active" [name]="symptom.code"
+                [disabled]="!isThereAPatient()" />
               {{ symptom.description }}
             </div>
           </td>
@@ -35,13 +30,8 @@
         <tr *ngFor="let symptom of symptoms">
           <td *ngIf="symptom.requiredAttention">
             <div class="form-check">
-              <input
-                type="checkbox"
-                class="form-check-input"
-                [(ngModel)]="symptom.active"
-                [name]="symptom.code!"
-                [disabled]="!isThereAPatient()"
-              />
+              <input type="checkbox" class="form-check-input" [(ngModel)]="symptom.active" [name]="symptom.code!"
+                [disabled]="!isThereAPatient()" />
               {{ symptom.description }}
             </div>
           </td>

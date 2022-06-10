@@ -7,19 +7,17 @@
     <div class="collapse navbar-collapse justify-content-between" id="navbarColor01">
       <ul class="navbar-nav">
         <li ngbDropdown class="nav-item dropdown">
-          <a *ngIf="isAdmin" ngbDropdownToggle class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a *ngIf="isAdmin" ngbDropdownToggle class="nav-link dropdown-toggle" id="navbarDropdownMenuLink"
+            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             Registro
           </a>
           <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item" routerLink="/dashboard">Médicos</a>
-            <a class="dropdown-item" routerLink="/crearPaciente" >Pacientes</a>
+            <a class="dropdown-item" routerLink="/crearPaciente">Pacientes</a>
           </div>
         </li>
         <li *ngIf="!isAdmin" class="nav-item">
           <a class="nav-link" routerLink="/listaPacientes" routerLinkActive="active">Pacientes</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" routerLink="/diagnostico" routerLinkActive="active">Diagnostico</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" routerLink="/referidos" routerLinkActive="active">Referidos</a>
@@ -27,7 +25,7 @@
         <li class="nav-item">
           <a class="nav-link" routerLink="/incidenciaAdmin" routerLinkActive="active">Incidencias</a>
         </li>
-        
+
       </ul>
       <div class="nav-item">
         <h5 style="color: white;">¡Bienvenido a Predimed, &nbsp; {{ name }}!</h5>

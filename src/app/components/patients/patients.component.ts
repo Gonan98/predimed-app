@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import * as moment from 'moment';
 import { Patient } from 'src/app/models/Patient';
 import { Department, District, Province } from 'src/app/models/Ubigeo';
 import { PatientService } from 'src/app/services/patient.service';
@@ -94,10 +95,31 @@ export class PatientsComponent implements OnInit {
     );
   }
 
+  getLocation(districtId: string) {    
+    this.ubigeoService.getDistrictById(districtId).subscribe(
+      data => {
+        this.patientService.patientDTO.location = data.ubigeoPeruDepartment.name + '/' + data.ubigeoPeruProvince.name + '/' + data.name;
+      },
+      console.error
+    );
+  }
+
   goDetail() {
     this.router.navigate(['/detallePaciente']);
   }
-  diagnostico() {
+  diagnostico(id: number) {
+    this.patientService.getPatientById(id).subscribe(
+      data => {
+        this.patientService.patientDTO.id = data.id;
+        this.patientService.patientDTO.fullName = data.firstName + ' ' + data.lastName;
+        this.patientService.patientDTO.documentNumber = data.documentNumber;
+        this.patientService.patientDTO.gender = data.gender === 'M' ? 'MASCULINO' : 'FEMENINO';
+        this.patientService.patientDTO.age = moment(data.birthdate, "YYYY-MM-DD").fromNow().substring(0,2);
+        this.patientService.patientDTO.address = data.address;
+        this.getLocation(data.ubigeoId);
+      },
+      console.error
+    );
     this.router.navigate(['/diagnostico']);
   }
 }

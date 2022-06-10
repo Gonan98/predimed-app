@@ -27,7 +27,7 @@ export class PatientService {
         return this.http.get(this.baseURL);
     }
     
-    getPatientById(id: string): Observable<any> {
+    getPatientById(id: number): Observable<any> {
         return this.http.get(`${this.baseURL}/${id}`);
     }
 }
