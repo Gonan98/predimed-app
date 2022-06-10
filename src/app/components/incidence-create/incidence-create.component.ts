@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import Swal from 'sweetalert2';
 import { AuthService } from 'src/app/services/auth.service';
+import { environment } from 'src/environments/environment';
 
 //small change
 
@@ -66,7 +67,7 @@ export class IncidenceCreateComponent implements OnInit {
         text: '¡Debe completar todos los campos requeridos!',
       })
   }else{
-    this.http.post<IncidencePostModel>('https://predimed-node.herokuapp.com/api/v2/incidences', {
+    this.http.post<IncidencePostModel>(`${environment.API_URL}/incidences`, {
       establishmentId: this.establishmentId,
       subject : this.topic,
       description : this.description,
