@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
         (data) => {
           localStorage.setItem('token', data.token);
           this.authService.isAdmin = data.isAdmin;
-          data.isAdmin ? this.router.navigate(['/dashboard']) : this.router.navigate(['/diagnostico'])
+          data.isAdmin ? this.router.navigate(['/dashboard']) : this.router.navigate(['/listaPacientes'])
         },
         (err) => alert(err.message)
       );

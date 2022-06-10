@@ -17,7 +17,7 @@ import { PatientDetailComponent } from './components/patient-detail/patient-deta
 import { PatientsComponent } from './components/patients/patients.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'diagnostico', pathMatch: 'full' },
+  { path: '', redirectTo: 'listaPacientes', pathMatch: 'full' },
   { path: 'login', component: LoginComponent },
   { path: 'diagnostico', component: DiagnosticComponent, canActivate: [AuthGuard] },
   { path: 'analizar', component: AnalyzeComponent, canActivate: [AuthGuard]},
