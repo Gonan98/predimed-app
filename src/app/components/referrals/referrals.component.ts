@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import Swal from 'sweetalert2';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import { DialogProcessComponent} from '../dialog-process/dialog-process.component';
@@ -14,6 +14,7 @@ import { DiagnosticService } from 'src/app/services/diagnostic.service';
 import { DialogExamComponent } from '../dialog-exam/dialog-exam.component';
 import { LabExam } from 'src/app/models/LabExam';
 import { MatTableDataSource } from '@angular/material/table';
+import { ReferredService } from 'src/app/services/referred.service';
 
 export interface ProcessElement {
   code: string;
@@ -42,8 +43,8 @@ const ELEMENT_DATA1: LaboratoryExam[] = [
 })
 
 
-export class ReferralsComponent implements OnInit {
-  public formAnamnesis!: FormGroup;
+export class ReferralsComponent implements OnInit, OnDestroy {
+  public form!: FormGroup;
 
   displayedColumns: string[] = ['code', 'description'];
   displayedColumns1: string[] = ['description'];
@@ -68,27 +69,23 @@ export class ReferralsComponent implements OnInit {
   destinyEstablishments: Establishment[] = [];
   code: number = 0;
   referred: Referred = new Referred();
+  isRefDataEnabled: boolean = true;
 
   constructor(
     public dialog: MatDialog,
     private estableishmentService: EstableishmentService,
     public router: Router,
     private formBuilder: FormBuilder,
-    public diagnosticService: DiagnosticService
+    public diagnosticService: DiagnosticService,
+    public referredService: ReferredService
+    
   ) {
+    this.isRefDataEnabled = referredService.getReferredSelected()
     this.sourceEstablishment = new Establishment();
   }
 
   ngOnInit(): void {
-    this.formAnamnesis = this.formBuilder.group({
-      temperatura: ['',[Validators.required]],
-      pa: ['',[Validators.required]],
-      fc: ['',[Validators.required]],
-      fr: ['',[Validators.required]],
-      peso: ['',[Validators.required]],
-      altura: ['',[Validators.required]],
-
-    });
+    
 
     this.estableishmentService.getCurrentEstablishment().subscribe(
       data => {
@@ -101,6 +98,23 @@ export class ReferralsComponent implements OnInit {
       data => this.destinyEstablishments = data,
       err => console.error(err)
     );
+
+    this.form = this.formBuilder.group({
+      destinyEstablishmentControl: [{value: '', disabled: !this.isRefDataEnabled},[Validators.required]],
+      destinyService: [{value: '', disabled: !this.isRefDataEnabled}],
+      speciality: [{value: '', disabled: !this.isRefDataEnabled}],
+      temperatura: ['',[Validators.required]],
+      pa: ['',[Validators.required]],
+      fc: ['',[Validators.required]],
+      fr: ['',[Validators.required]],
+      peso: ['',[Validators.required]],
+      altura: ['',[Validators.required]],
+    });
+  }
+
+  ngOnDestroy(): void {
+    console.log("DESTROYING")
+    this.referredService.setReferredSelected(true)
   }
 
   onDestinyEstablishmentChange(code: string) {
@@ -184,6 +198,13 @@ export class ReferralsComponent implements OnInit {
   }
 
   onSend(){
+
+    if (this.isRefDataEnabled === true) {
+      this.referred.destinyEstablishmentCode = this.form.value.destinyEstablishmentControl
+      this.referred.specialtyCode = this.form.value.speciality
+      //this.referredService.saveReference()
+    }
+
     Swal.fire({
       position: 'center',
       icon: 'success',

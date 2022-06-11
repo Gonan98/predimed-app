@@ -9,7 +9,6 @@ import { NeuralNetwork, Neuron } from '../models/NN';
   providedIn: 'root'
 })
 export class DiagnosticService {
-
   private URL = `${environment.API_URL}/diagnostic`;
   response: NeuralNetwork;
   disease: Disease;
