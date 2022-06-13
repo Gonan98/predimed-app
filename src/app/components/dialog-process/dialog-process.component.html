@@ -17,16 +17,16 @@
             </ng-container>
         
             <!-- Name Column -->
-            <ng-container matColumnDef="Descrpción">
+            <ng-container matColumnDef="Descripción">
                 <th mat-header-cell *matHeaderCellDef> descripción</th>
-                <td mat-cell *matCellDef="let element"> {{element.description}} </td>
+                <td mat-cell *matCellDef="let element"> {{element.serviceName}} </td>
             </ng-container>
         
             <!-- Symbol Column -->
             <ng-container matColumnDef="Acciones">
                 <th mat-header-cell *matHeaderCellDef> Acciones </th>
                 <td mat-cell *matCellDef="let element"> 
-                    <button mat-stroked-button [mat-dialog-close]="element.description" (click)="onView(element.idIncidence)">Agregar</button>
+                    <button mat-stroked-button [mat-dialog-close]="element.serviceName" (click)="onView(element.code)">Agregar</button>
                 </td>
             </ng-container>
         

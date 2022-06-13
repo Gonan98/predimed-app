@@ -83,6 +83,7 @@ export class DiagnosticComponent implements OnInit {
         res => {
           this.diagnosticService.response = res;
           this.symptomService.activeSymptoms = this.symptoms.filter(s => s.active);
+          localStorage.setItem("patientId", this.patientService.patientDTO.id.toString());
           this.router.navigate(['/analizar']);
         },
         console.error

@@ -3,7 +3,7 @@ body{
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 91.5%;
+  height: auto;
 }
 
 .layouts{
@@ -32,6 +32,7 @@ body{
 table {
   width: 100%;
   background-color: #ECF4FC;
+  margin-bottom: 50px;
 }
 
 .mat-form-field {

@@ -40,9 +40,9 @@ export class AnalyzeComponent implements OnInit {
   }
 
   getDisease() {
-    this.diseaseService.getDiseaseById(this.diagnosticService.response.maxOutput.name).subscribe(
-      data => this.diagnosticService.disease = data,
-      console.error
+    this.diseaseService.getDiseaseById(this.diagnosticService.response.maxOutput.name).subscribe(data => {
+        this.diagnosticService.disease = data
+      }
     );
   }
 
