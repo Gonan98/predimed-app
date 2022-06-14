@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
+import { ServiceService } from 'src/app/services/service.service';
 
 export interface PeriodicElement {
   code: string;
@@ -20,14 +21,17 @@ const ELEMENT_DATA: PeriodicElement[] = [
   styleUrls: ['./dialog-process.component.css']
 })
 export class DialogProcessComponent implements OnInit {
-
-  constructor() { }
+  dataSource: any;
+  constructor(private serviceService: ServiceService) { }
 
   ngOnInit(): void {
+    this.serviceService.getServices().subscribe(data => {
+      this.dataSource = data
+      console.log(this.dataSource)
+    })
   }
 
-  displayedColumns: string[] = ['Código', 'Descrpción', 'Acciones'];
-  dataSource = new MatTableDataSource(ELEMENT_DATA);
+  displayedColumns: string[] = ['Código', 'Descripción', 'Acciones']
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value;

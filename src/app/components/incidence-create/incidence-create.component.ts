@@ -75,7 +75,7 @@ export class IncidenceCreateComponent implements OnInit {
       phone : this.phone,
       priority : this.priority,
       incidenceType: this.incidenceType,
-      userId : 2,
+      userId : this.userId,
     }).subscribe(data => {
         console.log(data);
     })

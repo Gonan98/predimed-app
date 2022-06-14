@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="container-forms">
-      <form [formGroup]="formAnamnesis" class="info-container">
+      <form [formGroup]="form" class="info-container">
         <section class="column-1">
           <h4 class="title-section">Datos de Referencia</h4>
           <div class="datos-referencia">
@@ -28,7 +28,7 @@
               <label>Establecimiento Destino:</label>
               <div class="origin-establecimiento">
                 <select #selectElem name="destinyEstablishment" [(ngModel)]="referred.destinyEstablishmentCode"
-                  (change)="onDestinyEstablishmentChange(selectElem.value)">
+                  (change)="onDestinyEstablishmentChange(selectElem.value)" [disabled]="!isRefDataEnabled" formControlName="destinyEstablishmentControl">
                   <option *ngFor="let destinyEstablishment of destinyEstablishments"
                     [value]="destinyEstablishment.code">
                     {{ destinyEstablishment.name }}
@@ -39,7 +39,7 @@
             <div class="line-start">
               <label>Sevicio de Destino</label>
               <div class="origin-establecimiento">
-                <select name="destinyService" [(ngModel)]="referred.destinyServiceCode"
+                <select name="destinyService" [(ngModel)]="referred.destinyServiceCode" formControlName="destinyService"
                   [disabled]="!referred.destinyEstablishmentCode">
                   <option *ngFor="let destinyService of destinyServices" [value]="destinyService.code">
                     {{ destinyService.destinyServiceName }}
@@ -50,7 +50,7 @@
             <div class="line-start">
               <label>Especialidad</label>
               <div class="origin-establecimiento">
-                <select name="specialty" [(ngModel)]="referred.specialtyCode"
+                <select name="specialty" [(ngModel)]="referred.specialtyCode" formControlName="speciality"
                   [disabled]="!referred.destinyEstablishmentCode">
                   <option *ngFor="let specialty of specialties" [value]="specialty.code">
                     {{ specialty.specialtyName }}
@@ -77,7 +77,7 @@
           <div *ngIf="isShownAnamnesis" class="anamnesis-fisico">
             <h4 class="title-section">Anamnesis</h4>
             Resumen Anamnesis
-            <textarea rows="4">Paciente lego con 6 días de fiebre, presenta dolores musculares.</textarea>
+            <textarea rows="4" id="anamnesisResume">Paciente lego con 6 días de fiebre, presenta dolores musculares.</textarea>
             Examen Físico:
             <div class="anamnesis-form" errorTailor>
               <div class="line">
@@ -113,7 +113,7 @@
             </div>
             Resumen Examen Físico
 
-            <textarea rows="2">Hinchazón de las piernas</textarea>
+            <textarea rows="2" id="examResume">Hinchazón de las piernas</textarea>
           </div>
           <div *ngIf="isShownDiagnostic" class="diagnostic-help">
             <div class="t-container">

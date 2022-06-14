@@ -1,4 +1,4 @@
-import { Component, OnInit, Inject } from '@angular/core';
+import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
 import Swal from 'sweetalert2';
 import {MatDialog, MatDialogConfig} from '@angular/material/dialog';
 import { DialogProcessComponent} from '../dialog-process/dialog-process.component';
@@ -14,6 +14,13 @@ import { DiagnosticService } from 'src/app/services/diagnostic.service';
 import { DialogExamComponent } from '../dialog-exam/dialog-exam.component';
 import { LabExam } from 'src/app/models/LabExam';
 import { MatTableDataSource } from '@angular/material/table';
+import { ReferredService } from 'src/app/services/referred.service';
+import { Reference } from '@angular/compiler/src/render3/r3_ast';
+import { environment } from 'src/environments/environment';
+import { HttpClient } from '@angular/common/http';
+import { AuthService } from 'src/app/services/auth.service';
+import { History } from 'src/app/models/History';
+import { ServiceService } from 'src/app/services/service.service';
 
 export interface ProcessElement {
   code: string;
@@ -24,7 +31,7 @@ export interface LaboratoryExam {
   description: string;
 }
 
-const ELEMENT_DATA: ProcessElement[] = [
+let ELEMENT_DATA: ProcessElement[] = [
   {code: '001', description: 'Cirugía General'},
   {code: '002', description: 'Cirugía Especial'},
   {code: '003', description: 'Cardiología'},
@@ -42,8 +49,8 @@ const ELEMENT_DATA1: LaboratoryExam[] = [
 })
 
 
-export class ReferralsComponent implements OnInit {
-  public formAnamnesis!: FormGroup;
+export class ReferralsComponent implements OnInit, OnDestroy {
+  public form!: FormGroup;
 
   displayedColumns: string[] = ['code', 'description'];
   displayedColumns1: string[] = ['description'];
@@ -68,27 +75,33 @@ export class ReferralsComponent implements OnInit {
   destinyEstablishments: Establishment[] = [];
   code: number = 0;
   referred: Referred = new Referred();
+  isRefDataEnabled: boolean = true;
+
+  userId?: string;
+  reason?: string;
 
   constructor(
     public dialog: MatDialog,
     private estableishmentService: EstableishmentService,
     public router: Router,
     private formBuilder: FormBuilder,
-    public diagnosticService: DiagnosticService
+    public diagnosticService: DiagnosticService,
+    public referredService: ReferredService,
+    private http: HttpClient,
+    private authService: AuthService,
+    private serviceService: ServiceService
   ) {
+    this.isRefDataEnabled = referredService.getReferredSelected()
     this.sourceEstablishment = new Establishment();
+    console.log(document.getElementById("reasonText")?.textContent ?? null)
   }
 
   ngOnInit(): void {
-    this.formAnamnesis = this.formBuilder.group({
-      temperatura: ['',[Validators.required]],
-      pa: ['',[Validators.required]],
-      fc: ['',[Validators.required]],
-      fr: ['',[Validators.required]],
-      peso: ['',[Validators.required]],
-      altura: ['',[Validators.required]],
-
-    });
+    this.authService.getProfile().subscribe(data => {
+      this.userId = data['id']
+      //this.establishmentId = data['establishmentCode']
+      //this.medicData = data['documentMedic']
+    })
 
     this.estableishmentService.getCurrentEstablishment().subscribe(
       data => {
@@ -101,10 +114,32 @@ export class ReferralsComponent implements OnInit {
       data => this.destinyEstablishments = data,
       err => console.error(err)
     );
+
+    this.form = this.formBuilder.group({
+      destinyEstablishmentControl: [{value: '', disabled: !this.isRefDataEnabled},[Validators.required]],
+      destinyService: [{value: '', disabled: !this.isRefDataEnabled}],
+      speciality: [{value: '', disabled: !this.isRefDataEnabled}],
+      temperatura: ['',[Validators.required]],
+      pa: ['',[Validators.required]],
+      fc: ['',[Validators.required]],
+      fr: ['',[Validators.required]],
+      peso: ['',[Validators.required]],
+      altura: ['',[Validators.required]],
+    });
+  }
+
+  ngOnDestroy(): void {
+    console.log("DESTROYING")
+    this.referredService.setReferredSelected(true)
+    console.log(document.getElementById("anamnesisResume")?.textContent)
   }
 
   onDestinyEstablishmentChange(code: string) {
-    console.log(code)
+    //console.log(code)
+    console.log("Pinga", 
+    this.sourceEstablishment.code,
+    this.form.value.destinyEstablishmentControl,
+    this.form.value.destinyService,)
     let index = parseInt(code);
     console.log(index);
     this.estableishmentService.getEstablishmentDestinyServices(index).subscribe(
@@ -133,7 +168,7 @@ export class ReferralsComponent implements OnInit {
   }
 
 
-  addProcedimiento(){ 
+  async addProcedimiento(){ 
     let dialogRef = this.dialog.open(DialogProcessComponent, {
       disableClose: false,
       hasBackdrop: true,
@@ -145,17 +180,22 @@ export class ReferralsComponent implements OnInit {
       },
       panelClass:'makeItMiddle',
   });
-    dialogRef.afterClosed().subscribe(result => {
+    await dialogRef.afterClosed().subscribe(async result => {
       let newElement: ProcessElement = {code: '000', description: 'None'};
       if (result != '') {
-        let newDatasource = this.dataSource;
-        for(let i = 0; i < ELEMENT_DATA.length; i++) {
-          if (ELEMENT_DATA[i].description == result) {
-            newElement = ELEMENT_DATA[i]
+        let newDatasource: any;
+        await this.serviceService.getServices().subscribe(data => {
+          newDatasource = data
+          for(let i = 0; i < newDatasource.length; i++) {
+            if (newDatasource[i].serviceName == result) {
+              newElement.code = newDatasource[i].code
+              newElement.description = newDatasource[i].serviceName 
           }
         }
-        newDatasource.push(newElement); 
-        this.dataSource = [...newDatasource]
+          newDatasource.push(newElement); 
+          this.dataSource = [newElement]
+      })
+       
       };
       
     }) 
@@ -184,6 +224,52 @@ export class ReferralsComponent implements OnInit {
   }
 
   onSend(){
+    console.log("Is data enabled?: ", this.isRefDataEnabled)
+    if (this.isRefDataEnabled === true) {
+        if (this.validateReference() == true) {
+          this.http.post<Referred>(`${environment.API_URL}/referred`, {
+                    reason: document.getElementById("reasonText")?.textContent,
+                    userId : this.userId,
+                    sourceEstablishmentCode :  this.sourceEstablishment.code,
+                    destinyEstablishmentCode : this.form.value.destinyEstablishmentControl,
+                    destinyServiceCode: this.form.value.destinyService,
+                    serviceCode : this.dataSource[0].code,
+                    specialtyCode: this.form.value.speciality,
+                    patientId : parseInt(localStorage.getItem("patientId") ?? "1"),
+                    diseaseCode: this.diagnosticService.disease.code,
+                }).subscribe(data => {
+                    console.log(data);
+                })
+
+          if (this.validateAmnesis() == true) {
+            this.http.post<History>(`${environment.API_URL}/histories`, {
+              weight: parseInt(this.form.value.peso), 
+              height: parseInt(this.form.value.altura), 
+              pressure:parseInt(this.form.value.pa), 
+              temperature:parseInt(this.form.value.temperatura),
+              heartRate: parseInt(this.form.value.fc),
+              respirationRate: parseInt(this.form.value.fr),
+              anamnesis: document.getElementById("anamnesisResume")?.textContent,
+              examSummary: document.getElementById("examResume")?.textContent,
+              patientId: parseInt(localStorage.getItem("patientId") ?? "1"),
+          }).subscribe(response => console.log(response));
+                }
+        }
+    } else {
+      if (this.validateAmnesis() == true) {
+      this.http.post<History>(`${environment.API_URL}/histories`, {
+        weight: parseInt(this.form.value.peso), 
+        height: parseInt(this.form.value.altura), 
+        pressure:parseInt(this.form.value.pa), 
+        temperature:parseInt(this.form.value.temperatura),
+        heartRate: parseInt(this.form.value.fc),
+        respirationRate: parseInt(this.form.value.fr),
+        anamnesis: document.getElementById("anamnesisResume")?.textContent,
+        examSummary: document.getElementById("examResume")?.textContent,
+        patientId: parseInt(localStorage.getItem("patientId") ?? "1"),
+    }).subscribe(response => console.log(response));
+    }
+    }
     Swal.fire({
       position: 'center',
       icon: 'success',
@@ -192,6 +278,30 @@ export class ReferralsComponent implements OnInit {
       timer: 1500
     })
   }
+
+  validateAmnesis() {
+    return parseInt(this.form.value.peso) != null && 
+    parseInt(this.form.value.pa) != null &&
+    parseInt(this.form.value.temperatura) != null && 
+    parseInt(this.form.value.fc)!= null && 
+    parseInt(this.form.value.fr) != null && 
+    document.getElementById("anamnesisResume")?.textContent != null && 
+    parseInt(localStorage.getItem("patientId") ?? "1") != null &&
+    document.getElementById("examResume")?.textContent != null && 
+    parseInt(this.form.value.altura) != null
+  }
+
+  validateReference() {
+    return document.getElementById("reasonText")?.textContent != "" && 
+    this.userId != null &&
+    this.sourceEstablishment.code != null && 
+    this.form.value.destinyService != null && 
+    this.dataSource[0].code != null && 
+    this.form.value.speciality != null && 
+    parseInt(localStorage.getItem("patientId") ?? "1") != null &&
+    this.diagnosticService.disease.code != null
+  }
+
   onBack(){
     this.router.navigate(['/analizar']);
   }
