@@ -1,16 +1,6 @@
 <div class="referrals-container">
   <app-patient-info></app-patient-info>
   <div class="main-container">
-    <div class="container-buttons">
-      <div class="row-btns">
-        <button (click)="toggleShowAnamnesis()" type="checkbox" class="buttons-anam">
-          Anamnesis / Fisico
-        </button>
-        <button (click)="toggleDiagnostic()" type="checkbox" class="buttons-anam">
-          Apoyo al Diagnostico
-        </button>
-      </div>
-    </div>
     <div class="container-forms">
       <form [formGroup]="form" class="info-container">
         <section class="column-1">
@@ -74,6 +64,16 @@
           </div>
         </section>
         <section class="column-2">
+          <div class="container-buttons">
+            <div class="row-btns">
+              <button (click)="toggleShowAnamnesis()" type="checkbox" class="buttons-anam">
+                Anamnesis / Fisico
+              </button>
+              <button (click)="toggleDiagnostic()" type="checkbox" class="buttons-anam">
+                Apoyo al Diagnostico
+              </button>
+            </div>
+          </div>
           <div *ngIf="isShownAnamnesis" class="anamnesis-fisico">
             <h4 class="title-section">Anamnesis</h4>
             Resumen Anamnesis

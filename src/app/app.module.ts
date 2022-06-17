@@ -36,6 +36,7 @@ import { HistoryComponent } from './components/history/history.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PatientDetailComponent } from './components/patient-detail/patient-detail.component';
 import { PatientsComponent } from './components/patients/patients.component';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
 
 @NgModule({
   declarations: [
@@ -72,6 +73,7 @@ import { PatientsComponent } from './components/patients/patients.component';
     MatFormFieldModule,
     MatInputModule,
     MatButtonModule,
+    MatPaginatorModule,
     NgbModule,
     SweetAlert2Module.forRoot(),
     NgCircleProgressModule.forRoot(),
