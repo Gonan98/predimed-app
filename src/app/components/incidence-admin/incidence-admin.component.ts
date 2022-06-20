@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { Router } from '@angular/router';
 import { Incidence } from 'src/app/models/Incidence';
@@ -13,19 +14,27 @@ import { IncidenceService } from 'src/app/services/incidence.service';
   styleUrls: ['./incidence-admin.component.css']
 })
 
-export class IncidenceAdminComponent implements OnInit {
+export class IncidenceAdminComponent implements OnInit, AfterViewInit {
 
   docMedic: string = '';
   incidences: Incidence[] = [];
-  dataSource: any; 
+  dataSource = new MatTableDataSource<any>();
   
+  @ViewChild(MatPaginator) paginator: MatPaginator = new MatPaginator(new MatPaginatorIntl(), ChangeDetectorRef.prototype);
+
   constructor(private router: Router, private incidenceService : IncidenceService, private authService: AuthService) {
+  }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => this.dataSource.paginator = this.paginator);
   }
 
   ngOnInit(): void {
     this.incidenceService.getIncidences().subscribe(data => {
       console.log(data);
-      this.dataSource = data;
+      this.dataSource = new MatTableDataSource([...data]);
+      this.dataSource.paginator = this.paginator
+      //this.dataSource = data;
       console.log(this.incidences);
     }
     );

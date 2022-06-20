@@ -1,10 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
 import {MatTableDataSource} from '@angular/material/table';
 import { Router } from '@angular/router';
 import { AnonymousSubject } from 'rxjs/internal/Subject';
 import { Referred } from 'src/app/models/Referred';
 import { PatientService } from 'src/app/services/patient.service';
 import { ReferredService } from 'src/app/services/referred.service';
+import {MatPaginator, MatPaginatorIntl} from '@angular/material/paginator';
 
 export interface PeriodicElement {
   patient: string;
@@ -27,44 +28,54 @@ const ELEMENT_DATA: PeriodicElement[] = [
   templateUrl: './referred.component.html',
   styleUrls: ['./referred.component.css']
 })
-export class ReferredComponent implements OnInit {
 
+export class ReferredComponent implements OnInit, AfterViewInit  {
   referred: Referred[] = [];
   data: any;
-  dataSource: any;
+  dataSource = new MatTableDataSource<any>();
   patients: any;
+  patient: any
+
+  @ViewChild(MatPaginator) paginator: MatPaginator = new MatPaginator(new MatPaginatorIntl(), ChangeDetectorRef.prototype);
+
   constructor(private router: Router, private referredService: ReferredService, private patientService: PatientService) { }
+  
+  ngAfterViewInit(): void {
+    setTimeout(() => this.dataSource.paginator = this.paginator);
+
+  }
 
   ngOnInit() {
-  this.referredService.getReferences().subscribe( data => {
-      this.data = data;
+    this.referredService.getReferences().subscribe( data => {
+        this.data = data;
 
-      this.patientService.getAllPatients().subscribe(patients => {
-        
-        this.patients = patients 
-        let elementArray: { id: any; patient: string; dni: any; }[] = []
-
-        for (let i = 0; i < this.data.length; i++) {
-          for (let j = 0; i < this.data.length; i++) { 
-            
-            if (this.data[i].patientId === this.patients[j].id) {
-              console.log("true")
-              let element = {
-            "id": this.data[i].id,
-            "patient": this.patients[j].firstName + ' ' + this.patients[j].lastName,
-            "dni": this.patients[j].documentNumber,
-          };
+        this.patientService.getAllPatients().subscribe(patients => {
           
-          elementArray.push(element);
-          this.dataSource = [...elementArray];
-        }
+          this.patients = patients 
+          let elementArray: { id: any; patient: string; dni: any; }[] = []
+
+          for (let i = 0; i < this.data.length; i++) {
+            let patientId = this.data[i].patientId
+
+            for (let j = 0; j < this.patients.length; j++) { 
+              if (patients[j].id == patientId) {
+                this.patient = patients[j]
+              }
+            }
+            
+            let element = {
+              "id": this.data[i].id,
+              "patient": this.patient.firstName + ' ' + this.patient.lastName,
+              "dni": this.patient.documentNumber,
+            };
+        
+            elementArray.push(element);
+            this.dataSource = new MatTableDataSource([...elementArray]);
+            this.dataSource.paginator = this.paginator
           }
-        }
-      })
-     
+            })
+        });
     }
-    );
-  }
 
   displayedColumns: string[] = ['position', 'name', 'weight', 'symbol'];
 

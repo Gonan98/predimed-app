@@ -3,19 +3,19 @@
         <h3>Registro de Incidencia</h3>
         <div class="elements-row">
             <div class="element-container">
-                <label class="label-content">Doc Medico</label>
-                <input type="text" class="input" [(ngModel)]="userId" formControlName="userId">
+                <label class="label-content">Medico</label>
+                <input type="text" class="input" [(ngModel)]="medicName" formControlName="medicName">
             </div>
             <div class="element-container">
-                <label class="label-content">Centro Salud Id</label>
-                <input type="number" class="input" [(ngModel)]="establishmentId" formControlName="establishmentId">
+                <label class="label-content">Centro Salud</label>
+                <input type="text" class="input" [(ngModel)]="establishmentName" formControlName="establishmentName">
             </div>
             <div class="element-container">
                 <label class="label-content">Estado</label>
                 <select class="combo" class="input" [(ngModel)]="status" formControlName="status">
-                    <option value="Select">Buscar elemento</option>
+                    <option value="" selected disabled hidden>Buscar elemento</option>
                     <option value="Nuevo">Nuevo</option>
-                    <option value="PENDIENTE">PENDIENTE</option>
+                    <option value="PENDIENTE">Pendiente</option>
                 </select>
             </div>
         </div>
@@ -27,16 +27,18 @@
             <div class="element-container">
                 <label class="label-content">Tipo de Registro</label>
                 <select class="combo" class="input" [(ngModel)]="incidenceType" formControlName="incidenceType"> 
-                    <option value="Select">Buscar Elemento</option>
+                    <option value="" selected disabled hidden>Buscar Elemento</option>
                     <option value="Requerimiento">Requerimiento</option>
                 </select>
             </div>
             <div class="element-container">
                 <label class="label-content">Prioridad</label>
                 <select class="combo" class="input" [(ngModel)]="priority" formControlName="priority">
-                    <option value="Select">Buscar Elemento</option>
+
+                    <option value="" selected disabled hidden>Buscar Elemento</option>
                     <option value="Alta">Alta</option>
                     <option value="Media">Media</option>
+                    
                 </select>
             </div>
         </div>

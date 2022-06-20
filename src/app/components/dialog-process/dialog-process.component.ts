@@ -27,7 +27,6 @@ export class DialogProcessComponent implements OnInit {
   ngOnInit(): void {
     this.serviceService.getServices().subscribe(data => {
       this.dataSource = data
-      console.log(this.dataSource)
     })
   }
 

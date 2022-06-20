@@ -12,6 +12,15 @@ h3{
     font-weight: bold;
 }
 
+.cancel-btn {
+    background-color: #946675 !important; 
+    border: none;
+    color: white !important;
+}
+.confirm-btn {
+    background-color: #04578B !important;
+    color:  #A8F5F2 !important;
+}
 .container{
     display: flex;
     flex-direction: column;
@@ -54,6 +63,22 @@ h3{
 textarea {
     padding: 10px;
 }
+
+.establishment-input {
+    width: 100%;
+}
+
+.update-btns {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.update-btns button {
+    margin-left: 1rem;
+    margin-right: 1rem;
+}
+
 
 .telefono-container{
     width: 23%;
