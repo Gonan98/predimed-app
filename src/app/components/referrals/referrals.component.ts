@@ -78,6 +78,8 @@ export class ReferralsComponent implements OnInit, OnDestroy {
   userId?: string;
   reason?: string;
 
+  numberRegEx = '/^[0-9]+$/';
+
   constructor(
     public dialog: MatDialog,
     private estableishmentService: EstableishmentService,
@@ -121,7 +123,7 @@ export class ReferralsComponent implements OnInit, OnDestroy {
       destinyService: [{ value: '', disabled: !this.isRefDataEnabled }],
       speciality: [{ value: '', disabled: !this.isRefDataEnabled }],
       temperatura: ['', [Validators.required]],
-      pa: ['', [Validators.required]],
+      pa: ['', [Validators.required, Validators.pattern(this.numberRegEx)]],
       fc: ['', [Validators.required]],
       fr: ['', [Validators.required]],
       peso: ['', [Validators.required]],
@@ -136,13 +138,6 @@ export class ReferralsComponent implements OnInit, OnDestroy {
   }
 
   onDestinyEstablishmentChange(code: string) {
-    //console.log(code)
-    console.log(
-      'Pinga',
-      this.sourceEstablishment.code,
-      this.form.value.destinyEstablishmentControl,
-      this.form.value.destinyService
-    );
     let index = parseInt(code);
     console.log(index);
     this.estableishmentService.getEstablishmentDestinyServices(index).subscribe(
@@ -224,9 +219,17 @@ export class ReferralsComponent implements OnInit, OnDestroy {
   }
 
   onSend() {
+    let isAnamnesisReady = false;
+    let isReferenceReady = false;
     console.log('Is data enabled?: ', this.isRefDataEnabled);
     if (this.isRefDataEnabled === true) {
       if (this.validateReference() == true) {
+        isReferenceReady = true;
+      }
+      if (this.validateAmnesis() == true) {
+        isAnamnesisReady = true;
+      }
+      if (isReferenceReady && isAnamnesisReady) {
         this.http
           .post<Referred>(`${environment.API_URL}/referred`, {
             reason: document.getElementById('reasonText')?.textContent,
@@ -244,25 +247,39 @@ export class ReferralsComponent implements OnInit, OnDestroy {
             console.log(data);
           });
 
-        if (this.validateAmnesis() == true) {
-          this.http
-            .post<History>(`${environment.API_URL}/histories`, {
-              weight: parseInt(this.form.value.peso),
-              height: parseInt(this.form.value.altura),
-              pressure: parseInt(this.form.value.pa),
-              temperature: parseInt(this.form.value.temperatura),
-              heartRate: parseInt(this.form.value.fc),
-              respirationRate: parseInt(this.form.value.fr),
-              anamnesis:
-                document.getElementById('anamnesisResume')?.textContent,
-              examSummary: document.getElementById('examResume')?.textContent,
-              patientId: parseInt(localStorage.getItem('patientId') ?? '1'),
-            })
-            .subscribe((response) => {
-              console.log(response);
-              this.router.navigate(['/referidos']);
+        this.http
+          .post<History>(`${environment.API_URL}/histories`, {
+            weight: parseInt(this.form.value.peso),
+            height: parseInt(this.form.value.altura),
+            pressure: parseInt(this.form.value.pa),
+            temperature: parseInt(this.form.value.temperatura),
+            heartRate: parseInt(this.form.value.fc),
+            respirationRate: parseInt(this.form.value.fr),
+            anamnesis: document.getElementById('anamnesisResume')?.textContent,
+            examSummary: document.getElementById('examResume')?.textContent,
+            patientId: parseInt(localStorage.getItem('patientId') ?? '1'),
+          })
+          .subscribe((response) => {
+            console.log(response);
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Referencia enviada con éxito',
+              showConfirmButton: false,
+              timer: 1500,
             });
-        }
+            this.router.navigate(['/referidos']);
+          });
+      } else {
+        console.log('Refence ready?: ', isReferenceReady);
+        console.log('Anamnesis ready?: ', isAnamnesisReady);
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Formulario de referencia y/o anamesis fallaron',
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
     } else {
       if (this.validateAmnesis() == true) {
@@ -280,36 +297,49 @@ export class ReferralsComponent implements OnInit, OnDestroy {
           })
           .subscribe((response) => {
             console.log(response);
+            Swal.fire({
+              position: 'center',
+              icon: 'success',
+              title: 'Referencia enviada con éxito',
+              showConfirmButton: false,
+              timer: 1500,
+            });
             this.router.navigate(['/referidos']);
           });
+      } else {
+        Swal.fire({
+          position: 'center',
+          icon: 'error',
+          title: 'Formulario de referencia y/o anamesis fallaron',
+          showConfirmButton: false,
+          timer: 1500,
+        });
       }
     }
-    Swal.fire({
-      position: 'center',
-      icon: 'success',
-      title: 'Referencia enviada con éxito',
-      showConfirmButton: false,
-      timer: 1500,
-    });
   }
 
   validateAmnesis() {
+    console.log(document.getElementById('anamnesisResume')?.textContent);
+    console.log(document.getElementById('examResume')?.textContent);
     return (
       parseInt(this.form.value.peso) != null &&
       parseInt(this.form.value.pa) != null &&
       parseInt(this.form.value.temperatura) != null &&
       parseInt(this.form.value.fc) != null &&
       parseInt(this.form.value.fr) != null &&
-      document.getElementById('anamnesisResume')?.textContent != null &&
+      (document.getElementById('anamnesisResume')?.textContent != null ||
+        document.getElementById('anamnesisResume')?.textContent != undefined) &&
       parseInt(localStorage.getItem('patientId') ?? '1') != null &&
-      document.getElementById('examResume')?.textContent != null &&
+      (document.getElementById('examResume')?.textContent != null ||
+        document.getElementById('examResume')?.textContent != undefined) &&
       parseInt(this.form.value.altura) != null
     );
   }
 
   validateReference() {
     return (
-      document.getElementById('reasonText')?.textContent != '' &&
+      (document.getElementById('reasonText')?.textContent != '' ||
+        document.getElementById('reasonText')?.textContent != undefined) &&
       this.userId != null &&
       this.sourceEstablishment.code != null &&
       this.form.value.destinyService != null &&

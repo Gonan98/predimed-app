@@ -8,39 +8,39 @@
             </div>
             <div class="element-container">
                 <label>Centro de Salud</label>
-                <input disabled [value]="establishmentId">
+                <input disabled [value]="establishmentName" class="establishment-input">
             </div>
             <div class="element-container">
                 <label>Estado</label>
-                <input disabled [value]="status">
+                <input [disabled]="isDisabled" [(ngModel)]="status" [value]="status">
             </div>
         </div>
         <div class="elements-row">
             <div class="asunto-container">
                 <label>Asunto: </label>
-                <input class="asunto" disabled [value]="topic">
+                <input class="asunto" [disabled]="isDisabled" [(ngModel)]="topic" [value]="topic">
             </div>
             <div class="telefono-container">
                 <label>Teléfono</label>
-                <input class="telefono" disabled [value]="phone">
+                <input class="telefono" [disabled]="isDisabled" [(ngModel)]="phone" [value]="phone">
             </div>
         </div>
         <div>
             <label>Descripción de Incidencia</label>
             <div class="container-desc-incidence">
-                <p aria-disabled="true" >{{description}}</p>
+                <p disabled>{{description}}</p>
             </div>
         </div>
         <div class="elements-row-center">
-            <div class="element-container">
+            <div class="element-container" >
                 <label>Tipo de Registro</label>
-                <select class="combo" disabled>
+                <select class="combo" [disabled]="true">
                     <option value="Select">{{type}}</option>
                 </select>
             </div>
             <div class="element-container">
                 <label>Prioridad</label>
-                <select class="combo" disabled>
+                <select class="combo" [disabled]="true">
                     <option value="Select">{{priority}}</option>
                 </select>
             </div>
@@ -50,20 +50,24 @@
                 <label>
                     Detalle de Solución
                 </label>
-                <textarea [(ngModel)]="solution" id="w3review" name="w3review" rows="4" cols="100"></textarea>
+                <textarea [disabled]="isDisabled" [(ngModel)]="solution" id="w3review" name="w3review" rows="4" cols="100"></textarea>
             </div>
             <div class="column-2">
                 <label>
                     Fecha de Solución
                 </label>
-                <div class="element-container-section-samall">
-                    <input type="date" #myDate [value]="inputDate | date:'yyyy-MM-dd'" (ngModel)="inputDate"/>
-                    <input type="time" (ngModel)="inputHour" [value]="inputHour">
+                <div class="element-container-section-samall" >
+                    <input type="date" #myDate [value]="inputDate | date:'yyyy-MM-dd'" (ngModel)="inputDate" [disabled]="isDisabled"/>
+                    <input type="time" (ngModel)="inputHour" [value]="inputHour" [disabled]="isDisabled">
                 </div>
             </div>
         </div>
     </div>
     <footer>
-        <button class="btn-update" (click)="update()">Actualizar</button>
+        <button class="btn-update" *ngIf="isDisabled" (click)="flipUpdate()">Actualizar</button>
+        <div class="update-btns" *ngIf="!isDisabled">
+            <button class="btn-update cancel-btn" (click)="flipUpdate()">Cancelar</button>
+            <button class="btn-update confirm-btn" (click)="update()">Confirmar</button>
+        </div>
     </footer>
 </body>

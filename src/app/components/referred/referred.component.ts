@@ -53,19 +53,13 @@ export class ReferredComponent implements OnInit, AfterViewInit  {
           
           this.patients = patients 
           let elementArray: { id: any; patient: string; dni: any; }[] = []
-          console.log(this.patients)
-          console.log(this.data)
 
           for (let i = 0; i < this.data.length; i++) {
-            console.log("iteration", i)
             let patientId = this.data[i].patientId
-            console.log(patientId)
 
             for (let j = 0; j < this.patients.length; j++) { 
-              console.log(patients[j].id, patientId)
               if (patients[j].id == patientId) {
                 this.patient = patients[j]
-                console.log(this.patient)
               }
             }
             
