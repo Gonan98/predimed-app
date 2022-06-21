@@ -84,8 +84,8 @@ export class ReferredComponent implements OnInit, AfterViewInit  {
     this.dataSource.filter = filterValue.trim().toLowerCase();
   }
 
-  onView(){
-    this.router.navigate(['/detalleReferencia']);
+  onView(id: number){
+    this.router.navigate(['/referido/' + id]);
   }
 
 }

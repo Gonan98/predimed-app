@@ -32,7 +32,7 @@
             </div>
         </div>
         <div class="elements-row-center">
-            <div class="element-container" >
+            <div class="element-container">
                 <label>Tipo de Registro</label>
                 <select class="combo" [disabled]="true">
                     <option value="Select">{{type}}</option>
@@ -50,14 +50,16 @@
                 <label>
                     Detalle de Solución
                 </label>
-                <textarea [disabled]="isDisabled" [(ngModel)]="solution" id="w3review" name="w3review" rows="4" cols="100"></textarea>
+                <textarea [disabled]="isDisabled" [(ngModel)]="solution" id="w3review" name="w3review" rows="4"
+                    cols="100"></textarea>
             </div>
             <div class="column-2">
                 <label>
                     Fecha de Solución
                 </label>
-                <div class="element-container-section-samall" >
-                    <input type="date" #myDate [value]="inputDate | date:'yyyy-MM-dd'" (ngModel)="inputDate" [disabled]="isDisabled"/>
+                <div class="element-container-section-samall">
+                    <input type="date" #myDate [value]="inputDate | date:'yyyy-MM-dd'" (ngModel)="inputDate"
+                        [disabled]="isDisabled" />
                     <input type="time" (ngModel)="inputHour" [value]="inputHour" [disabled]="isDisabled">
                 </div>
             </div>
@@ -65,6 +67,9 @@
     </div>
     <footer>
         <button class="btn-update" *ngIf="isDisabled" (click)="flipUpdate()">Actualizar</button>
+        <button type="submit" class="btn btn-regresar" (click)="regresar()">
+            Regresar
+        </button>
         <div class="update-btns" *ngIf="!isDisabled">
             <button class="btn-update cancel-btn" (click)="flipUpdate()">Cancelar</button>
             <button class="btn-update confirm-btn" (click)="update()">Confirmar</button>

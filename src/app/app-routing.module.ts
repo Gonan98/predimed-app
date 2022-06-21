@@ -25,7 +25,7 @@ const routes: Routes = [
   { path: 'referidos', component: ReferredComponent, canActivate: [AuthGuard] },
   { path: 'dashboard', component: MedicComponent, canActivate: [AuthGuard] },
   { path: 'antecedentes', component: AntecedentComponent, canActivate: [AuthGuard]},
-  { path: 'detalleReferencia', component: ReferredDetailsComponent, canActivate: [AuthGuard]},
+  { path: 'referido/:id', component: ReferredDetailsComponent, canActivate: [AuthGuard]},
   { path: 'incidenciaAdmin', component: IncidenceAdminComponent, canActivate: [AuthGuard]},
   { path: 'incidenciaDetalle', component: IncidenceDetailsComponent, canActivate: [AuthGuard]},
   { path: 'incidenciaCrear', component: IncidenceCreateComponent, canActivate: [AuthGuard]},

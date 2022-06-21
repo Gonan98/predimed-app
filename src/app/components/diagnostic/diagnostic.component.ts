@@ -8,7 +8,6 @@ import { UbigeoService } from 'src/app/services/ubigeo.service';
 import Swal from 'sweetalert2';
 import { DiagnosticService } from 'src/app/services/diagnostic.service';
 import { Neuron } from 'src/app/models/NN';
-import { ReferredService } from 'src/app/services/referred.service';
 
 @Component({
   selector: 'app-diagnostic',
@@ -27,7 +26,6 @@ export class DiagnosticComponent implements OnInit {
     private symptomService: SymptomService,
     private router: Router,
     private diagnosticService: DiagnosticService,
-    private referredService: ReferredService
   ) {
     this.symptoms = [];
     this.neurons = [];

@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { IncidencePutModel } from 'src/app/models/Incidence';
 import { AuthService } from 'src/app/services/auth.service';
 import { EstableishmentService } from 'src/app/services/establishment.service';
@@ -37,7 +38,8 @@ export class IncidenceDetailsComponent implements OnInit {
     private incidenceService: IncidenceService,
     private http: HttpClient,
     private authService: AuthService,
-    private establishmentService: EstableishmentService
+    private establishmentService: EstableishmentService,
+    private router: Router
   ) {
     this.incidencePutModel = new IncidencePutModel();
   }
@@ -116,5 +118,9 @@ export class IncidenceDetailsComponent implements OnInit {
         }
       );
     this.isDisabled = !this.isDisabled
+  }
+
+  regresar() {
+    this.router.navigate(['..']);
   }
 }
