@@ -1,6 +1,6 @@
-import { Component, OnInit, Inject, OnDestroy } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import Swal from 'sweetalert2';
-import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
+import { MatDialog } from '@angular/material/dialog';
 import { DialogProcessComponent } from '../dialog-process/dialog-process.component';
 import { EstableishmentService } from 'src/app/services/establishment.service';
 import { Establishment } from 'src/app/models/Estableishment';
@@ -12,10 +12,7 @@ import { DestinyService } from 'src/app/models/DestinyService';
 import { Referred } from 'src/app/models/Referred';
 import { DiagnosticService } from 'src/app/services/diagnostic.service';
 import { DialogExamComponent } from '../dialog-exam/dialog-exam.component';
-import { LabExam } from 'src/app/models/LabExam';
-import { MatTableDataSource } from '@angular/material/table';
 import { ReferredService } from 'src/app/services/referred.service';
-import { Reference } from '@angular/compiler/src/render3/r3_ast';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { AuthService } from 'src/app/services/auth.service';
@@ -30,17 +27,6 @@ export interface ProcessElement {
 export interface LaboratoryExam {
   description: string;
 }
-
-let ELEMENT_DATA: ProcessElement[] = [
-  { code: '001', description: 'Cirugía General' },
-  { code: '002', description: 'Cirugía Especial' },
-  { code: '003', description: 'Cardiología' },
-  { code: '004', description: 'Psicología' },
-];
-const ELEMENT_DATA1: LaboratoryExam[] = [
-  { description: 'Sangre' },
-  { description: 'Orina' },
-];
 
 @Component({
   selector: 'app-referrals',
@@ -230,26 +216,10 @@ export class ReferralsComponent implements OnInit, OnDestroy {
         isAnamnesisReady = true;
       }
       if (isReferenceReady && isAnamnesisReady) {
+        
         this.http
-          .post<Referred>(`${environment.API_URL}/referred`, {
-            reason: document.getElementById('reasonText')?.textContent,
-            userId: this.userId,
-            sourceEstablishmentCode: this.sourceEstablishment.code,
-            destinyEstablishmentCode:
-              this.form.value.destinyEstablishmentControl,
-            destinyServiceCode: this.form.value.destinyService,
-            serviceCode: this.dataSource[0].code,
-            specialtyCode: this.form.value.speciality,
-            patientId: parseInt(localStorage.getItem('patientId') ?? '1'),
-            diseaseCode: this.diagnosticService.disease.code,
-          })
-          .subscribe((data) => {
-            console.log(data);
-          });
-
-        this.http
-          .post<History>(`${environment.API_URL}/histories`, {
-            weight: parseInt(this.form.value.peso),
+        .post<History>(`${environment.API_URL}/histories`, {
+          weight: parseInt(this.form.value.peso),
             height: parseInt(this.form.value.altura),
             pressure: parseInt(this.form.value.pa),
             temperature: parseInt(this.form.value.temperatura),
@@ -261,14 +231,29 @@ export class ReferralsComponent implements OnInit, OnDestroy {
           })
           .subscribe((response) => {
             console.log(response);
-            Swal.fire({
-              position: 'center',
-              icon: 'success',
-              title: 'Referencia enviada con éxito',
-              showConfirmButton: false,
-              timer: 1500,
-            });
-            this.router.navigate(['/referidos']);
+            this.http
+              .post<Referred>(`${environment.API_URL}/referred`, {
+                reason: document.getElementById('reasonText')?.textContent,
+                userId: this.userId,
+                sourceEstablishmentCode: this.sourceEstablishment.code,
+                destinyEstablishmentCode:
+                  this.form.value.destinyEstablishmentControl,
+                destinyServiceCode: this.form.value.destinyService,
+                serviceCode: this.dataSource[0].code,
+                specialtyCode: this.form.value.speciality,
+                patientId: parseInt(localStorage.getItem('patientId') ?? '1'),
+                diseaseCode: this.diagnosticService.disease.code,
+                historyId: response.id
+              }).subscribe(_ => {
+                Swal.fire({
+                  position: 'center',
+                  icon: 'success',
+                  title: 'Referencia enviada con éxito',
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+                this.router.navigate(['/referidos']);
+              });
           });
       } else {
         console.log('Refence ready?: ', isReferenceReady);

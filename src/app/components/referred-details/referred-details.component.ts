@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import * as moment from 'moment';
+import { Establishment } from 'src/app/models/Estableishment';
 import { PatientDTO } from 'src/app/models/Patient';
-import { Referred } from 'src/app/models/Referred';
-import { HistoryService } from 'src/app/services/history.service';
+import { EstableishmentService } from 'src/app/services/establishment.service';
 import { PatientService } from 'src/app/services/patient.service';
 import { ReferredService } from 'src/app/services/referred.service';
 import { UbigeoService } from 'src/app/services/ubigeo.service';
@@ -19,13 +19,11 @@ export interface LaboratoryExam {
 }
 
 const ELEMENT_DATA: ProcesElement[] = [
-  {description: 'Cirugía General', code: '001'},
-  {description: 'Cardiología', code: '002'},
+  {description: 'Consulta ambulatoria por médico especialista en oftalmología', code: 'S001'},
 ];
 
 const ELEMENT_DATA1: LaboratoryExam[] = [
   {description: 'Sangre'},
-  {description: 'Orina'},
 ];
 
 @Component({
@@ -45,7 +43,8 @@ export class ReferredDetailsComponent implements OnInit {
   isShownDiagnostic: boolean = false;
 
   patientDto: PatientDTO;
-  reference: Referred;
+  reference: any;
+  sourceEstablishment: Establishment;
 
   constructor(
     private router: Router, 
@@ -53,20 +52,27 @@ export class ReferredDetailsComponent implements OnInit {
     private route: ActivatedRoute,
     private ubigeoService: UbigeoService,
     private referenceService: ReferredService,
-    private historyService: HistoryService
+    private establishmentService: EstableishmentService
   ) {
     this.patientDto = new PatientDTO();
-    this.reference = new Referred();
+    this.sourceEstablishment = new Establishment();
   }
 
   ngOnInit(): void {
+    this.establishmentService.getCurrentEstablishment().subscribe(
+      (data) => {
+        this.sourceEstablishment = data;
+      },
+      (err) => console.error(err)
+    );
     this.loadReference();
   }
 
   loadReference() {
     this.referenceService.getReferenceById(this.route.snapshot.params['id']).subscribe(
       data => {
-        this.reference = data
+        console.log(data);
+        this.reference = data;
         this.patientService.getPatientById(this.reference.patientId).subscribe(
           data => {
             this.patientDto.id = data.id;

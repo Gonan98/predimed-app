@@ -56,40 +56,32 @@
             <div class="line-start">
               <label>Establecimiento Origen:</label>
               <div class="origin-establecimiento">
-                <select name="select">
-                  <option value="value1">Value 1</option>
-                  <option value="value2" selected>Establecimiento de Salud</option>
-                  <option value="value3">Value 3</option>
+                <select name="select" disabled>
+                  <option selected>{{ sourceEstablishment.name }}</option>
                 </select>
               </div>
             </div>
             <div class="line-start">
               <label>Establecimiento Destino:</label>
               <div class="origin-establecimiento">
-                <select name="select">
-                  <option value="value1">Value 1</option>
-                  <option value="value2" selected>Establecimiento de Salud</option>
-                  <option value="value3">Value 3</option>
+                <select name="select" disabled>
+                  <option selected>{{ reference.establishment.name }}</option>
                 </select>
               </div>
             </div>
             <div class="line-start">
               <label>Sevicio de Destino</label>
               <div class="origin-establecimiento">
-                <select name="select">
-                  <option value="value1">Value 1</option>
-                  <option value="value2" selected>Consulta médica externa</option>
-                  <option value="value3">Value 3</option>
+                <select name="select" disabled>
+                  <option selected>{{ reference.destinyService.destinyServiceName }}</option>
                 </select>
               </div>
             </div>
             <div class="line-start">
               <label>Especialidad</label>
               <div class="origin-establecimiento">
-                <select name="select">
-                  <option value="value1">Value 1</option>
-                  <option value="value2" selected>Cirujia</option>
-                  <option value="value3">Value 3</option>
+                <select name="select" disabled>
+                  <option selected>{{ reference.specialty.specialtyName }}</option>
                 </select>
               </div>
             </div>
@@ -105,43 +97,44 @@
           <div *ngIf="isShownAnamnesis" class="anamnesis-fisico">
             <h4 class="title-section">Anamnesis</h4>
             Resumen Anamnesis
-            <textarea rows="4">Paciente lego con 6 días de fiebre, presenta dolores musculares.</textarea>
+            <textarea rows="4" [value]="reference.history.anamnesis"></textarea>
             Examen Físico:
             <form>
               <div class="line">
                 <div class="elem">
                   <label class="lb-txt">Temp</label>
-                  <input class="input-lb" type="number" name="temp" value="36*" formControlName="temperatura" />
+                  <input class="input-lb" type="number" name="temp" [value]="reference.history.temperature" readonly />
                 </div>
                 <div class="elem">
                   <label class="lb-txt">P/A</label>
-                  <input class="input-lb" type="text" name="pa" value=" " formControlName="pa" />
+                  <input class="input-lb" type="number" name="pa" [value]="reference.history.pressure" readonly />
                 </div>
               </div>
               <div class="line">
                 <div class="elem">
                   <label class="lb-txt">FC</label>
-                  <input class="input-lb" type="text" name="FC" value="" formControlName="fc" />
+                  <input class="input-lb" type="number" name="FC" [value]="reference.history.heartRate" readonly />
                 </div>
                 <div class="elem">
                   <label class="lb-txt">FR</label>
-                  <input class="input-lb" type="text" name="FR" value="" formControlName="fr" />
+                  <input class="input-lb" type="number" name="FR" [value]="reference.history.respirationRate"
+                    readonly />
                 </div>
               </div>
               <div class="line">
                 <div class="elem">
                   <label class="lb-txt">Peso</label>
-                  <input class="input-lb" type="text" name="weight" value="" formControlName="peso" />
+                  <input class="input-lb" type="number" name="weight" [value]="reference.history.weight" readonly />
                 </div>
                 <div class="elem">
                   <label class="lb-txt">Altura</label>
-                  <input class="input-lb" type="text" name="height" value="" formControlName="altura" />
+                  <input class="input-lb" type="number" name="height" [value]="reference.history.height" readonly />
                 </div>
               </div>
             </form>
             Resumen Examen Físico
 
-            <textarea rows="2">Hinchazón de las piernas</textarea>
+            <textarea rows="3" [value]="reference.history.examSummary"></textarea>
           </div>
           <div *ngIf="isShownDiagnostic" class="diagnostic-help">
             <div class="t-container">
