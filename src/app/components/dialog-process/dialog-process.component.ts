@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, ChangeDetectorRef, Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator, MatPaginatorIntl } from '@angular/material/paginator';
 import {MatTableDataSource} from '@angular/material/table';
 import { ServiceService } from 'src/app/services/service.service';
 
@@ -20,14 +21,23 @@ const ELEMENT_DATA: PeriodicElement[] = [
   templateUrl: './dialog-process.component.html',
   styleUrls: ['./dialog-process.component.css']
 })
-export class DialogProcessComponent implements OnInit {
-  dataSource: any;
+export class DialogProcessComponent implements OnInit, AfterViewInit {
+
+  dataSource = new MatTableDataSource<any>();
+
+  @ViewChild(MatPaginator) paginator: MatPaginator = new MatPaginator(new MatPaginatorIntl(), ChangeDetectorRef.prototype);
+
   constructor(private serviceService: ServiceService) { }
 
   ngOnInit(): void {
     this.serviceService.getServices().subscribe(data => {
-      this.dataSource = data
+      this.dataSource = new MatTableDataSource([...data]);
+      this.dataSource.paginator = this.paginator
     })
+  }
+
+  ngAfterViewInit(): void {
+    setTimeout(() => this.dataSource.paginator = this.paginator);
   }
 
   displayedColumns: string[] = ['Código', 'Descripción', 'Acciones']

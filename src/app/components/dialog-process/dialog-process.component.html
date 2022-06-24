@@ -2,8 +2,8 @@
     <div class="elemnts-search">
         <section class="left-elements">
             <mat-form-field appearance="standard">
-                <mat-label>Doc. Médico</mat-label>
-                <input matInput (keyup)="applyFilter($event)" placeholder="Ejm. 76871372" #input>
+                <mat-label>Código</mat-label>
+                <input matInput (keyup)="applyFilter($event)" placeholder="Ejm. S069" #input>
             </mat-form-field>
         </section>
     </div>
@@ -38,10 +38,14 @@
             <td class="mat-cell" colspan="4">No data matching the filter "{{input.value}}"</td>
             </tr>
         </table>
+
+        <mat-paginator [pageSizeOptions]="[5, 10]"
+            showFirstLastButtons 
+            aria-label="Select page of periodic elements">
+        </mat-paginator>
     </div>
     <mat-dialog-actions>
         <button mat-button mat-dialog-close>Cancelar</button>
-        <button mat-button>Agregar</button>
     </mat-dialog-actions>
 </body>
 
