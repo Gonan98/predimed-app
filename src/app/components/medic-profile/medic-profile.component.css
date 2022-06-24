@@ -1,0 +1,14 @@
+.content {
+    width: 100vw;
+    height: 90vh;
+    overflow-y: hidden;
+    background-color: rgb(240, 240, 240);
+}
+
+.card {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 50px;
+    margin-bottom: auto;
+}
