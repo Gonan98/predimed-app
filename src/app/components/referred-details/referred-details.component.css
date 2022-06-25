@@ -3,6 +3,11 @@ table {
     width: 50%;
 }
 
+.title {
+    margin-top: 25px;
+
+}
+
 .referrals-container{
     box-sizing: border-box;
     display: flex;

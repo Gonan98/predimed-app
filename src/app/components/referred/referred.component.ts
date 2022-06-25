@@ -73,6 +73,7 @@ export class ReferredComponent implements OnInit, AfterViewInit  {
             this.dataSource = new MatTableDataSource([...elementArray]);
             this.dataSource.paginator = this.paginator
           }
+          console.log(this.data)
             })
         });
     }

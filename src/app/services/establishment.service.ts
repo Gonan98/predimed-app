@@ -34,7 +34,7 @@ export class EstableishmentService {
     return this.http.get(`${environment.API_URL}/establishments/${code}/specialties`);
   }
 
-  getEstablishmentDestinyServices(code: number): Observable<any> {
+  getEstablishmentDestinyServices(code: any): Observable<any> {
     return this.http.get(`${environment.API_URL}/establishments/${code}/destiny-services`);
   }
   

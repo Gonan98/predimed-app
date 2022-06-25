@@ -37,6 +37,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PatientDetailComponent } from './components/patient-detail/patient-detail.component';
 import { PatientsComponent } from './components/patients/patients.component';
 import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MedicProfileComponent } from './components/medic-profile/medic-profile.component';
 
 @NgModule({
   declarations: [
@@ -61,6 +62,7 @@ import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
     HistoryComponent,
     PatientDetailComponent,
     PatientsComponent,
+    MedicProfileComponent,
   ],
   imports: [
     BrowserModule,

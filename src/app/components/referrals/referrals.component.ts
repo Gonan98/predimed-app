@@ -141,12 +141,15 @@ export class ReferralsComponent implements OnInit, OnDestroy {
     let index = parseInt(code);
     console.log(index);
     this.estableishmentService.getEstablishmentDestinyServices(index).subscribe(
-      (data) => (this.destinyServices = data.destinyServices),
+      (data) => {
+        this.destinyServices = data.destinyServices
+        console.log(data)},
       (err) => console.error(err)
     );
 
     this.estableishmentService.getEstablishmentSpecialties(index).subscribe(
-      (data) => (this.specialties = data.specialties),
+      (data) => {this.specialties = data.specialties
+      console.log(data)},
       (err) => console.error(err)
     );
   }

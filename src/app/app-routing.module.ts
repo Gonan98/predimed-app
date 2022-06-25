@@ -15,6 +15,7 @@ import {IncidenceCreateComponent} from './components/incidence-create/incidence-
 import { AddPatientComponent } from './components/add-patient/add-patient.component';
 import { PatientDetailComponent } from './components/patient-detail/patient-detail.component';
 import { PatientsComponent } from './components/patients/patients.component';
+import { MedicProfileComponent } from './components/medic-profile/medic-profile.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'listaPacientes', pathMatch: 'full' },
@@ -32,6 +33,7 @@ const routes: Routes = [
   { path: 'crearPaciente', component: AddPatientComponent, canActivate: [AuthGuard]},
   { path: 'paciente/:id', component: PatientDetailComponent, canActivate: [AuthGuard]},
   { path: 'listaPacientes', component: PatientsComponent, canActivate: [AuthGuard]},
+  { path: 'perfil', component: MedicProfileComponent, canActivate: [AuthGuard]},
 ];
 
 @NgModule({
