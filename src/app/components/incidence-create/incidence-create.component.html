@@ -15,14 +15,16 @@
                 <select class="combo" class="input" [(ngModel)]="status" formControlName="status">
                     <option value="" selected disabled hidden>Buscar elemento</option>
                     <option value="Nuevo">Nuevo</option>
-                    <option value="PENDIENTE">Pendiente</option>
+                    <option value="Pendiente">Pendiente</option>
                 </select>
             </div>
         </div>
         <div class="elements-row">
             <div class="element-container">
                 <label class="label-content">Teléfono</label>
-                <input class="telefono" class="input" [(ngModel)]="phone" formControlName="phone">
+                <input class="telefono" class="input" [(ngModel)]="phone" formControlName="phone" type="text">
+                <mat-error *ngIf="formCreateIncidence.controls['phone'].hasError('minlength')">Usa entre 7 a 9 dígitos para tu número de telefono</mat-error>
+                <mat-error *ngIf="formCreateIncidence.controls['phone'].hasError('maxlength')">Usa entre 7 a 9 dígitos para tu número de telefono.</mat-error>
             </div>
             <div class="element-container">
                 <label class="label-content">Tipo de Registro</label>
@@ -38,7 +40,7 @@
                     <option value="" selected disabled hidden>Buscar Elemento</option>
                     <option value="Alta">Alta</option>
                     <option value="Media">Media</option>
-                    
+                    <option value="Baja">Baja</option>
                 </select>
             </div>
         </div>

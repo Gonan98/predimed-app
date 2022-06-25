@@ -60,7 +60,7 @@ export class IncidenceCreateComponent implements OnInit {
       medicName: [{ value: '', disabled: true }, [Validators.required]],
       establishmentId: [{ value: '', disabled: true }, [Validators.required]],
       establishmentName: [{ value: '', disabled: true }, [Validators.required]],
-      phone: ['', [Validators.required]],
+      phone: ['', [Validators.required, Validators.maxLength(9), Validators.minLength(7)]],
       topic: ['', [Validators.required]],
       descripcion: ['', [Validators.required]],
       status: ['', [Validators.required]],
@@ -75,15 +75,7 @@ export class IncidenceCreateComponent implements OnInit {
 
   createIncidence() {
     if (
-      this.description == null ||
-      this.description == undefined ||
-      (this.description == '' && this.establishmentId == null) ||
-      this.establishmentId == undefined ||
-      (this.establishmentId == '' && this.phone == null) ||
-      this.phone == undefined ||
-      (this.phone == '' && this.topic == null) ||
-      this.topic == undefined ||
-      this.topic == ''
+      !this.formCreateIncidence.valid 
     ) {
       Swal.fire({
         icon: 'error',

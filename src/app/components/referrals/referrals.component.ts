@@ -348,8 +348,6 @@ export class ReferralsComponent implements OnInit, OnDestroy {
       this.userId != null &&
       this.sourceEstablishment.code != null &&
       this.form.value.destinyService != null &&
-      this.dataSource[0].code != null &&
-      this.dataSource1[0].description != null &&
       this.form.value.speciality != null &&
       parseInt(localStorage.getItem('patientId') ?? '1') != null &&
       this.diagnosticService.disease.code != null

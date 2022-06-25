@@ -16,6 +16,7 @@ export class PatientsComponent implements OnInit {
   document = '';
   patient: Patient;
   patientList: Patient[];
+  currentPatientList: Patient[];
   departments: Department[];
   provinces: Province[];
   districts: District[];
@@ -30,6 +31,7 @@ export class PatientsComponent implements OnInit {
   ) { 
     this.patient = new Patient();
     this.patientList = [];
+    this.currentPatientList = [];
     this.departments = [];
     this.provinces = [];
     this.districts = [];
@@ -45,9 +47,16 @@ export class PatientsComponent implements OnInit {
 
   onSearch() {
     this.patientService.getPatientByDocument(this.document).subscribe(
-      data => this.patientList = [data],
+      data => {
+        this.patientList = [data]
+      },
       err => alert(err.error.message)
     );
+  }
+
+  search() {
+    const result = this.patientList.filter(p => p.documentNumber.includes(this.document));
+    this.currentPatientList = result
   }
 
   onSubmit() {
@@ -83,7 +92,10 @@ export class PatientsComponent implements OnInit {
 
   loadData() {
     this.patientService.getAllPatients().subscribe(
-      (data) => { this.patientList = data },
+      (data) => { 
+        this.patientList = data 
+        this.currentPatientList = data
+      },
       (err) => console.error(err)
     );
   }

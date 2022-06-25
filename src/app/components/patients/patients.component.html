@@ -3,7 +3,7 @@
     <form class="row g-3" (ngSubmit)="onSearch()">
         <div class="col-auto">
             <input type="text" class="form-control" name="document" placeholder="Buscar por DNI..." maxlength="8"
-                [(ngModel)]="document" />
+                [(ngModel)]="document" (ngModelChange)="search()"/>
         </div>
         <div class="col-auto">
             <button type="submit" class="btn btn-primary">Buscar</button>
@@ -20,7 +20,7 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let patient of patientList">
+            <tr *ngFor="let patient of currentPatientList">
                 <td>{{ patient.firstName }}</td>
                 <td>{{ patient.lastName }}</td>
                 <td>{{ patient.documentNumber }}</td>
