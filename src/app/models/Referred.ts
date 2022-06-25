@@ -5,6 +5,7 @@ export class Referred {
     sourceEstablishmentCode: number;
     destinyEstablishmentCode: number;
     serviceCode: string;
+    labExam: string;
     specialtyCode: string;
     destinyServiceCode: string;
     diseaseCode: string;
@@ -17,6 +18,7 @@ export class Referred {
         this.sourceEstablishmentCode = 0;
         this.destinyEstablishmentCode = 0;
         this.serviceCode = '';
+        this.labExam = '';
         this.specialtyCode = '';
         this.destinyServiceCode = '';
         this.diseaseCode = '';

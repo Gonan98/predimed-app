@@ -216,7 +216,7 @@ export class ReferralsComponent implements OnInit, OnDestroy {
         let newElement: LaboratoryExam = { description: result };
         let newDatasource = this.dataSource1;
         newDatasource.push(newElement);
-        this.dataSource1 = [...newDatasource];
+        this.dataSource1 = [newElement];
       }
     });
   }
@@ -242,6 +242,7 @@ export class ReferralsComponent implements OnInit, OnDestroy {
               this.form.value.destinyEstablishmentControl,
             destinyServiceCode: this.form.value.destinyService,
             serviceCode: this.dataSource[0].code,
+            labExam: this.dataSource1[0].description,
             specialtyCode: this.form.value.speciality,
             patientId: parseInt(localStorage.getItem('patientId') ?? '1'),
             diseaseCode: this.diagnosticService.disease.code,
@@ -340,6 +341,7 @@ export class ReferralsComponent implements OnInit, OnDestroy {
   }
 
   validateReference() {
+    console.log(this.dataSource1[0].description)
     return (
       (document.getElementById('reasonText')?.textContent != '' ||
         document.getElementById('reasonText')?.textContent != undefined) &&
@@ -347,6 +349,7 @@ export class ReferralsComponent implements OnInit, OnDestroy {
       this.sourceEstablishment.code != null &&
       this.form.value.destinyService != null &&
       this.dataSource[0].code != null &&
+      this.dataSource1[0].description != null &&
       this.form.value.speciality != null &&
       parseInt(localStorage.getItem('patientId') ?? '1') != null &&
       this.diagnosticService.disease.code != null
