@@ -1,0 +1,16 @@
+textarea {
+    border-color: rgb(224, 224, 224) !important;
+    border-width: 1px;
+    border-style: solid;
+    padding: 5px
+}
+
+.area-button {
+    display: flex;
+    flex-direction: row;
+}
+
+button {
+    margin-right: auto;
+    margin-left: auto;
+}

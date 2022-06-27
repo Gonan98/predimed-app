@@ -133,7 +133,7 @@ label{
     width: 50%;
     background-color: #ECF4FC;
     padding: 20px;
-    border-color: gray;
+    border-color: rgb(218, 218, 218);
     border-width: 2px;
     border-radius: 10px;
     border-style:solid;
@@ -151,9 +151,9 @@ label{
     padding: 20px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+
     height: 100%;
-    border-color: gray;
+    border-color: rgb(218, 218, 218);
     border-width: 2px;
     border-radius: 10px;
     border-style:solid;
@@ -166,7 +166,7 @@ label{
     display: flex;
     flex-direction: column;
     min-height: 95%;
-    border-color: gray;
+    border-color: rgb(218, 218, 218);
     border-width: 2px;
     border-radius: 10px;
     border-style:solid;
@@ -184,7 +184,7 @@ label{
 
 .t-container{
     padding: 10px;
-    border-color: gray;
+    border-color: rgb(218, 218, 218);
     border-width: 2px;
     border-radius: 3px;
     border-style:solid;
@@ -193,6 +193,15 @@ label{
     flex-direction: column;
 }
 
+.add-btn {
+    margin-bottom: 10px;
+}
+
+.summary-area {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 50px;
+}
 
 .line{
     display: flex;
@@ -218,18 +227,27 @@ footer{
 .speciality{
     background-color: white;
     padding: 5px;
-    border-color: gray;
-    border-width: 2px;
+    border-color: rgb(224, 224, 224) !important;
+    border-width: 1px;
+    border-style: solid;
     border-radius: 3px;
-    border-style:solid;
+
 }
 
 select{
     width: 300px;
+    height: 30px;
     text-align: start;
     display: flex;
     justify-content: center;
     align-items: center;
+    border-radius: 5px;
+    border-color: rgb(218, 218, 218);
+}
+
+select:focus {
+    border: 2px solid;
+    border-color: rgb(204, 204, 204);
 }
 
 .elem{
@@ -244,13 +262,19 @@ input[type=date]{
     width: 60%;
 }
 
+textarea {
+    border-color: rgb(224, 224, 224) !important;
+    border-width: 1px;
+    border-style: solid;
+}
+
 .row-btns{
     width: 50vh;
 }
 .buttons-anam{
     border: none;
     padding: 1vh;
-    border-radius: 1vh;
+    border-radius: 10px 10px 0px 1px;
 }
 .buttons-anam:hover{
     background-color: #04578B;
@@ -283,6 +307,11 @@ input[type=date]{
     align-self: end;
     margin-right: 8vh;
 }
+
+.botones button {
+    border-radius: 5px;
+}
+
 .btn-regresar{
     background-color: #946675; 
 }
@@ -292,6 +321,11 @@ input[type=date]{
 }
 .input-lb{
     width: 15vh;
+    height: 30px;
+    border-radius: 5px;
+    border-color: rgb(224, 224, 224) !important;
+    border-width: 1px;
+    border-style: solid;
 }
 
 .lb-txt{

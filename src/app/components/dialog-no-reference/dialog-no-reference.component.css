@@ -3,6 +3,14 @@
     height: 50%;
 }
 
+textarea {
+    border-color: rgb(224, 224, 224) !important;
+    border-width: 1px;
+    border-style: solid;
+    padding: 5px
+}
+
+
 .input-text{
     border: 1px solid;
 }

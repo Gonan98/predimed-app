@@ -4,7 +4,7 @@
     <div class="container-forms">
       <form [formGroup]="form" class="info-container">
         <section class="column-1">
-          <h4 class="title-section">Datos de Referencia</h4>
+          <p class="title-section h4">Datos de Referencia</p>
           <div class="datos-referencia">
             <div class="line-start">
               <label>Establecimiento Origen:</label>
@@ -73,12 +73,18 @@
                 Apoyo al Diagnostico
               </button>
             </div>
-          </div>
+          </div> 
+          
           <div *ngIf="isShownAnamnesis" class="anamnesis-fisico">
-            <h4 class="title-section">Anamnesis</h4>
-            Resumen Anamnesis
+           <p class="title-section h4">Anamnesis</p>
+            <div class="summary-area mt-5">
+               Resumen Anamnesis
             <textarea rows="4" id="anamnesisResume">Paciente lego con 6 días de fiebre, presenta dolores musculares.</textarea>
-            Examen Físico:
+            </div>
+           
+            
+            <div class="mb-5">
+               Examen Físico:
             <div class="anamnesis-form" errorTailor>
               <div class="line">
                 <div class="elem">
@@ -111,15 +117,20 @@
                 </div>
               </div>
             </div>
-            Resumen Examen Físico
+            </div>
+           
+            <div class="summary-area">
+              Resumen Examen Físico
 
-            <textarea rows="2" id="examResume">Hinchazón de las piernas</textarea>
+              <textarea rows="2" id="examResume">Hinchazón de las piernas</textarea>
+            </div>
+            
           </div>
           <div *ngIf="isShownDiagnostic" class="diagnostic-help">
             <div class="t-container">
               <div class="section-header">
                 <h4 class="title-section">Procedimiento</h4>
-                <button mat-stroked-button (click)="addProcedimiento()">Añadir</button>
+                <button mat-stroked-button (click)="addProcedimiento()" class="add-btn">Añadir</button>
               </div>
               <div class="container-table">
                 <table mat-table [dataSource]="dataSource" class="mat-elevation-z5">
@@ -143,7 +154,7 @@
             <div class="t-container">
               <div class="section-header">
                 <h4 class="title-section">Examen de Laboratorio</h4>
-                <button mat-stroked-button (click)="addExamen()">Añadir</button>
+                <button mat-stroked-button (click)="addExamen()" class="add-btn">Añadir</button>
               </div>
               <table mat-table [dataSource]="dataSource1" class="mat-elevation-z5">
                 <ng-container matColumnDef="description">
@@ -162,10 +173,10 @@
     </div>
   </div>
   <div class="botones">
-    <button type="submit" class="btn btn-regresar" (click)="onBack()">
+    <button type="submit" class="btn btn-danger btn-lg" (click)="onBack()">
       Regresar
     </button>
-    <button type="submit" class="btn btn-registrar" (click)="onSend()">
+    <button type="submit" class="btn btn-primary btn-lg" (click)="onSend()">
       Enviar
     </button>
   </div>

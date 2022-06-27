@@ -2,9 +2,9 @@
   <app-patient-info></app-patient-info>
   <div class="analyze-info">
     <div class="diagnostic-symptom">
-      <h4 class="title-section">Diagnostico</h4>
-      <h5>Posible tipo de Cáncer: {{ diagnosticService.disease.name }}</h5>
-      <h4 class="title-section">Sintomas y Signos</h4>
+      <p class="title-section h4">Diagnostico</p>
+      <p>Posible tipo de Cáncer: {{ diagnosticService.disease.name }}</p>
+      <p class="title-section h5">Sintomas y Signos</p>
       <div class="list-items">
         <div class="form-check" *ngFor="let symptom of activeSymptoms">
           <input type="checkbox" class="form-check-input" [checked]="symptom.active" disabled/>
@@ -12,7 +12,7 @@
         </div>
       </div>
     </div>
-    <div class="results">
+    <div class="results d-flex flex-col justify-content-between">
       <circle-progress
         [percent]= "diagnosticService.response.maxOutput.value * 100"
         [radius]="100"
@@ -42,13 +42,13 @@
   </div>
   <footer>
     <section class="btn-column1">
-      <button type="submit" class="btn-back" (click)="goBack()">
+      <button type="submit" class="btn btn-dark btn-lg" (click)="goBack()">
         Regresar
       </button>
     </section>
     <section class="btn-column2">
-      <button mat-raised-button type="submit" class="btn-no-ref" (click) ="onNoReferenceDialog()">No Referir</button>
-      <button type="button" class="btn-ref" (click)="onReference()">
+      <button mat-raised-button type="submit" class="btn btn-danger btn-lg" (click) ="onNoReferenceDialog()">No Referir</button>
+      <button type="button" class="btn btn-primary btn-lg" (click)="onReference()">
         Referir
       </button>
     </section>

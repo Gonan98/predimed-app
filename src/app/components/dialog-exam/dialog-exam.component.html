@@ -2,7 +2,7 @@
     <p mat-dialog-title>Añada tipo de examen</p>
     <textarea matInput [(ngModel)]="exam" class="input-text" rows="5" md-select-on-focus placeholder="Examen"></textarea>
     <mat-dialog-actions class="area-button">
-        <button mat-button mat-dialog-close class="button button-close button-primary"> Cancelar</button>
-        <button mat-button mat-dialog-close [mat-dialog-close]="exam" class="button button-confirm"> Confirmar</button>
+        <button mat-dialog-close class="btn btn-secondary btn-sm"> Cancelar</button>
+        <button mat-dialog-close [mat-dialog-close]="exam" class="btn btn-primary btn-sm"> Confirmar</button>
     </mat-dialog-actions>
 </div>

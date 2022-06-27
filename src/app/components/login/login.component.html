@@ -1,28 +1,24 @@
-<body>
-    <div class="container">
-        <div class="card card-logo">
-            <div class="logo">
-                <img src="assets/logo.png" alt="">
-            </div>
-        </div>
-        <div class="card card-login">
-                <span class="title">Inicio de Sesión</span>
-                <form [formGroup]="formLogin" (ngSubmit)="onSubmit()" class="formulario" errorTailor>
-                    <div class="input-group mb-3">
-                        <span>Usuario</span>
-                        <input type="text" class="form-control" [(ngModel)]="username"
-                            name="username" formControlName="user">
-                    </div>
-                    <div class="input-group mb-3">
-                        <span>Contraseña</span>
-                        <input type="password" class="form-control" [(ngModel)]="password"
-                            name="password" formControlName="password">
-                    </div>
-                    <div class="btns">
-                        <button class="btn-login" type="submit">Iniciar Sesión</button>
-                        <a class="forgot-pwd" href="">¿Te olvidaste tu Contraseña?</a>
-                    </div>
-                </form>
-            </div>
+<body class="content w-100 h-100">
+  <div class="card d-flex flex-row w-50 h-75 mx-auto pt-10 shadow">
+    <div class="logo d-flex">
+      <img class="pl-5" src="assets/logo.png" alt="">
     </div>
+    <form [formGroup]="formLogin" (ngSubmit)="onSubmit()" class="login-form">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label h5">Usuario</label>
+        <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" [(ngModel)]="username"
+        name="username" formControlName="user">
+        <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label h5">Contraseña</label>
+        <input type="password" class="form-control" id="exampleInputPassword1" [(ngModel)]="password"
+        name="password" formControlName="password">
+      </div>
+      <div class="mb-3 form-check">
+        <button type="submit" class="btn btn-primary mx-auto">Iniciar Sesion</button>
+      </div>
+      <div id="emailHelp" class="form-text">¿Olvidaste tu contraseña?</div>
+    </form>
+  </div>
 </body>

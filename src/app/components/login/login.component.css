@@ -1,20 +1,48 @@
+.content {
+    background-color: #f3f3f3;
+    width: 100vw;
+    height: 100vh;
+}
+
 body{
     margin:0px;
-    height:120vh;
-    background-color: #dee9f3;
-    padding-top: 5%;
-    text-align: center;
-    font-family: 'Times New Roman', Times, serif;
-    font-style: italic;
+    padding-top: 10%;
 }
-.card{
-    border:none;
-    padding: 30px;
-    width: 45vh;
-    border-radius: 11vh;
-    height: 80vh;
+
+.login-form {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width: 60%;
+    padding-left: 5%;
+    padding-right: 5%;
+    text-align: left !important;
     justify-content: center;
 }
+
+input {
+    border: 1px solid #dadada !important;
+}
+
+input .form-control{
+    width: 80% !important;
+}
+
+
+.form-check-input {
+    background-color: white;
+}
+
+.logo {
+    width: 40%;
+    height: 100%;
+    background-color: #d8eafd;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+}
+
 .card-logo{
     background-color: #80B5F0; 
 }
@@ -23,7 +51,10 @@ body{
     text-align: center;
 }
 .logo img{
-    width: 100%;
+    width: 80%;
+    height: 40%;
+    margin-left: auto;
+    margin-right: auto;
 }
 .container{
     display: inline-flex;
