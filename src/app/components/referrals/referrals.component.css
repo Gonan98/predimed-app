@@ -234,6 +234,16 @@ footer{
 
 }
 
+#examSummary {
+    height: 10vh;
+    padding: 0.5rem
+}
+
+#anamnesisSummary {
+    height: 10vh;
+    padding: 0.5rem
+}
+
 select{
     width: 300px;
     height: 30px;
@@ -326,6 +336,11 @@ textarea {
     border-color: rgb(224, 224, 224) !important;
     border-width: 1px;
     border-style: solid;
+}
+
+input .input-lb:focus {
+    border: 2px solid !important;
+    border-color: rgb(204, 204, 204) !important;
 }
 
 .lb-txt{
